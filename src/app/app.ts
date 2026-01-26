@@ -695,6 +695,9 @@ finance, and end-to-end transaction support`.split('');
 
     // Benefits section - sync titles with text
     this.initBenefitsScrollSync();
+
+    // Mobile benefits carousel
+    this.initMobileCarousel();
   }
 
   initBenefitsScrollSync() {
@@ -816,5 +819,66 @@ finance, and end-to-end transaction support`.split('');
 
   toggle8VideoMute() {
     this.is8VideoMuted = !this.is8VideoMuted;
+  }
+
+  // Mobile Carousel
+  currentMobileSlide = 0;
+  totalMobileSlides = 4;
+
+  initMobileCarousel() {
+    const prevButton = document.querySelector('[data-centered-slider="prev-button"]');
+    const nextButton = document.querySelector('[data-centered-slider="next-button"]');
+    const slides = document.querySelectorAll('[data-centered-slider="slide"]');
+
+    if (!slides.length) return;
+
+    this.totalMobileSlides = slides.length;
+
+    // Reset slides
+    slides.forEach((slide) => {
+      (slide as HTMLElement).style.transform = 'none';
+      slide.classList.remove('active');
+    });
+
+    // Set first slide as active
+    this.currentMobileSlide = 0;
+    slides[0]?.classList.add('active');
+
+    // Add button listeners
+    prevButton?.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.prevMobileSlide();
+    });
+
+    nextButton?.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.nextMobileSlide();
+    });
+  }
+
+  setMobileSlide(index: number) {
+    const slides = document.querySelectorAll('[data-centered-slider="slide"]');
+
+    if (!slides.length) return;
+
+    // Wrap around
+    if (index < 0) index = this.totalMobileSlides - 1;
+    if (index >= this.totalMobileSlides) index = 0;
+
+    this.currentMobileSlide = index;
+
+    // Remove active from all slides
+    slides.forEach((slide) => slide.classList.remove('active'));
+
+    // Add active to current slide
+    slides[index]?.classList.add('active');
+  }
+
+  nextMobileSlide() {
+    this.setMobileSlide(this.currentMobileSlide + 1);
+  }
+
+  prevMobileSlide() {
+    this.setMobileSlide(this.currentMobileSlide - 1);
   }
 }
