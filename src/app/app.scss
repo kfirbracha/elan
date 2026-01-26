@@ -766,6 +766,10 @@ nav-bar-move-in animation {
   padding-right: 1.5rem;
   display: flex;
   position: relative;
+
+  @media screen and (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 }
 
 .logo-container-hero {
