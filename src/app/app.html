@@ -1,0 +1,2836 @@
+<!-- Loading Screen -->
+<!-- <div class="loading-screen" [class.hidden]="!isLoading">
+  <div class="loading-content">
+    <div class="loading-logo">
+      <img src="logo.png" width="100%" alt="7 Groups of 8 Logo" />
+    </div>
+    <div class="loading-text">
+      Welcome to 8 — a global network operating
+      <br />
+      as a Wall Street umbrella company.
+    </div>
+    <div class="loading-text">{{ loadingText }}{{ loadingDots }}</div>
+  </div>
+</div> -->
+
+<div class="loading-screen-container" [class.hidden]="!isLoading" style="">
+  <div
+    class="loading-login"
+    style="
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      flex-direction: column;
+      margin-top: 10%;
+    "
+  >
+    <img src="logo1.png" class="loading-logo-img" alt="7 Groups of 8 Logo" />
+    <div
+      class="loading-login-content"
+      style="
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom: 0;
+        flex-direction: column;
+        align-items: center;
+        width: 37%;
+      "
+    >
+      <!-- <div class="login-title" style="">7 GROUPS OF 8</div> -->
+      <div class="loading-subtitle">A Global Wall Street Umbrella Network</div>
+    </div>
+  </div>
+
+  <div class="loading-text" style="text-align: center">{{ loadingText }} 
+   <span style="color: transparent;">
+
+     {{loadingDots}}
+   </span> 
+  </div>
+</div>
+<!-- Animated Background -->
+<div class="animated-bg">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- Main Content -->
+<main class="main-content" [class.visible]="!isLoading">
+  <!-- Header -->
+  <!-- <header class="header">
+    <div class="container header-container">
+      <div class="logo">
+        <img src="page1 logo.png" width="100%" alt="7 Groups of 8 Logo" />
+      </div>
+    </div>
+  </header> -->
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-bg">
+      <!-- Background Video -->
+      <video class="hero-video" [muted]="true" autoplay loop playsinline disablePictureInPicture>
+        <source src="hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-video-overlay"></div>
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+
+    <div class="logo-container-hero">
+      <img src="page1-logo.png" width="100%" alt="7 Groups of 8 Logo" />
+    </div>
+    <div class="container hero-container">
+      <h1 class="hero-title">
+        <span class="hero-title-line">
+          Execution • Control • Resilience • <br />
+          Mastery • Legacy • Momentum • Strategy
+        </span>
+      </h1>
+
+      <!-- <nav class="hero-nav">
+        <div class="nav-links">
+          <a *ngFor="let keyword of navKeywords" class="nav-link" href="#">
+            <span class="nav-link-text">
+              <span
+                *ngFor="let char of splitToChars(keyword); let i = index"
+                class="nav-char-wrapper"
+              >
+                <span class="char-white" [style.animation-delay.ms]="i * 12">{{ char }}</span>
+                <span class="char-blue" [style.animation-delay.ms]="i * 12">{{ char }}</span>
+              </span>
+            </span>
+          </a>
+        </div>
+      </nav> -->
+
+      <div class="invitation-content">
+        <h3 class="invitation-subtitle reveal-text reveal-delay-1">
+          Ongoing: Offshore Oil &amp; Gas Exploration • Global LNG Distribution
+          <br />
+          <span class="invitation-text reveal-text reveal-delay-2">
+            Future: Nissim Trust Banking Group Launching in 2027 Across UAE and Africa
+          </span>
+        </h3>
+      </div>
+      <div class="nav-bar">
+        <a data-button="" href="#vision" class="nav-button is-btn w-inline-block"
+          ><div data-button-text="" data-load-nav-link="">Vision</div></a
+        >
+        <div class="nav-button is-non">/</div>
+        <a data-button="" href="#opportunities" class="nav-button is-btn w-inline-block"
+          ><div data-button-text="" data-load-nav-link="">OPPORTUNITIES</div></a
+        >
+        <div class="nav-button is-non">/</div>
+        <a data-button="" href="#pioneers" class="nav-button is-btn w-inline-block"
+          ><div data-button-text="" data-load-nav-link="">Pioneers</div></a
+        >
+        <div class="nav-button is-non">/</div>
+        <a data-button="" href="#manifesto" class="nav-button is-btn w-inline-block"
+          ><div data-button-text="" data-load-nav-link="">MANIFESTO</div></a
+        >
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-line"></div>
+  </div>
+  <!-- Invitation Section -->
+  <!-- <section class="invitation-section reveal-section">
+    <div class="hero-bg">
+      <video class="hero-video" [muted]="true" autoplay loop playsinline disablePictureInPicture>
+        <source
+          src="https://player.vimeo.com/progressive_redirect/playback/1125885537/rendition/1440p/file.mp4?loc=external&signature=a5520ff66674eb10bf783202d865de09bb8ae399c074133d636c102b19173d59"
+          type="video/mp4"
+        />
+      </video>
+      <div class="hero-video-overlay"></div>
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <h2 class="elite-title reveal-text">
+      Strategy • Legacy • Momentum<br />
+      Impact • Execution • Control <br />
+      Resilience • Mastery
+    </h2>
+    <p class="elite-description reveal-text reveal-delay-1">
+      Measured Action. Unmatched Execution.
+    </p>
+    <p class="elite-tagline reveal-text reveal-delay-2">End-to-End Control.</p>
+  </section> -->
+  <section id="vision" data-w-id="ff176a5a-ac22-ebd8-76a3-6a6eca0362fe" class="intro-section">
+    <div class="hero-bg">
+      <!-- Background Video -->
+      <video class="hero-video" [muted]="true" autoplay loop infinite playsinline disablePictureInPicture preload="auto">
+        <source src="/page2-videoi.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-video-overlay"></div>
+      <div class="hero-gradient"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="w-layout-grid global-grid">
+      <div id="w-node-_1485baca-8d95-23e9-0a4a-f30987e61216-9e5314b0">
+        <div
+        data-micro-text=""
+        class="micro-text micro is-nm"
+        aria-label="Where others invest in the obvious, we explore what lies behind closed doors."
+      >
+      <span
+      class="split-word"
+      aria-hidden="true"
+      style="color: rgb(228, 228, 228); opacity: 0.4274"
+      >Where</span
+    >
+
+
+
+    <span class="split-word" aria-hidden="true" style="color: rgb(95, 95, 95); opacity: 0.815">Others</span>
+  <span
+  class="split-word"
+  aria-hidden="true"
+  style="color: rgb(242, 242, 242); opacity: 0.3868">See</span>
+<span
+class="split-word"
+aria-hidden="true"
+style="color: rgb(148, 163, 233); opacity: 0.35"
+>Limits,</span
+>
+<span class="split-word" aria-hidden="true" style="color: rgb(124, 124, 124); opacity: 0.7332">We</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(251, 251, 251); opacity: 0.3611">Open</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(185, 185, 185); opacity: 0.5533">Funding</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(255, 255, 255); opacity: 0.3504">Gateways</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(244, 245, 253); opacity: 0.35">Opening</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">funding</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">gateways</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">others</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">fail</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">to</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">see</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">—</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">driven</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">by</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">new</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">ideas.</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">We</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">finance</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">what</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">others</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">overlook.</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">Capital</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">solutions</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">beyond</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(197, 205, 243); opacity: 0.35">conventional</span>
+<span class="split-word" aria-hidden="true" style="color: rgb(156, 156, 156); opacity: 0.6387">thinking.</span>
+      </div>
+      </div>
+      <div id="w-node-_4a6e3191-1bb0-7582-7fd2-9155d710e9de-9e5314b0" class="is-nm">
+        <div
+          data-micro-text=""
+          class="micro-text micro is-nm"
+          aria-label="Where others invest in the obvious, we explore what lies behind closed doors."
+        >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(228, 228, 228); opacity: 0.4274"
+            >Where</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(73, 73, 73); opacity: 0.8818"
+            >others</span
+          >
+          <span class="split-word" aria-hidden="true" style="color: rgb(95, 95, 95); opacity: 0.815"
+            >invest</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(209, 209, 209); opacity: 0.4829"
+            >in</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(242, 242, 242); opacity: 0.3868"
+            >the</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(148, 163, 233); opacity: 0.35"
+            >obvious,</span
+          >
+          <br /><span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(124, 124, 124); opacity: 0.7332"
+            >we</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(251, 251, 251); opacity: 0.3611"
+            >explore</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(185, 185, 185); opacity: 0.5533"
+            >what</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(255, 255, 255); opacity: 0.3504"
+            >lies</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(244, 245, 253); opacity: 0.35"
+            >behind</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(156, 156, 156); opacity: 0.6387"
+            >closed</span
+          >
+          <span
+            class="split-word"
+            aria-hidden="true"
+            style="color: rgb(197, 205, 243); opacity: 0.35"
+            >doors.</span
+          >
+        </div>
+      </div>
+      <div id="w-node-c5c48253-3983-1de1-cfef-c52972359635-9e5314b0" class="is-nm">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          viewBox="0 0 90 16"
+          fill="none"
+          data-svg-lines=""
+          class="graphic-2 micro"
+        >
+          <g clip-path="url(#clip0_484_2977)">
+            <path
+              d="M0.697217 0H0V1.83481H0.697217V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M0.697217 14.3687H0V16.0002H0.697217V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M2.09175 14.3687H1.39453V16.0002H2.09175V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(34, 34, 34); opacity: 0.9917"
+            ></path>
+            <path
+              d="M2.79097 0H2.09375V1.83481H2.79097V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M2.79097 1.83496H2.09375V14.3694H2.79097V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M2.79097 14.3687H2.09375V16.0002H2.79097V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M3.48628 1.83496H2.78906V14.3694H3.48628V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M3.48628 14.3687H2.78906V16.0002H3.48628V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M4.1855 1.83496H3.48828V14.3694H4.1855V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M5.58003 0H4.88281V1.83481H5.58003V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M7.67378 0H6.97656V1.83481H7.67378V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M7.67378 14.3687H6.97656V16.0002H7.67378V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(95, 95, 95); opacity: 0.7865"
+            ></path>
+            <path
+              d="M8.373 1.83496H7.67578V14.3694H8.373V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(136, 152, 231); opacity: 0.25"
+            ></path>
+            <path
+              d="M9.06831 14.3687H8.37109V16.0002H9.06831V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M9.76753 1.83496H9.07031V14.3694H9.76753V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M10.4667 1.83496H9.76953V14.3694H10.4667V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M10.4667 14.3687H9.76953V16.0002H10.4667V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M11.8613 14.3687H11.1641V16.0002H11.8613V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M12.5566 0H11.8594V1.83481H12.5566V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M13.2558 0H12.5586V1.83481H13.2558V0Z"
+              fill="currentColor"
+              style="color: rgb(242, 242, 242); opacity: 0.2924"
+            ></path>
+            <path
+              d="M13.2558 14.3687H12.5586V16.0002H13.2558V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(228, 228, 228); opacity: 0.3393"
+            ></path>
+            <path
+              d="M13.9511 14.3687H13.2539V16.0002H13.9511V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M14.6503 0H13.9531V1.83481H14.6503V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M15.3496 0H14.6523V1.83481H15.3496V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M15.3496 14.3687H14.6523V16.0002H15.3496V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M16.0449 0H15.3477V1.83481H16.0449V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M16.0449 14.3687H15.3477V16.0002H16.0449V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(185, 185, 185); opacity: 0.4846"
+            ></path>
+            <path
+              d="M16.7441 0H16.0469V1.83481H16.7441V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M16.7441 14.3687H16.0469V16.0002H16.7441V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M18.1386 0H17.4414V1.83481H18.1386V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M18.1386 1.83496H17.4414V14.3694H18.1386V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M18.1386 14.3687H17.4414V16.0002H18.1386V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M19.5332 0H18.8359V1.83481H19.5332V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M22.3261 1.83496H21.6289V14.3694H22.3261V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(255, 255, 255); opacity: 0.25"
+            ></path>
+            <path
+              d="M23.7207 14.3687H23.0234V16.0002H23.7207V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M24.4199 0H23.7227V1.83481H24.4199V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M24.4199 1.83496H23.7227V14.3694H24.4199V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(73, 73, 73); opacity: 0.8636"
+            ></path>
+            <path
+              d="M24.4199 14.3687H23.7227V16.0002H24.4199V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(182, 192, 240); opacity: 0.25"
+            ></path>
+            <path
+              d="M25.1152 14.3687H24.418V16.0002H25.1152V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(209, 209, 209); opacity: 0.4033"
+            ></path>
+            <path
+              d="M25.8144 14.3687H25.1172V16.0002H25.8144V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(142, 158, 232); opacity: 0.25"
+            ></path>
+            <path
+              d="M26.5097 1.83496H25.8125V14.3694H26.5097V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M27.2089 14.3687H26.5117V16.0002H27.2089V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M27.9082 14.3687H27.2109V16.0002H27.9082V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M28.6035 14.3687H27.9062V16.0002H28.6035V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M29.3027 0H28.6055V1.83481H29.3027V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M29.3027 1.83496H28.6055V14.3694H29.3027V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M30.0019 1.83496H29.3047V14.3694H30.0019V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M30.6972 1.83496H30V14.3694H30.6972V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M31.3964 0H30.6992V1.83481H31.3964V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M32.0917 0H31.3945V1.83481H32.0917V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M32.0917 14.3687H31.3945V16.0002H32.0917V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M32.791 1.83496H32.0938V14.3694H32.791V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M33.4863 14.3687H32.7891V16.0002H33.4863V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(197, 205, 243); opacity: 0.25"
+            ></path>
+            <path
+              d="M34.1855 0H33.4883V1.83481H34.1855V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M34.8847 0H34.1875V1.83481H34.8847V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M35.58 1.83496H34.8828V14.3694H35.58V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M35.58 14.3687H34.8828V16.0002H35.58V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M36.2792 0H35.582V1.83481H36.2792V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M36.2792 1.83496H35.582V14.3694H36.2792V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(55, 55, 55); opacity: 0.9235"
+            ></path>
+            <path
+              d="M38.373 0H37.6758V1.83481H38.373V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M38.373 14.3687H37.6758V16.0002H38.373V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M39.0683 0H38.3711V1.83481H39.0683V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M39.7675 0H39.0703V1.83481H39.7675V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M39.7675 14.3687H39.0703V16.0002H39.7675V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M41.8613 1.83496H41.1641V14.3694H41.8613V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M42.5566 1.83496H41.8594V14.3694H42.5566V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M43.2558 0H42.5586V1.83481H43.2558V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M43.9511 14.3687H43.2539V16.0002H43.9511V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M44.6503 0H43.9531V1.83481H44.6503V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M44.6503 1.83496H43.9531V14.3694H44.6503V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M45.3505 0H44.6523V1.83481H45.3505V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M46.7441 0H46.0469V1.83481H46.7441V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M46.7441 14.3687H46.0469V16.0002H46.7441V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M48.1386 14.3687H47.4414V16.0002H48.1386V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M48.8378 0H48.1406V1.83481H48.8378V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M48.8378 1.83496H48.1406V14.3694H48.8378V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M48.8378 14.3687H48.1406V16.0002H48.8378V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(213, 219, 247); opacity: 0.25"
+            ></path>
+            <path
+              d="M50.2333 14.3687H49.5352V16.0002H50.2333V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M50.9277 0H50.2305V1.83481H50.9277V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M50.9277 14.3687H50.2305V16.0002H50.9277V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M52.3261 1.83496H51.6289V14.3694H52.3261V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M54.4199 1.83496H53.7227V14.3694H54.4199V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(42, 42, 42); opacity: 0.9662"
+            ></path>
+            <path
+              d="M54.4199 14.3687H53.7227V16.0002H54.4199V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M55.1161 0H54.418V1.83481H55.1161V0Z"
+              fill="currentColor"
+              style="color: rgb(244, 245, 253); opacity: 0.25"
+            ></path>
+            <path
+              d="M55.1161 1.83496H54.418V14.3694H55.1161V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M55.8144 14.3687H55.1172V16.0002H55.8144V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M56.5097 0H55.8125V1.83481H56.5097V0Z"
+              fill="currentColor"
+              style="color: rgb(124, 124, 124); opacity: 0.6921"
+            ></path>
+            <path
+              d="M56.5097 14.3687H55.8125V16.0002H56.5097V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M57.9091 1.83496H57.2109V14.3694H57.9091V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M58.6035 14.3687H57.9062V16.0002H58.6035V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M59.3027 14.3687H58.6055V16.0002H59.3027V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M60.0019 14.3687H59.3047V16.0002H60.0019V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M62.7919 0H62.0938V1.83481H62.7919V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M62.7919 1.83496H62.0938V14.3694H62.7919V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M63.4863 0H62.7891V1.83481H63.4863V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M64.1855 1.83496H63.4883V14.3694H64.1855V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M64.1855 14.3687H63.4883V16.0002H64.1855V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M64.8847 0H64.1875V1.83481H64.8847V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M64.8847 1.83496H64.1875V14.3694H64.8847V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M64.8847 14.3687H64.1875V16.0002H64.8847V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M65.58 1.83496H64.8828V14.3694H65.58V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(236, 239, 251); opacity: 0.25"
+            ></path>
+            <path
+              d="M66.2792 14.3687H65.582V16.0002H66.2792V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M66.9746 1.83496H66.2773V14.3694H66.9746V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M67.6747 1.83496H66.9766V14.3694H67.6747V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M67.6747 14.3687H66.9766V16.0002H67.6747V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M69.0683 1.83496H68.3711V14.3694H69.0683V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(148, 163, 233); opacity: 0.25"
+            ></path>
+            <path
+              d="M70.4667 0H69.7695V1.83481H70.4667V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M71.1621 14.3687H70.4648V16.0002H71.1621V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M71.8613 1.83496H71.1641V14.3694H71.8613V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M72.5566 14.3687H71.8594V16.0002H72.5566V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M73.9511 0H73.2539V1.83481H73.9511V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M73.9511 14.3687H73.2539V16.0002H73.9511V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M74.6503 1.83496H73.9531V14.3694H74.6503V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M74.6503 14.3687H73.9531V16.0002H74.6503V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M76.0449 14.3687H75.3477V16.0002H76.0449V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(251, 251, 251); opacity: 0.2628"
+            ></path>
+            <path
+              d="M77.4433 1.83496H76.7461V14.3694H77.4433V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(156, 156, 156); opacity: 0.5831"
+            ></path>
+            <path
+              d="M79.5332 1.83496H78.8359V14.3694H79.5332V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M80.2324 14.3687H79.5352V16.0002H80.2324V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M80.9277 0H80.2305V1.83481H80.9277V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M83.0214 14.3687H82.3242V16.0002H83.0214V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M85.1152 1.83496H84.418V14.3694H85.1152V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M85.8144 1.83496H85.1172V14.3694H85.8144V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(255, 255, 255); opacity: 0.2504"
+            ></path>
+            <path
+              d="M86.5097 0H85.8125V1.83481H86.5097V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M87.2089 1.83496H86.5117V14.3694H87.2089V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M87.2089 14.3687H86.5117V16.0002H87.2089V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M87.9082 0H87.2109V1.83481H87.9082V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M88.6035 0H87.9062V1.83481H88.6035V0Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+            <path
+              d="M90.0019 0H89.3047V1.83481H90.0019V0Z"
+              fill="currentColor"
+              style="color: rgb(250, 251, 254); opacity: 0.25"
+            ></path>
+            <path
+              d="M90.0019 1.83496H89.3047V14.3694H90.0019V1.83496Z"
+              fill="currentColor"
+              style="color: rgb(158, 171, 235); opacity: 0.25"
+            ></path>
+            <path
+              d="M90.0019 14.3687H89.3047V16.0002H90.0019V14.3687Z"
+              fill="currentColor"
+              style="color: rgb(32, 32, 32); opacity: 1"
+            ></path>
+          </g>
+          <defs>
+            <clipPath id="clip0_484_2977">
+              <rect width="90" height="16" fill="currentColor"></rect>
+            </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div id="w-node-_19a4bc37-220f-c6fb-31c1-30837eb1e5e7-9e5314b0">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="100%"
+          viewBox="0 0 70 18"
+          fill="none"
+          data-svg-lines=""
+          class="graphic-3 micro"
+        >
+          <path
+            d="M3.73863 8.29404H2.41383V1.70905H0V0.454763H6.14124V1.70905H3.73863V8.29404Z"
+            fill="currentColor"
+            style="color: rgb(248, 248, 248); opacity: 0.2743"
+          ></path>
+          <path
+            d="M9.89364 8.40602C9.33228 8.40602 8.80835 8.30523 8.32184 8.10365C7.84282 7.89461 7.42367 7.60717 7.06441 7.24133C6.71262 6.8755 6.43569 6.44994 6.2336 5.96465C6.03151 5.4719 5.93047 4.93808 5.93047 4.3632C5.93047 3.78832 6.03151 3.25824 6.2336 2.77295C6.43569 2.28766 6.71636 1.8621 7.07563 1.49627C7.4349 1.13043 7.85405 0.846727 8.33307 0.645145C8.81958 0.443564 9.34351 0.342773 9.90487 0.342773C10.4213 0.342773 10.9153 0.424899 11.3868 0.589151C11.8584 0.753402 12.2663 0.981114 12.6106 1.27229C12.9624 1.56346 13.2094 1.90316 13.3516 2.29139L12.1054 2.85134C11.9407 2.47804 11.6563 2.1794 11.2521 1.95542C10.8479 1.72398 10.3989 1.60826 9.90487 1.60826C9.41087 1.60826 8.96553 1.73144 8.56884 1.97782C8.17215 2.21673 7.85779 2.54524 7.62576 2.96333C7.39373 3.37396 7.27772 3.84058 7.27772 4.3632C7.27772 4.88582 7.39373 5.35617 7.62576 5.77427C7.85779 6.19236 8.17963 6.5246 8.59129 6.77098C9.00296 7.00989 9.47075 7.12934 9.99468 7.12934C10.4363 7.12934 10.8255 7.03975 11.1623 6.86057C11.5066 6.68139 11.7761 6.44247 11.9707 6.14384C12.1653 5.8452 12.2775 5.51669 12.3075 5.15833H9.90487V3.91524H13.6323C13.6697 4.16162 13.6884 4.40426 13.6884 4.64317C13.6884 5.38231 13.5237 6.03558 13.1944 6.60299C12.8726 7.16294 12.4235 7.60343 11.8472 7.92447C11.2783 8.24551 10.6271 8.40602 9.89364 8.40602Z"
+            fill="currentColor"
+            style="color: rgb(254, 254, 254); opacity: 0.254"
+          ></path>
+          <path
+            d="M0.660178 10.0485H5.28575V11.3028H1.97375V13.1507H4.93771V14.4049H1.97375V16.6335H5.28575V17.8878H0.660178V10.0485Z"
+            fill="currentColor"
+            style="color: rgb(138, 154, 231); opacity: 0.25"
+          ></path>
+          <path
+            d="M12.3434 17.8878L11.8943 17.3839C11.58 17.578 11.2394 17.731 10.8727 17.843C10.5059 17.9475 10.1204 17.9998 9.71626 17.9998C9.14742 17.9998 8.61974 17.899 8.13323 17.6974C7.65421 17.4884 7.23506 17.2009 6.87579 16.8351C6.51653 16.4693 6.23585 16.0437 6.03376 15.5584C5.83167 15.0657 5.73063 14.5319 5.73063 13.957C5.73063 13.3821 5.83167 12.852 6.03376 12.3667C6.23585 11.8814 6.51653 11.4559 6.87579 11.09C7.23506 10.7242 7.65421 10.4405 8.13323 10.2389C8.61974 10.0373 9.14742 9.93655 9.71626 9.93655C10.2851 9.93655 10.809 10.0373 11.2881 10.2389C11.7746 10.4405 12.1975 10.7242 12.5567 11.09C12.9235 11.4559 13.2079 11.8814 13.41 12.3667C13.6121 12.852 13.7131 13.3821 13.7131 13.957C13.7131 14.4647 13.6308 14.9425 13.4661 15.3904C13.3089 15.8384 13.0881 16.2341 12.8037 16.5775L13.9713 17.8878H12.3434ZM9.71626 11.202C9.21478 11.202 8.76569 11.3252 8.369 11.5716C7.97231 11.8105 7.65795 12.139 7.42592 12.5571C7.1939 12.9677 7.07788 13.4344 7.07788 13.957C7.07788 14.4796 7.1939 14.95 7.42592 15.368C7.65795 15.7861 7.97231 16.1184 8.369 16.3648C8.76569 16.6037 9.21478 16.7231 9.71626 16.7231C10.1803 16.7231 10.6069 16.6111 10.9962 16.3872L9.08754 14.2593H10.7155L11.8831 15.5584C12.0328 15.3344 12.1488 15.0881 12.2311 14.8193C12.3135 14.5505 12.3546 14.2631 12.3546 13.957C12.3546 13.4344 12.2386 12.9677 12.0066 12.5571C11.7746 12.139 11.4602 11.8105 11.0635 11.5716C10.6668 11.3252 10.2177 11.202 9.71626 11.202Z"
+            fill="currentColor"
+            style="color: rgb(253, 253, 255); opacity: 0.25"
+          ></path>
+          <path
+            d="M25.3901 15.2228C25.7501 15.2228 26.1101 15.1199 26.3929 14.9399L21.353 6.76281V13.2428C21.353 14.3485 22.2273 15.2228 23.333 15.2228H25.3901ZM18.6016 13.2428V4.7314C18.6016 2.10856 20.7358 0 23.333 0H25.3901C27.9872 0 30.0958 2.10856 30.0958 4.7314V13.2428C30.0958 15.8656 27.9872 17.9999 25.3901 17.9999H23.333C20.7358 17.9999 18.6016 15.8399 18.6016 13.2428ZM22.3044 3.03427L27.3444 11.2114V4.7314C27.3444 3.59998 26.4958 2.75141 25.3901 2.75141H23.333C22.9472 2.75141 22.613 2.85427 22.3044 3.03427Z"
+            fill="currentColor"
+            style="color: rgb(223, 227, 249); opacity: 0.25"
+          ></path>
+          <path
+            d="M38.438 15.2228C38.798 15.2228 39.158 15.1199 39.4408 14.9399L34.4009 6.76281V13.2428C34.4009 14.3485 35.2752 15.2228 36.3809 15.2228H38.438ZM31.6495 13.2428V4.7314C31.6495 2.10856 33.7837 0 36.3809 0H38.438C41.0351 0 43.1437 2.10856 43.1437 4.7314V13.2428C43.1437 15.8656 41.0351 17.9999 38.438 17.9999H36.3809C33.7837 17.9999 31.6495 15.8399 31.6495 13.2428ZM35.3523 3.03427L40.3923 11.2114V4.7314C40.3923 3.59998 39.5437 2.75141 38.438 2.75141H36.3809C35.9952 2.75141 35.6609 2.85427 35.3523 3.03427Z"
+            fill="currentColor"
+            style="color: rgb(166, 178, 237); opacity: 0.25"
+          ></path>
+          <path
+            d="M56.1916 15.2485V17.9999H44.6974V11.9571L53.4402 7.04567V4.7314C53.4402 3.59998 52.5916 2.75141 51.4859 2.75141H49.4288C48.3231 2.75141 47.4488 3.62569 47.4488 4.7314V5.70854H44.6974V4.7314C44.6974 2.10856 46.8316 0 49.4288 0H51.4859C54.083 0 56.1916 2.10856 56.1916 4.7314V8.66566L47.4488 13.5771V15.2485H56.1916Z"
+            fill="currentColor"
+            style="color: rgb(137, 153, 231); opacity: 0.25"
+          ></path>
+          <path
+            d="M57.7453 10.4142V0H67.6452V2.75141H60.4967V7.07138L62.5795 5.68282H64.5338C67.1052 5.68282 69.2395 7.76567 69.2395 10.3885V13.2685C69.2395 15.8913 67.1309 17.9999 64.5338 17.9999H62.4767C59.8796 17.9999 57.7453 15.8913 57.7453 13.2685V13.0113H60.4967V13.2685C60.4967 14.3742 61.371 15.2485 62.4767 15.2485H64.5338C65.6395 15.2485 66.4881 14.3999 66.4881 13.2685V10.3885C66.4881 9.30851 65.6138 8.43423 64.5338 8.43423H63.4281L60.4967 10.4142H57.7453Z"
+            fill="currentColor"
+            style="color: rgb(150, 164, 234); opacity: 0.25"
+          ></path>
+        </svg>
+      </div>
+      <div id="w-node-_512ef988-19d4-8cc6-3eb6-e054ed5596ce-9e5314b0" class="intro-title-contain">
+        <h2 class="display is-cm">
+          <span class="factors-title">7Factors Powering</span>
+        </h2>
+        <div class="intro-graphic">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100%"
+            viewBox="0 0 57 72"
+            fill="none"
+            data-svg-plus=""
+            class="graphic-4 is-inview"
+          >
+            <path
+              d="M50.4127 4.89477L46.4031 4.89477C45.9344 4.89477 45.5439 5.28532 45.5439 5.75398C45.5439 6.22264 45.9344 6.6132 46.4031 6.6132L50.4127 6.6132L50.4127 10.6228C50.4127 11.1175 50.8033 11.482 51.2719 11.482C51.7406 11.482 52.1311 11.0915 52.1311 10.6228L52.1311 6.6132L56.1408 6.6132C56.6094 6.6132 57 6.22264 57 5.75398C57 5.28532 56.6094 4.89477 56.1408 4.89477L52.1311 4.89477L52.1311 0.885116C52.1311 0.416455 51.7406 -0.0001223 51.2719 -0.000122321C50.8033 -0.000122341 50.4127 0.390418 50.4127 0.885115L50.4127 4.89477Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M50.4127 19.8949L46.4031 19.8949C45.9344 19.8949 45.5439 20.2854 45.5439 20.7541C45.5439 21.2228 45.9344 21.6133 46.4031 21.6133L50.4127 21.6133L50.4127 25.623C50.4127 26.1176 50.8033 26.4822 51.2719 26.4822C51.7406 26.4822 52.1311 26.0916 52.1311 25.623L52.1311 21.6133L56.1408 21.6133C56.6094 21.6133 57 21.2228 57 20.7541C57 20.2854 56.6094 19.8949 56.1408 19.8949L52.1311 19.8949L52.1311 15.8852C52.1311 15.4166 51.7406 15 51.2719 15C50.8033 15 50.4127 15.3905 50.4127 15.8852L50.4127 19.8949Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M50.4127 34.8949L46.4031 34.8949C45.9344 34.8949 45.5439 35.2854 45.5439 35.7541C45.5439 36.2228 45.9344 36.6133 46.4031 36.6133L50.4127 36.6133L50.4127 40.623C50.4127 41.1176 50.8033 41.4822 51.2719 41.4822C51.7406 41.4822 52.1311 41.0916 52.1311 40.623L52.1311 36.6133L56.1408 36.6133C56.6094 36.6133 57 36.2228 57 35.7541C57 35.2854 56.6094 34.8949 56.1408 34.8949L52.1311 34.8949L52.1311 30.8852C52.1311 30.4166 51.7406 30 51.2719 30C50.8033 30 50.4127 30.3905 50.4127 30.8852L50.4127 34.8949Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M50.4127 49.8949L46.4031 49.8949C45.9344 49.8949 45.5439 50.2854 45.5439 50.7541C45.5439 51.2228 45.9344 51.6133 46.4031 51.6133L50.4127 51.6133L50.4127 55.623C50.4127 56.1176 50.8033 56.4822 51.2719 56.4822C51.7406 56.4822 52.1311 56.0916 52.1311 55.623L52.1311 51.6133L56.1408 51.6133C56.6094 51.6133 57 51.2228 57 50.7541C57 50.2854 56.6094 49.8949 56.1408 49.8949L52.1311 49.8949L52.1311 45.8852C52.1311 45.4166 51.7406 45 51.2719 45C50.8033 45 50.4127 45.3905 50.4127 45.8852L50.4127 49.8949Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M50.4127 64.8949L46.4031 64.8949C45.9344 64.8949 45.5439 65.2854 45.5439 65.7541C45.5439 66.2228 45.9344 66.6133 46.4031 66.6133L50.4127 66.6133L50.4127 70.623C50.4127 71.1176 50.8033 71.4822 51.2719 71.4822C51.7406 71.4822 52.1311 71.0916 52.1311 70.623L52.1311 66.6133L56.1408 66.6133C56.6094 66.6133 57 66.2228 57 65.7541C57 65.2854 56.6094 64.8949 56.1408 64.8949L52.1311 64.8949L52.1311 60.8852C52.1311 60.4166 51.7406 60 51.2719 60C50.8033 60 50.4127 60.3905 50.4127 60.8852L50.4127 64.8949Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M6.58768 6.632L10.5973 6.632C11.066 6.632 11.4565 6.24144 11.4565 5.77278C11.4565 5.30412 11.066 4.91359 10.5973 4.91359L6.58768 4.91359L6.58768 0.903934C6.58768 0.435274 6.19713 0.0186765 5.72847 0.0186765C5.25981 0.0186765 4.86926 0.409237 4.86926 0.903934L4.86926 4.91359L0.859612 4.91359C0.390952 4.91359 0.000396497 5.30412 0.000396477 5.77278C0.000396457 6.24144 0.390952 6.632 0.859612 6.632L4.86926 6.632L4.86926 10.6416C4.86926 11.1363 5.25981 11.5009 5.72847 11.5009C6.19713 11.5009 6.58768 11.1103 6.58768 10.6416L6.58768 6.632Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M6.58768 21.6321L10.5973 21.6321C11.066 21.6321 11.4565 21.2416 11.4565 20.7729C11.4565 20.3042 11.066 19.9137 10.5973 19.9137L6.58768 19.9137L6.58768 15.9041C6.58768 15.4354 6.19713 15.0188 5.72847 15.0188C5.25981 15.0188 4.86926 15.4094 4.86926 15.9041L4.86926 19.9137L0.859612 19.9137C0.390952 19.9137 0.00039653 20.3042 0.00039651 20.7729C0.000396489 21.2416 0.390952 21.6321 0.859612 21.6321L4.86926 21.6321L4.86926 25.6418C4.86926 26.1365 5.25981 26.501 5.72847 26.501C6.19713 26.501 6.58768 26.1104 6.58768 25.6418L6.58768 21.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M6.58768 36.6321L10.5973 36.6321C11.066 36.6321 11.4565 36.2416 11.4565 35.7729C11.4565 35.3042 11.066 34.9137 10.5973 34.9137L6.58768 34.9137L6.58768 30.9041C6.58768 30.4354 6.19713 30.0188 5.72847 30.0188C5.25981 30.0188 4.86926 30.4094 4.86926 30.9041L4.86926 34.9137L0.859612 34.9137C0.390952 34.9137 0.00039653 35.3042 0.00039651 35.7729C0.000396489 36.2416 0.390952 36.6321 0.859612 36.6321L4.86926 36.6321L4.86926 40.6418C4.86926 41.1365 5.25981 41.501 5.72847 41.501C6.19713 41.501 6.58768 41.1104 6.58768 40.6418L6.58768 36.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M6.58768 51.6321L10.5973 51.6321C11.066 51.6321 11.4565 51.2416 11.4565 50.7729C11.4565 50.3042 11.066 49.9137 10.5973 49.9137L6.58768 49.9137L6.58768 45.9041C6.58768 45.4354 6.19713 45.0188 5.72847 45.0188C5.25981 45.0188 4.86926 45.4094 4.86926 45.9041L4.86926 49.9137L0.859612 49.9137C0.390952 49.9137 0.00039653 50.3042 0.00039651 50.7729C0.000396489 51.2416 0.390952 51.6321 0.859612 51.6321L4.86926 51.6321L4.86926 55.6418C4.86926 56.1365 5.25981 56.501 5.72847 56.501C6.19713 56.501 6.58768 56.1104 6.58768 55.6418L6.58768 51.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M6.58768 66.6321L10.5973 66.6321C11.066 66.6321 11.4565 66.2416 11.4565 65.7729C11.4565 65.3042 11.066 64.9137 10.5973 64.9137L6.58768 64.9137L6.58768 60.9041C6.58768 60.4354 6.19713 60.0188 5.72847 60.0188C5.25981 60.0188 4.86926 60.4094 4.86926 60.9041L4.86926 64.9137L0.859612 64.9137C0.390952 64.9137 0.00039653 65.3042 0.00039651 65.7729C0.000396489 66.2416 0.390952 66.6321 0.859612 66.6321L4.86926 66.6321L4.86926 70.6418C4.86926 71.1365 5.25981 71.501 5.72847 71.501C6.19713 71.501 6.58768 71.1104 6.58768 70.6418L6.58768 66.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M22.1311 6.632L26.1408 6.632C26.6094 6.632 27 6.24144 27 5.77278C27 5.30412 26.6094 4.91359 26.1408 4.91359L22.1311 4.91359L22.1311 0.903934C22.1311 0.435274 21.7406 0.0186765 21.2719 0.0186765C20.8033 0.0186765 20.4127 0.409237 20.4127 0.903934L20.4127 4.91359L16.4031 4.91359C15.9344 4.91359 15.5439 5.30412 15.5439 5.77278C15.5439 6.24144 15.9344 6.632 16.4031 6.632L20.4127 6.632L20.4127 10.6416C20.4127 11.1363 20.8033 11.5009 21.2719 11.5009C21.7406 11.5009 22.1311 11.1103 22.1311 10.6416L22.1311 6.632Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M22.1311 21.6321L26.1408 21.6321C26.6094 21.6321 27 21.2416 27 20.7729C27 20.3042 26.6094 19.9137 26.1408 19.9137L22.1311 19.9137L22.1311 15.9041C22.1311 15.4354 21.7406 15.0188 21.2719 15.0188C20.8033 15.0188 20.4127 15.4094 20.4127 15.9041L20.4127 19.9137L16.4031 19.9137C15.9344 19.9137 15.5439 20.3042 15.5439 20.7729C15.5439 21.2416 15.9344 21.6321 16.4031 21.6321L20.4127 21.6321L20.4127 25.6418C20.4127 26.1365 20.8033 26.501 21.2719 26.501C21.7406 26.501 22.1311 26.1104 22.1311 25.6418L22.1311 21.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M22.1311 36.6321L26.1408 36.6321C26.6094 36.6321 27 36.2416 27 35.7729C27 35.3042 26.6094 34.9137 26.1408 34.9137L22.1311 34.9137L22.1311 30.9041C22.1311 30.4354 21.7406 30.0188 21.2719 30.0188C20.8033 30.0188 20.4127 30.4094 20.4127 30.9041L20.4127 34.9137L16.4031 34.9137C15.9344 34.9137 15.5439 35.3042 15.5439 35.7729C15.5439 36.2416 15.9344 36.6321 16.4031 36.6321L20.4127 36.6321L20.4127 40.6418C20.4127 41.1365 20.8033 41.501 21.2719 41.501C21.7406 41.501 22.1311 41.1104 22.1311 40.6418L22.1311 36.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M22.1311 51.6321L26.1408 51.6321C26.6094 51.6321 27 51.2416 27 50.7729C27 50.3042 26.6094 49.9137 26.1408 49.9137L22.1311 49.9137L22.1311 45.9041C22.1311 45.4354 21.7406 45.0188 21.2719 45.0188C20.8033 45.0188 20.4127 45.4094 20.4127 45.9041L20.4127 49.9137L16.4031 49.9137C15.9344 49.9137 15.5439 50.3042 15.5439 50.7729C15.5439 51.2416 15.9344 51.6321 16.4031 51.6321L20.4127 51.6321L20.4127 55.6418C20.4127 56.1365 20.8033 56.501 21.2719 56.501C21.7406 56.501 22.1311 56.1104 22.1311 55.6418L22.1311 51.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M22.1311 66.6321L26.1408 66.6321C26.6094 66.6321 27 66.2416 27 65.7729C27 65.3042 26.6094 64.9137 26.1408 64.9137L22.1311 64.9137L22.1311 60.9041C22.1311 60.4354 21.7406 60.0188 21.2719 60.0188C20.8033 60.0188 20.4127 60.4094 20.4127 60.9041L20.4127 64.9137L16.4031 64.9137C15.9344 64.9137 15.5439 65.3042 15.5439 65.7729C15.5439 66.2416 15.9344 66.6321 16.4031 66.6321L20.4127 66.6321L20.4127 70.6418C20.4127 71.1365 20.8033 71.501 21.2719 71.501C21.7406 71.501 22.1311 71.1104 22.1311 70.6418L22.1311 66.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M37.1311 6.632L41.1408 6.632C41.6094 6.632 42 6.24144 42 5.77278C42 5.30412 41.6094 4.91359 41.1408 4.91359L37.1311 4.91359L37.1311 0.903934C37.1311 0.435274 36.7406 0.0186765 36.2719 0.0186765C35.8033 0.0186765 35.4127 0.409237 35.4127 0.903934L35.4127 4.91359L31.4031 4.91359C30.9344 4.91359 30.5439 5.30412 30.5439 5.77278C30.5439 6.24144 30.9344 6.632 31.4031 6.632L35.4127 6.632L35.4127 10.6416C35.4127 11.1363 35.8033 11.5009 36.2719 11.5009C36.7406 11.5009 37.1311 11.1103 37.1311 10.6416L37.1311 6.632Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M37.1311 21.6321L41.1408 21.6321C41.6094 21.6321 42 21.2416 42 20.7729C42 20.3042 41.6094 19.9137 41.1408 19.9137L37.1311 19.9137L37.1311 15.9041C37.1311 15.4354 36.7406 15.0188 36.2719 15.0188C35.8033 15.0188 35.4127 15.4094 35.4127 15.9041L35.4127 19.9137L31.4031 19.9137C30.9344 19.9137 30.5439 20.3042 30.5439 20.7729C30.5439 21.2416 30.9344 21.6321 31.4031 21.6321L35.4127 21.6321L35.4127 25.6418C35.4127 26.1365 35.8033 26.501 36.2719 26.501C36.7406 26.501 37.1311 26.1104 37.1311 25.6418L37.1311 21.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M37.1311 36.6321L41.1408 36.6321C41.6094 36.6321 42 36.2416 42 35.7729C42 35.3042 41.6094 34.9137 41.1408 34.9137L37.1311 34.9137L37.1311 30.9041C37.1311 30.4354 36.7406 30.0188 36.2719 30.0188C35.8033 30.0188 35.4127 30.4094 35.4127 30.9041L35.4127 34.9137L31.4031 34.9137C30.9344 34.9137 30.5439 35.3042 30.5439 35.7729C30.5439 36.2416 30.9344 36.6321 31.4031 36.6321L35.4127 36.6321L35.4127 40.6418C35.4127 41.1365 35.8033 41.501 36.2719 41.501C36.7406 41.501 37.1311 41.1104 37.1311 40.6418L37.1311 36.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M37.1311 51.6321L41.1408 51.6321C41.6094 51.6321 42 51.2416 42 50.7729C42 50.3042 41.6094 49.9137 41.1408 49.9137L37.1311 49.9137L37.1311 45.9041C37.1311 45.4354 36.7406 45.0188 36.2719 45.0188C35.8033 45.0188 35.4127 45.4094 35.4127 45.9041L35.4127 49.9137L31.4031 49.9137C30.9344 49.9137 30.5439 50.3042 30.5439 50.7729C30.5439 51.2416 30.9344 51.6321 31.4031 51.6321L35.4127 51.6321L35.4127 55.6418C35.4127 56.1365 35.8033 56.501 36.2719 56.501C36.7406 56.501 37.1311 56.1104 37.1311 55.6418L37.1311 51.6321Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M37.1311 66.6321L41.1408 66.6321C41.6094 66.6321 42 66.2416 42 65.7729C42 65.3042 41.6094 64.9137 41.1408 64.9137L37.1311 64.9137L37.1311 60.9041C37.1311 60.4354 36.7406 60.0188 36.2719 60.0188C35.8033 60.0188 35.4127 60.4094 35.4127 60.9041L35.4127 64.9137L31.4031 64.9137C30.9344 64.9137 30.5439 65.3042 30.5439 65.7729C30.5439 66.2416 30.9344 66.6321 31.4031 66.6321L35.4127 66.6321L35.4127 70.6418C35.4127 71.1365 35.8033 71.501 36.2719 71.501C36.7406 71.501 37.1311 71.1104 37.1311 70.6418L37.1311 66.6321Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </div>
+      </div>
+      <div id="w-node-_3891dbca-e095-2baf-0a98-c97ac89e09ec-9e5314b0" class="intro-flex">
+        <ul class="factors-list">
+          <li>7 LNG <br>
+            <span class="factors-list-item-subtext">Seismic Surveys — 3D/4D Offshore Oil &amp; Gas Exploration</span></li>
+          <li>7Factors LNG<br>
+            <span class="factors-list-item-subtext">End-to-End LNG Distribution</span></li>
+          <li>MINRA 7 <br>
+            <span class="factors-list-item-subtext">Mining &amp; Minerals Division</span></li>
+          <li>8 Gold <br>
+            <span class="factors-list-item-subtext">Investment &amp; Trade</span></li>
+          <li>Advanced Intelligence (8 AI) <br>
+            <span class="factors-list-item-subtext">Strategic AI, Data & Intelligence Systems</span></li>
+          <li>Nissim Trust (2027)<br>
+            <span class="factors-list-item-subtext">Upcoming Banking & Financial Group</span>
+          </li>
+          <li>MineraX <br>
+            <span class="factors-list-item-subtext">The Future of Energy, From Space to Earth</span></li>
+          <li>WAIKE <br>
+            <span class="factors-list-item-subtext">Agriculture &amp; Commodities</span></li>
+        </ul>
+      </div>
+    </div>
+   
+    <!-- <div
+      class="full-video is-intro"
+      style="
+        will-change: transform;
+        transform: translate3d(0px, -0.5551%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg)
+          rotateZ(0deg) skew(0deg, 0deg);
+        transform-style: preserve-3d;
+      "
+    > -->
+      <!-- <div data-video="" class="full-video w-embed">
+        <div style="width: 100%; height: 100%" class="w-background-video w-background-video-atom">
+          <video
+            [muted]="true"
+            autoplay
+            loop
+            playsinline
+            disablePictureInPicture
+            data-wf-ignore="true"
+            data-object-fit="cover"
+            preload="metadata"
+          >
+            <source
+              src="https://player.vimeo.com/progressive_redirect/playback/1125885537/rendition/1440p/file.mp4?loc=external&amp;signature=a5520ff66674eb10bf783202d865de09bb8ae399c074133d636c102b19173d59"
+              data-wf-ignore="true"
+            /> 
+            <source
+              src="page2-video.mp4"
+              data-wf-ignore="true"
+            />
+          </video>
+        </div>
+      </div> -->
+      <!-- <div class="gradient-overlay is-intro"></div> -->
+    <!-- </div> -->
+  </section>
+  <section class="video-showcase-section">
+    <div class="video-showcase-container">
+      <video class="showcase-video" [muted]="isVideoMuted" autoplay loop playsinline disablePictureInPicture controls preload="auto">
+        <source src="/trump-video.mp4" type="video/mp4" />
+      </video>
+      <button class="sound-toggle" (click)="toggleVideoMute()">
+        <span class="sound-icon">{{ isVideoMuted ? '🔇' : '🔊' }}</span>
+        <span class="sound-text">{{ isVideoMuted ? 'Enable Sound' : 'Mute' }}</span>
+      </button>
+    </div>
+  </section>
+
+  
+  <!-- Elite Section -->
+  <section class="elite-section reveal-section">
+    <div class="container"></div>
+  </section>
+
+  <!-- Vision Section -->
+  <section class="vision-section reveal-section">
+    <div class="container">
+      <div class="vision-header">
+        <div class="vision-header-left">
+          <span class="section-label reveal-text numeric-text">
+            <span
+              *ngFor="let char of visionTitleChars; let i = index"
+              class="flicker-char"
+              [class.flicker-active]="visionFlickerIndices.includes(i)"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+
+        <div class="vision-divider">
+          <div class="guideline-container">
+            <div class="guideline-bg"></div>
+            <div class="guideline-glow"></div>
+          </div>
+        </div>
+
+        <div class="vision-header-left">
+          <span class="section-label reveal-text numeric-text">
+            <span
+              *ngFor="let char of titangateTitleChars; let i = index"
+              class="flicker-char"
+              [class.flicker-active]="flickerActiveIndices.includes(i)"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+
+        <div class="vision-divider">
+          <div class="guideline-container">
+            <div class="guideline-bg"></div>
+            <div class="guideline-glow"></div>
+          </div>
+        </div>
+
+        <div class="vision-header-left">
+          <span class="section-label reveal-text numeric-text">
+            <span
+              *ngFor="let char of handleTitleChars; let i = index"
+              class="flicker-char"
+              [class.flicker-active]="handleFlickerIndices.includes(i)"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+        <div class="vision-divider">
+          <div class="guideline-container">
+            <div class="guideline-bg"></div>
+            <div class="guideline-glow"></div>
+          </div>
+        </div>
+        <div class="vision-header-right">
+          <div class="tweet-content">
+            <span
+              *ngFor="let word of microTextWords; let i = index"
+              class="micro-text flicker-char"
+              [class.flicker-active]="microTextFlickerIndices.includes(i)"
+              >{{ word }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="vision-features">
+        <div class="vision-feature-container">
+          <h3 class="vision-feature-title reveal-text">8 Turning Vision Into Global Milestones</h3>
+          <div class="vision-feature vision-feature-video-container">
+            <div class="vision-feature-video">
+              <video
+                class="vision-video"
+                [muted]="true"
+                autoplay
+                loop
+                playsinline
+                disablePictureInPicture
+              >
+                <source
+                  src="https://player.vimeo.com/progressive_redirect/playback/1125885446/rendition/1080p/file.mp4?loc=external&signature=22238edd2077d8462a7c9f385882f85986c705f951e289986fec4a91b282fb17"
+                  type="video/mp4"
+                />
+              </video>
+              <div class="vision-video-overlay"></div>
+            </div>
+          </div>
+        </div>
+        <div class="vision-feature vision-feature-text">
+          <h3 class="vision-feature-title reveal-text">
+            Empowering Growth. Unlocking Potential. Delivering Impact.
+          </h3>
+          <p class="reveal-text reveal-delay-1">
+            Transform industries and economies through mega-project development
+          </p>
+          <p class="reveal-text reveal-delay-2">
+            Unlock Africa's and global resource potential responsibly and profitably
+          </p>
+          <p class="reveal-text reveal-delay-3">
+            Deliver end-to-end solutions from capital deployment to global commercialization
+          </p>
+          <p class="slogan reveal-text reveal-delay-4">We Lead Where Others Follow</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Showcase Section -->
+ 
+
+  <!-- Industries Section -->
+  <section class="industry-section">
+    <div class="section-intro">
+      <div class="svg-guideline_outer">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 1 408"
+          width="100%"
+          style="animation-delay: 0.2s"
+          class="svg-guideline"
+        >
+          <path stroke="currentColor" stroke-dasharray="2 2" d="M.5 0v408"></path>
+          <defs>
+            <linearGradient id="a" x1="-.5" x2="-.5" y1="0" y2="408" gradientUnits="userSpaceOnUse">
+              <stop offset=".144" stop-color="#545454"></stop>
+              <stop offset=".702" stop-color="#515151"></stop>
+              <stop offset="1" stop-color="#131313"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div class="small-flex is-industry">
+        <h2 class="heading-5 is-industry">Our Team: Visionaries Leading Transformation</h2>
+        <p class="team-intro">
+          7Factors is guided by a team of financial strategists, legal experts, and project managers
+          who bring elite-level expertise across sectors. From sovereign lending and credit risk to
+          multi-jurisdictional legal compliance and large-scale project execution, our team excels
+          in delivering complex, high-impact initiatives.
+        </p>
+        <ul class="team-expertise-list">
+          <li>
+            <strong>Financial Strategists:</strong> Experts in sovereign lending, credit risk
+            management, and macroeconomic impact.
+          </li>
+          <li>
+            <strong>Legal Advisors:</strong> Internationally recognized law firms handling
+            multi-jurisdictional compliance.
+          </li>
+          <li>
+            <strong>Project Managers:</strong> Operators with extensive experience delivering major
+            infrastructure projects at scale.
+          </li>
+        </ul>
+      </div>
+      <div class="svg-guideline_outer">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 1 408"
+          width="100%"
+          style="animation-delay: 0.025s"
+          class="svg-guideline"
+        >
+          <path stroke="currentColor" stroke-dasharray="2 2" d="M.5 0v408"></path>
+          <defs>
+            <linearGradient id="a" x1="-.5" x2="-.5" y1="0" y2="408" gradientUnits="userSpaceOnUse">
+              <stop offset=".144" stop-color="#545454"></stop>
+              <stop offset=".702" stop-color="#515151"></stop>
+              <stop offset="1" stop-color="#131313"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pioneers Section -->
+  <section id="pioneers" class="pioneers-section">
+    <div class="pioneers-grid">
+      <!-- Row 1 - moves left -->
+      <div class="pioneers-industry" data-direction="left">
+        <div class="industry-text">
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Artificial'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 1"
+              >{{ char }}</span
+            >
+          </span>
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Intelligence'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 11"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="pioneers-industry" data-direction="left">
+        <div class="industry-text">
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Financial'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 1"
+              >{{ char }}</span
+            >
+          </span>
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Technology'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 10"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="pioneers-industry" data-direction="left">
+        <div class="industry-text">
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Space'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 1"
+              >{{ char }}</span
+            >
+          </span>
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Exploration'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 6"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="pioneers-industry" data-direction="left">
+        <div class="industry-text">
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Enterprise'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 1"
+              >{{ char }}</span
+            >
+          </span>
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Infrastructure'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 11"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+      </div>
+
+      <!-- Break -->
+      <div class="pioneers-break"></div>
+
+      <!-- Row 2 - moves right -->
+      <div class="pioneers-industry" data-direction="right">
+        <div class="industry-text">
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Healthcare'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 1"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="pioneers-industry" data-direction="right">
+        <div class="industry-text">
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Biotech'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 1"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="pioneers-industry" data-direction="right">
+        <div class="industry-text">
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Next-Gen'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 1"
+              >{{ char }}</span
+            >
+          </span>
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Defense'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 9"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+      </div>
+      <div class="pioneers-industry" data-direction="right">
+        <div class="industry-text">
+          <span class="split-word">
+            <span
+              *ngFor="let char of 'Cybersecurity'.split(''); let i = index"
+              class="split-char"
+              [style.--char]="i + 1"
+              >{{ char }}</span
+            >
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Video Background -->
+    <div class="pioneers-video-wrapper">
+      <video
+        class="pioneers-video"
+        [muted]="true"
+        autoplay
+        loop
+        playsinline
+        disablePictureInPicture
+      >
+        <source
+          src="https://player.vimeo.com/progressive_redirect/playback/1125882288/rendition/1440p/file.mp4?loc=external&signature=c600bbf2ed1a704161ac1e7271164262b54c67054f355b2f4cd0d6834d8c1356"
+          type="video/mp4"
+        />
+      </video>
+    </div>
+    <div class="pioneers-gradient"></div>
+  </section>
+
+  <!-- Logo Carousel Section -->
+  <section class="logo-section">
+    <div class="marquee-wrapper">
+      <div class="marquee-track">
+        <!-- First set of logos -->
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Offshore Energy <br />
+            Gas • Oil • LNG
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Government Mega Projects <br />
+            Finance • Development • Structured Loans
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Strategic Minerals <br />
+            Gold • Minerals • Minrex
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Advanced Intelligence <br />
+            8 AI • Data • Systems
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Nissim Trust Banking Group <br />
+            Capital Management • Banking Solutions • Investment Oversight
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Gold Trading <br />
+            Global Market Access • Secure Logistics • Risk-Managed Investments
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >WAIKE — Agriculture & Commodities <br />
+            Organic Sugar • Coffee • Cacao • Tea • Vanilla • Avocado
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >7 Factors AI <br />
+            Custom AI Development • Data Engineering • Generative AI
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo">Neuralink</span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo">Discord</span>
+        </div>
+        <!-- Duplicate set for infinite scroll -->
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Offshore Energy <br />
+            Gas • Oil • LNG
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Government Mega Projects <br />
+            Finance • Development • Structured Loans
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Strategic Minerals <br />
+            Gold • Minerals • Minrex
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Advanced Intelligence <br />
+            8 AI • Data • Systems
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Nissim Trust Banking Group <br />
+            Capital Management • Banking Solutions • Investment Oversight
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >Gold Trading <br />
+            Global Market Access • Secure Logistics • Risk-Managed Investments
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >WAIKE — Agriculture & Commodities <br />
+            Organic Sugar • Coffee • Cacao • Tea • Vanilla • Avocado
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo"
+            >7 Factors AI <br />
+            Custom AI Development • Data Engineering • Generative AI
+          </span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo">Neuralink</span>
+        </div>
+        <div class="logo-cover">
+          <span class="brand-logo">Discord</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status indicators -->
+    <div class="logo-status-bar">
+      <span class="status-text">
+        <span
+          *ngFor="let char of 'INITIALIZING...'.split(''); let i = index"
+          class="flicker-char"
+          [class.flicker-active]="statusFlickerIndices[0]?.includes(i)"
+          >{{ char }}</span
+        >
+      </span>
+      <span class="status-text error">
+        <span
+          *ngFor="let char of 'ACCESS DENIED'.split(''); let i = index"
+          class="flicker-char"
+          [class.flicker-active]="statusFlickerIndices[1]?.includes(i)"
+          >{{ char }}</span
+        >
+      </span>
+      <span class="status-text highlight">
+        <span
+          *ngFor="let char of 'TGE | TITANGATE EQUITY'.split(''); let i = index"
+          class="flicker-char"
+          [class.flicker-active]="statusFlickerIndices[2]?.includes(i)"
+          >{{ char }}</span
+        >
+        <br />
+        <small>
+          <span
+            *ngFor="let char of '001 ▓▓▓ A NEW CLASS'.split(''); let i = index"
+            class="flicker-char"
+            [class.flicker-active]="statusFlickerIndices[3]?.includes(i)"
+            >{{ char }}</span
+          >
+        </small>
+      </span>
+      <span class="status-text">
+        <span
+          *ngFor="let char of 'INITIALIZING...'.split(''); let i = index"
+          class="flicker-char"
+          [class.flicker-active]="statusFlickerIndices[4]?.includes(i)"
+          >{{ char }}</span
+        >
+      </span>
+    </div>
+  </section>
+  <!-- Stats Section -->
+  <section class="stats-section reveal-section">
+    <div class="container">
+      <div class="stats-header-wrapper">
+        <div class="stats-divider">
+          <div class="guideline-container">
+            <div class="guideline-bg"></div>
+            <div class="guideline-glow"></div>
+          </div>
+        </div>
+        <h2 class="stats-title reveal-text">Global Scale. Measurable Impact.</h2>
+        <div class="stats-divider">
+          <div class="guideline-container">
+            <div class="guideline-bg"></div>
+            <div class="guideline-glow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div data-stats="" class="stats-container">
+      <div data-stats-left="" class="stat-left is-inview">
+        <div class="stat-number-wrap">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 514 514"
+            width="100%"
+            data-stats-progress-circle=""
+            class="stat-number-circle-fg"
+          >
+            <mask
+              id="circleProgress"
+              width="514"
+              height="514"
+              x="0"
+              y="0"
+              maskUnits="userSpaceOnUse"
+              style="mask-type: alpha"
+            >
+              <circle
+                cx="257"
+                cy="257"
+                r="252"
+                stroke="currentColor"
+                stroke-width="10"
+                class="mask"
+                style="stroke-dashoffset: 0; stroke-dasharray: 1583.36px, 0.1px"
+              ></circle>
+            </mask>
+            <g mask="url(#circleProgress)">
+              <circle
+                cx="257"
+                cy="257"
+                r="252"
+                stroke="currentColor"
+                stroke-dasharray="2 10"
+                stroke-width="10"
+              ></circle>
+            </g></svg
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 514 514"
+            width="100%"
+            class="stat-number-circle-bg"
+          >
+            <circle
+              cx="257"
+              cy="257"
+              r="252"
+              stroke="currentColor"
+              stroke-dasharray="2 10"
+              stroke-width="10"
+            ></circle>
+            <defs>
+              <linearGradient
+                id="a"
+                x1="0"
+                x2="514"
+                y1="257"
+                y2="257"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#595959"></stop>
+                <stop offset="1" stop-color="#222"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="stat-number">
+            <span data-stats-left-number="">100+</span>
+            <!-- <span data-stats-left-number-percentage="">+</span> -->
+          </div>
+          <div class="stat-number-micro-text">
+            <div
+              data-micro-text=""
+              class="micro-text micro is-width"
+              aria-label="There are paths in the world that can’t be seen — only sensed. Where others invest in the obvious, we explore what lies behind closed doors. This is a gateway to the extraordinary. Not everyone is meant to step through it."
+            >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >There</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >are</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >paths</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >in</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >the</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >world</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >that</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >can’t</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >be</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >seen</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >—</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >only</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >sensed.</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >Where</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >others</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >invest</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >in</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >the</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >obvious,</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >we</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >explore</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >what</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >lies</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >behind</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >closed</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >doors.</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >This</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >is</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >a</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >gateway</span
+              >
+              <span
+                class="split-word"
+                aria-hidden="true"
+                style="color: rgb(32, 32, 32); opacity: 0.9999"
+                >to</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >the</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >extraordinary.</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >Not</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >everyone</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >is</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >meant</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >to</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >step</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >through</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >it.</span
+              >
+            </div>
+          </div>
+        </div>
+        <p class="stat-descriptor">Transactions Completed</p>
+      </div>
+      <div data-stats-right="" class="stat-right is-inview">
+        <div class="stat-number-wrap">
+          <div class="stat-number-circle is-left"></div>
+          <div class="stat-number-circle is-right"></div>
+          <div class="stat-number-circle is-center"></div>
+          <div class="stat-number">
+            <span data-stats-right-number="">10B+</span
+            ><span data-stats-right-number-percentage="">$</span>
+          </div>
+        </div>
+        <p class="stat-descriptor is-right">Capital Deployed</p>
+      </div>
+    </div>
+
+    <div class="stats-container">
+      <div data-stats-right="" class="stat-right is-inview">
+        <div class="stat-number-wrap">
+          <div class="stat-number-circle is-left"></div>
+          <div class="stat-number-circle is-right"></div>
+          <div class="stat-number-circle is-center"></div>
+          <div class="stat-number">
+            <span data-stats-right-number="">25+</span
+            ><span data-stats-right-number-percentage="">$</span>
+          </div>
+        </div>
+        <p class="stat-descriptor is-right">Countries Operated</p>
+      </div>
+      <div data-stats-left="" class="stat-left is-inview">
+        <div class="stat-number-wrap">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 514 514"
+            width="100%"
+            data-stats-progress-circle=""
+            class="stat-number-circle-fg"
+          >
+            <mask
+              id="circleProgress"
+              width="514"
+              height="514"
+              x="0"
+              y="0"
+              maskUnits="userSpaceOnUse"
+              style="mask-type: alpha"
+            >
+              <circle
+                cx="257"
+                cy="257"
+                r="252"
+                stroke="currentColor"
+                stroke-width="10"
+                class="mask"
+                style="stroke-dashoffset: 0; stroke-dasharray: 1583.36px, 0.1px"
+              ></circle>
+            </mask>
+            <g mask="url(#circleProgress)">
+              <circle
+                cx="257"
+                cy="257"
+                r="252"
+                stroke="currentColor"
+                stroke-dasharray="2 10"
+                stroke-width="10"
+              ></circle>
+            </g></svg
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 514 514"
+            width="100%"
+            class="stat-number-circle-bg"
+          >
+            <circle
+              cx="257"
+              cy="257"
+              r="252"
+              stroke="currentColor"
+              stroke-dasharray="2 10"
+              stroke-width="10"
+            ></circle>
+            <defs>
+              <linearGradient
+                id="a"
+                x1="0"
+                x2="514"
+                y1="257"
+                y2="257"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop stop-color="#595959"></stop>
+                <stop offset="1" stop-color="#222"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="stat-number">
+            <span data-stats-left-number="">30+</span>
+            <!-- <span data-stats-left-number-percentage="">+</span> -->
+          </div>
+          <div class="stat-number-micro-text">
+            <div
+              data-micro-text=""
+              class="micro-text micro is-width"
+              aria-label="There are paths in the world that can’t be seen — only sensed. Where others invest in the obvious, we explore what lies behind closed doors. This is a gateway to the extraordinary. Not everyone is meant to step through it."
+            >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >There</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >are</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >paths</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >in</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >the</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >world</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >that</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >can’t</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >be</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >seen</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >—</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >only</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >sensed.</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >Where</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >others</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >invest</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >in</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >the</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >obvious,</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >we</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >explore</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >what</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >lies</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >behind</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >closed</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >doors.</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >This</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >is</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >a</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >gateway</span
+              >
+              <span
+                class="split-word"
+                aria-hidden="true"
+                style="color: rgb(32, 32, 32); opacity: 0.9999"
+                >to</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >the</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >extraordinary.</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >Not</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >everyone</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >is</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >meant</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >to</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >step</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >through</span
+              >
+              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
+                >it.</span
+              >
+            </div>
+          </div>
+        </div>
+        <p class="stat-descriptor">Mega Projects Delivered</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <section class="limits hero-section">
+    <div class="hero-container">
+      <h2 class="hero-title reveal-text" style="margin: 0 8%">
+        <span class="offlimits-text"> Capital. Energy. Execution. </span>
+        <span class="gradient-text">
+          Where sovereign finance meets offshore LNG mastery. <br />
+          "Engineering Energy. Delivering Impact."
+        </span>
+      </h2>
+    </div>
+  </section>
+  <section class="process-section">
+    <div data-w-id="cd82475f-ee6b-8cca-aea8-2af74ec38b8d" class="process-img-contain">
+      <div class="gradient-overlay is-img"></div>
+      <img
+        src="https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01.jpg"
+        loading="lazy"
+        sizes="(max-width: 2880px) 100vw, 2880px"
+        srcset="
+          https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-500.jpg   500w,
+          https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-800.jpg   800w,
+          https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-1080.jpg 1080w,
+          https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-1600.jpg 1600w,
+          https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2000.jpg 2000w,
+          https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01-p-2600.jpg 2600w,
+          https://cdn.prod.website-files.com/68e3c26f7edb22bc9e5314b2/68e7e742b6fb64146d029e04_drone-static-render-01.jpg        2880w
+        "
+        alt=""
+        class="drone-img"
+        style="
+          will-change: transform;
+          transform: translate3d(0px, -0.35869%, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg)
+            rotateZ(0deg) skew(0deg, 0deg);
+          transform-style: preserve-3d;
+        "
+      />
+    </div>
+    <div class="steps-container">
+      <h2 class="heading-4 is-access is-2">From Selection to Legacy.</h2>
+      <div data-number="" class="w-layout-grid global-grid">
+        <div id="w-node-_5a9731b0-2445-73c7-2fe3-89ab4ee3d49e-9e5314b0" class="icon-column">
+          <div class="number-container">
+            <div style="--index: 0" class="number-mask">
+              <div
+                data-number-item=""
+                class="step-number"
+                style="translate: none; rotate: none; scale: none; transform: translate(0%, 35%)"
+              >
+                01
+              </div>
+            </div>
+            <div class="divider-line-short"></div>
+          </div>
+          <div class="icon-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              viewBox="0 0 501 501"
+              fill="none"
+              class="step-icon"
+            >
+              <g clip-path="url(#clip0_592_23)">
+                <path
+                  d="M501 236.583H430.832C424.041 147.906 353.094 76.9592 264.417 70.1678V0H236.583V70.1678C147.906 76.9592 76.9592 147.906 70.1678 236.583H0V264.417H70.1678C76.9592 353.094 147.906 424.041 236.583 430.832V501H264.417V430.832C353.094 424.041 424.041 353.094 430.832 264.417H501V236.583ZM402.915 236.583H396.625C323.729 236.583 264.417 177.27 264.417 104.375V98.0847C337.73 104.737 396.291 163.27 402.915 236.583ZM331.467 250.5C295.534 266.588 266.588 295.534 250.5 331.467C234.412 295.534 205.466 266.588 169.533 250.5C205.466 234.412 234.412 205.466 250.5 169.533C266.588 205.466 295.534 234.412 331.467 250.5ZM236.583 98.0847V104.375C236.583 177.27 177.27 236.583 104.375 236.583H98.0847C104.737 163.27 163.27 104.709 236.583 98.0847ZM98.0847 264.417H104.375C177.27 264.417 236.583 323.729 236.583 396.625V402.915C163.27 396.263 104.709 337.73 98.0847 264.417ZM264.417 402.915V396.625C264.417 323.729 323.729 264.417 396.625 264.417H402.915C396.263 337.73 337.73 396.291 264.417 402.915Z"
+                  fill="currentColor"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_592_23">
+                  <rect width="501" height="501" fill="currentColor"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <div class="step-flex">
+              <h3 class="body-large">Selection</h3>
+              <p class="body-large gradient-text">We find you.</p>
+            </div>
+          </div>
+        </div>
+        <div id="w-node-_3bf96ceb-fc2b-cb0f-0d77-988024adfa8f-9e5314b0" class="icon-column">
+          <div class="number-container">
+            <div style="--index: 1" class="number-mask">
+              <div
+                class="step-number"
+                style="translate: none; rotate: none; scale: none; transform: translate(0%, 35%)"
+              >
+                02
+              </div>
+            </div>
+            <div class="divider-line-short"></div>
+          </div>
+          <div class="icon-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              viewBox="0 0 501 501"
+              fill="none"
+              class="step-icon"
+            >
+              <g clip-path="url(#clip0_592_18)">
+                <path
+                  d="M208.75 236.583C158.873 236.583 118.292 196.002 118.292 146.125H90.4583C90.4583 182.392 106.88 214.873 132.654 236.583H0V264.417H132.654C106.88 286.127 90.4583 318.608 90.4583 354.875H118.292C118.292 304.998 158.873 264.417 208.75 264.417V236.583Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M264.417 292.25H236.583C236.583 342.127 196.002 382.708 146.125 382.708V410.542C182.392 410.542 214.873 394.12 236.583 368.346V501H264.417V368.346C286.127 394.12 318.608 410.542 354.875 410.542V382.708C304.998 382.708 264.417 342.127 264.417 292.25Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M236.583 208.75H264.417C264.417 158.873 304.998 118.292 354.875 118.292V90.4583C318.608 90.4583 286.127 106.88 264.417 132.654V0H236.583V132.626C214.873 106.852 182.392 90.4305 146.125 90.4305V118.264C196.002 118.264 236.583 158.845 236.583 208.722V208.75Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M501 236.583H368.374C394.148 214.873 410.542 182.392 410.542 146.125H382.708C382.708 196.002 342.127 236.583 292.25 236.583V264.417C342.127 264.417 382.708 304.998 382.708 354.875H410.542C410.542 318.608 394.12 286.127 368.346 264.417H501V236.583Z"
+                  fill="currentColor"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_592_18">
+                  <rect width="501" height="501" fill="currentColor"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <div class="step-flex">
+              <h3 class="body-large">Alignment</h3>
+              <p class="body-large gradient-text">
+                Onboarding process to align capital, vision, and opportunity.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="w-node-_183af484-fade-2630-1a2a-42db9b8c97c5-9e5314b0" class="icon-column">
+          <div class="number-container">
+            <div style="--index: 2" class="number-mask">
+              <div
+                data-number-item=""
+                class="step-number"
+                style="translate: none; rotate: none; scale: none; transform: translate(0%, 35%)"
+              >
+                03
+              </div>
+            </div>
+            <div class="divider-line-short"></div>
+          </div>
+          <div class="icon-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              viewBox="0 0 501 501"
+              fill="none"
+              class="step-icon"
+            >
+              <g clip-path="url(#clip0_592_7)">
+                <path
+                  d="M389.667 0H361.833C361.833 61.4003 311.9 111.333 250.5 111.333H13.9166V139.167H55.6666V180.945H97.4166V139.167H250.5C311.9 139.167 361.833 189.1 361.833 250.5H389.667C389.667 189.1 439.6 139.167 501 139.167V111.333C439.6 111.333 389.667 61.4003 389.667 0ZM375.75 189.879C362.084 161.767 339.233 138.916 311.121 125.25C339.233 111.584 362.084 88.7327 375.75 60.621C389.416 88.7327 412.267 111.584 440.379 125.25C412.267 138.916 389.416 161.767 375.75 189.879Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M55.6666 180.945H13.9166V222.695H55.6666V180.945Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M139.167 180.945H97.4166V222.695H139.167V180.945Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M487.083 389.667V361.833H250.5C189.1 361.833 139.167 311.9 139.167 250.5H111.333C111.333 311.9 61.4003 361.833 0 361.833V389.667C61.4003 389.667 111.333 439.6 111.333 501H139.167C139.167 439.6 189.1 389.667 250.5 389.667H403.583V431.444H445.333V389.667H487.083ZM125.25 440.379C111.584 412.267 88.7327 389.416 60.621 375.75C88.7327 362.084 111.584 339.233 125.25 311.121C138.916 339.233 161.767 362.084 189.879 375.75C161.767 389.416 138.916 412.267 125.25 440.379Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M487.083 431.444H445.333V473.194H487.083V431.444Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M403.583 431.444H361.833V473.194H403.583V431.444Z"
+                  fill="currentColor"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_592_7">
+                  <rect width="501" height="501" fill="currentColor"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <div class="step-flex">
+              <h3 class="body-large">Access</h3>
+              <p class="body-large gradient-text">
+                Gain entry to elite opportunities, secured and tokenized.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="w-node-_08c60be1-9e63-fed7-f2f3-186e54bddd49-9e5314b0" class="icon-column">
+          <div class="number-container">
+            <div style="--index: 3" class="number-mask">
+              <div
+                data-number-item=""
+                class="step-number"
+                style="translate: none; rotate: none; scale: none; transform: translate(0%, 35%)"
+              >
+                04
+              </div>
+            </div>
+            <div class="divider-line-short"></div>
+          </div>
+          <div class="icon-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              viewBox="0 0 501 501"
+              fill="none"
+              class="step-icon"
+            >
+              <g clip-path="url(#clip0_592_16)">
+                <path
+                  d="M410.542 118.403V76.0963C432.252 101.87 464.733 118.292 501 118.292V90.4583C451.123 90.4583 410.542 49.8773 410.542 0H382.708C382.708 49.8773 342.127 90.4583 292.25 90.4583V118.292C328.517 118.292 360.998 101.87 382.708 76.0963V118.403C382.708 314.016 223.557 473.167 27.9447 473.167H27.8612V0H0V473.167H27.8333V501H500.972V473.167H171.147C311.371 416.359 410.542 278.751 410.542 118.403Z"
+                  fill="currentColor"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0_592_16">
+                  <rect width="501" height="501" fill="currentColor"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+            <div class="step-flex">
+              <h3 class="body-large">Compounding</h3>
+              <p class="body-large gradient-text">
+                Your wealth compounds seamlessly while we carry the weight.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-benefits="" class="benefits-section is-inview">
+    <div class="benefits-inner">
+      <div class="benefits-left">
+        <div class="benefits-nav">
+          <div class="benefits-nav-number">
+            <div
+              data-benefits-number=""
+              class="benefits-nav-number-inner"
+              style="
+                translate: none;
+                rotate: none;
+                scale: none;
+                transform: translate3d(0px, 0em, 0px);
+              "
+            >
+              <div>01</div>
+              <div>02</div>
+              <div>03</div>
+              <div>04</div>
+            </div>
+          </div>
+          <div class="benefits-nav-number is-non">/</div>
+          <div class="benefits-nav-number is-non"><div>04</div></div>
+        </div>
+        <div class="benefits-left-inner">
+          <div data-benefits-title="1" class="benefits-title-wrap">
+            <h2 class="heading-4">
+              Enforcement<br /><span class="gradient-text">vs Empty Promises</span>
+            </h2>
+          </div>
+          <div data-benefits-title="2" class="benefits-title-wrap">
+            <h2 class="heading-4">
+              Stewardship<br /><span class="gradient-text">vs Neglect</span>
+            </h2>
+          </div>
+          <div data-benefits-title="3" class="benefits-title-wrap">
+            <h2 class="heading-4">
+              Flexibility<br /><span class="gradient-text">vs One-Size-Fits-All</span>
+            </h2>
+          </div>
+          <div data-benefits-title="4" class="benefits-title-wrap">
+            <h2 class="heading-4">
+              Liquidity<br /><span class="gradient-text">vs Captivity</span>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-right">
+        <div class="benefits-top">
+          <div class="benefits-box">
+            <div class="benefits-box-inner">
+              <div class="benefits-box-header">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="100%"
+                  viewBox="0 0 1440 538"
+                  fill="none"
+                  class="benefits-box-logo"
+                >
+                  <path
+                    d="M251.634 -4.1265V69.257H171.35V-4.1265H0V69.2952H171.312V531.152H251.634V69.2952H422.984V-4.1265H251.634Z"
+                    fill="currentColor"
+                  ></path>
+                  <path
+                    d="M1440 68.6224V-4.03485H1166.92V68.5842H1088.16V531.244H1440V458.587H1166.92V291.143H1440V219.25H1166.92V68.6224H1440Z"
+                    fill="currentColor"
+                  ></path>
+                  <path
+                    d="M908.973 243.625H739.955V317.047H908.973C902.091 409.579 823.298 460.03 735.329 460.03C621.363 460.03 549.49 369.027 549.49 263.5C549.49 157.973 621.401 66.9699 735.329 66.9699C814.122 66.9699 866.881 105.955 892.878 162.56L965.554 125.103C928.853 44.802 847.001 -11 735.329 -11C576.251 -11 467.638 109.051 467.638 263.5C467.638 417.949 576.251 538 732.27 538C804.909 538 869.939 510.481 909.699 460.756V531.12H984.67V243.625H908.935H908.973Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </div>
+              <div class="benefits-box-content">
+                <div
+                  data-benefits-text-top="1"
+                  class="benefits-box-text body-large is-active"
+                  aria-label="Smart contracts enforce execution. If a deal dies, funds return instantly."
+                  style="--words: 11"
+                >
+                  <span class="split-word" aria-hidden="true" style="--word: 1">Smart</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 2">contracts</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 3">enforce</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 4">execution.</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 5">If</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 6">a</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 7">deal</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 8">dies,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 9">funds</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 10">return</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 11">instantly.</span>
+                </div>
+                <div
+                  data-benefits-text-top="2"
+                  class="benefits-box-text body-large is-exit"
+                  aria-label="Every member is sovereign. Direct response, personal care, white-glove stewardship"
+                  style="--words: 10"
+                >
+                  <span class="split-word" aria-hidden="true" style="--word: 1">Every</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 2">member</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 3">is</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 4">sovereign.</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 5">Direct</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 6">response,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 7">personal</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 8">care,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 9">white-glove</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 10">stewardship</span>
+                </div>
+                <div
+                  data-benefits-text-top="3"
+                  class="benefits-box-text body-large is-exit"
+                  aria-label="We bend the market to your will. Bespoke allocations, liquidity pathways, access to “impossible” companies."
+                  style="--words: 15"
+                >
+                  <span class="split-word" aria-hidden="true" style="--word: 1">We</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 2">bend</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 3">the</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 4">market</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 5">to</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 6">your</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 7">will.</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 8">Bespoke</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 9">allocations,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 10">liquidity</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 11">pathways,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 12">access</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 13">to</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 14">“impossible”</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 15">companies.</span>
+                </div>
+                <div
+                  data-benefits-text-top="4"
+                  class="benefits-box-text body-large is-exit"
+                  aria-label="Liquidity is engineered. Immediate exits, alternative pathways, seamless peer-to-peer trading."
+                  style="--words: 10"
+                >
+                  <span class="split-word" aria-hidden="true" style="--word: 1">Liquidity</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 2">is</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 3">engineered.</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 4">Immediate</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 5">exits,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 6">alternative</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 7">pathways,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 8">seamless</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 9">peer-to-peer</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 10">trading.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="benefits-bottom">
+          <div class="benefits-box">
+            <div class="benefits-box-inner">
+              <div class="benefits-box-header">
+                <h3 class="benefits-box-title heading-5">The Old World</h3>
+              </div>
+              <div class="benefits-box-content">
+                <div
+                  data-benefits-text-bottom="1"
+                  class="benefits-box-text body-large gradient-text is-active"
+                  aria-label="Deals vanish, buyers drop out, funds sit idle for weeks."
+                  style="--words: 10"
+                >
+                  <span class="split-word" aria-hidden="true" style="--word: 1">Deals</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 2">vanish,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 3">buyers</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 4">drop</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 5">out,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 6">funds</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 7">sit</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 8">idle</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 9">for</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 10">weeks.</span>
+                </div>
+                <div
+                  data-benefits-text-bottom="2"
+                  class="benefits-box-text body-large gradient-text is-exit"
+                  aria-label="Ghosted by “support,” brokers ignore you, capital disposable."
+                  style="--words: 8"
+                >
+                  <span class="split-word" aria-hidden="true" style="--word: 1">Ghosted</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 2">by</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 3">“support,”</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 4">brokers</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 5">ignore</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 6">you,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 7">capital</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 8">disposable.</span>
+                </div>
+                <div
+                  data-benefits-text-bottom="3"
+                  class="benefits-box-text body-large gradient-text is-exit"
+                  aria-label="You take what’s given. No customization, no choice, no strategy."
+                  style="--words: 10"
+                >
+                  <span class="split-word" aria-hidden="true" style="--word: 1">You</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 2">take</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 3">what’s</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 4">given.</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 5">No</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 6"
+                    >customization,</span
+                  >
+                  <span class="split-word" aria-hidden="true" style="--word: 7">no</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 8">choice,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 9">no</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 10">strategy.</span>
+                </div>
+                <div
+                  data-benefits-text-bottom="4"
+                  class="benefits-box-text body-large gradient-text is-exit"
+                  aria-label="No updates, no timelines, no exits. Years locked waiting for IPOs that may never come."
+                  style="--words: 15"
+                >
+                  <span class="split-word" aria-hidden="true" style="--word: 1">No</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 2">updates,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 3">no</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 4">timelines,</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 5">no</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 6">exits.</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 7">Years</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 8">locked</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 9">waiting</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 10">for</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 11">IPOs</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 12">that</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 13">may</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 14">never</span>
+                  <span class="split-word" aria-hidden="true" style="--word: 15">come.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-bg-wrap"><div class="benefits-bg"></div></div>
+    </div>
+  </section>
+
+  <!-- Video Break Section -->
+  <section class="video-break-section">
+    <div class="video-break">
+      <video class="break-video" [muted]="true" autoplay loop playsinline disablePictureInPicture>
+        <source
+          src="https://cdn.coverr.co/videos/coverr-ink-in-water-6157/1080p.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <div class="video-overlay dark"></div>
+    </div>
+  </section>
+
+  <!-- Admission Section -->
+  <section id="manifesto" class="letter-section">
+    <div class="w-layout-grid global-grid">
+      <div id="w-node-_27008984-c29f-8c5a-4fc4-03193f184a8c-9e5314b0" class="letter-intro">
+        <div data-typing="" class="letter-subheading">
+          <div class="subheading">admission</div>
+          <div data-typing-arrow="" class="subheading is-dark" aria-label="&gt;&gt;&gt;">
+            <span class="split-char" aria-hidden="true" style="--char: 1">&gt;</span
+            ><span class="split-char" aria-hidden="true" style="--char: 2">&gt;</span
+            ><span class="split-char" aria-hidden="true" style="--char: 3">&gt;</span>
+          </div>
+          <div class="subheading">into</div>
+          <div data-typing-blink="" class="subheading is-dark">_</div>
+          <div data-typing-text-blink="" class="subheading" aria-label="TGE">
+            <span
+              class="split-char"
+              aria-hidden="true"
+              style="color: rgb(241, 243, 252); opacity: 0.35"
+              >T</span
+            ><span
+              class="split-char"
+              aria-hidden="true"
+              style="color: rgb(136, 152, 231); opacity: 0.35"
+              >G</span
+            ><span
+              class="split-char"
+              aria-hidden="true"
+              style="color: rgb(185, 195, 241); opacity: 0.35"
+              >E</span
+            >
+          </div>
+          <div class="subheading is-dark">[<span data-typing-shuffle=""> 32</span>]</div>
+          <div class="subheading">Is</div>
+          <div data-typing-blink="" class="subheading is-dark">_</div>
+          <div class="subheading">Not</div>
+          <div class="subheading is-dark">[<span data-typing-shuffle-symbols="">#</span>]</div>
+          <div class="subheading">requested</div>
+        </div>
+        <p class="heading-4 is-letter">
+          <span data-text-fade-in="" aria-label="It is Granted." class="is-inview"
+            ><span class="split-word" aria-hidden="true" style="--word: 1"
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 1">I</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 2">t</span></span
+            >
+            <span class="split-word" aria-hidden="true" style="--word: 2"
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 3">i</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 4">s</span></span
+            >
+            <span class="split-word" aria-hidden="true" style="--word: 3"
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 5">G</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 6">r</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 7">a</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 8">n</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 9">t</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 10">e</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 11">d</span
+              ><span class="split-char is-shown" aria-hidden="true" style="--char: 12"
+                >.</span
+              ></span
+            ></span
+          >
+          <span class="gradient-text"
+            >We quietly identify and forge alliances with extraordinary individuals of serious
+            capital, those rare few whose presence strengthens the whole.</span
+          >
+        </p>
+      </div>
+      <div id="w-node-dbb623e3-d9ca-3b79-a909-a1a8393efeb5-9e5314b0" class="letter-container">
+        <p class="body-large gradient-text centre-align">
+          Every member is <span class="highlight">cultivated with intention.</span> Each
+          relationship is personal, each experience designed as if it were singular. We seek
+          <span class="highlight">no comfort in numbers</span>, only in the
+          <span class="highlight">precision of quality.</span> <br /><br />One individual of true
+          caliber outweighs a thousand of the ordinary.
+        </p>
+        <div class="div-block">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100%"
+            viewBox="0 0 36 32"
+            fill="none"
+            class="tge-break"
+          >
+            <path
+              d="M2.4824 4.34814L0 6.83203L2.4824 9.31592L4.9648 6.83203L2.4824 4.34814Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M7.44724 9.31103L4.96484 11.7949L7.44724 14.2788L9.92965 11.7949L7.44724 9.31103Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M34.1322 16.1446C31.0517 19.227 26.042 19.227 22.9614 16.1446L6.82645 0L4.96405 1.86351L7.44608 4.34703L4.96405 6.83054L7.44608 9.31405L9.9281 6.83054L16.1349 13.0411L13.0315 16.1463C9.95092 19.2288 4.94123 19.2288 1.86064 16.1463L0 18.0081C3.08059 21.0905 3.08059 26.1032 0 29.1857L1.8624 31.0492C4.94299 27.9667 9.95268 27.9667 13.0333 31.0492L14.8957 29.1857C11.8151 26.1032 11.8151 21.0905 14.8957 18.0081L17.9991 14.9028L21.1025 18.0081C24.1831 21.0905 24.1831 26.1032 21.1025 29.1857L22.9649 31.0492C26.0455 27.9667 31.0552 27.9667 34.1358 31.0492L35.9982 29.1857C32.9176 26.1032 32.9176 21.0905 35.9982 18.0081L34.1358 16.1446H34.1322ZM10.3634 26.5142C8.46065 25.9697 6.43326 25.9697 4.53049 26.5142C5.07464 24.6103 5.07464 22.5817 4.53049 20.6778C6.43326 21.2223 8.4589 21.2223 10.3634 20.6778C9.81927 22.5817 9.81927 24.6103 10.3634 26.5142ZM31.4642 26.5142C29.5614 25.9697 27.534 25.9697 25.6312 26.5142C26.1754 24.6103 26.1754 22.5817 25.6312 20.6778C27.534 21.2223 29.5614 21.2223 31.4642 20.6778C30.92 22.5817 30.92 24.6103 31.4642 26.5142Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M33.5176 4.34814L31.0352 6.83203L33.5176 9.31592L36 6.83203L33.5176 4.34814Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M28.5449 9.31494L26.0625 11.7988L28.5449 14.2827L31.0273 11.7988L28.5449 9.31494Z"
+              fill="currentColor"
+            ></path>
+            <path
+              d="M26.0692 6.83054L28.5512 9.31405L31.035 6.83054L28.5512 4.34702L31.035 1.86351L29.1726 0L19.3398 9.83885L21.2005 11.7024L26.0692 6.83054Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </div>
+        <p class="body-large gradient-text centre-align">
+          Inside TGE, <span class="highlight">trust</span> is absolute,
+          <span class="highlight">collaboration</span> is constant, and
+          <span class="highlight">wealth</span> is not fleeting but
+          <span class="highlight">generational.</span> <br /><br />This is not simply an investment
+          circle. It is a network of Titans, chosen and bound together to shape
+          <span class="highlight">enduring legacies.</span>
+        </p>
+      </div>
+    </div>
+    <div class="letter-video">
+      <div data-video="" class="full-video is-industry w-embed">
+        <div style="width: 100%; height: 100%" class="w-background-video w-background-video-atom">
+          <video
+            playsinline=""
+            loop=""
+            muted=""
+            autoplay=""
+            data-wf-ignore="true"
+            data-object-fit="cover"
+            preload="metadata"
+          >
+            <source
+              src="https://player.vimeo.com/progressive_redirect/playback/1125885665/rendition/1080p/file.mp4?loc=external&amp;signature=91ed1c37b465ed963ab425e7997235d66b2aeaf48146a96806b383bb2e2f0c4a"
+              data-wf-ignore="true"
+            />
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <span class="footer-logo">Titan's Gate</span>
+      </div>
+      <div class="footer-info">
+        <p>©2025 TitanGate Equity</p>
+        <p>All Rights Reserved</p>
+      </div>
+      <div class="footer-credit">
+        <p>Made by Somefolk</p>
+      </div>
+    </div>
+  </footer>
+</main>

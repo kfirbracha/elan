@@ -1,0 +1,255 @@
+// ============================================
+// TitanGate Equity - Global Styles
+// ============================================
+
+:root {
+    // === BACKGROUNDS ===
+    --bg-black: #000000;
+    --bg-dark: #030303;
+    --bg-card: #060606;
+    --bg-elevated: #0a0a0a;
+
+    // === TEXT COLORS ===
+    --text-white: #ffffff;
+    --text-light: rgba(255, 255, 255, 0.85);
+    --text-secondary: rgba(255, 255, 255, 0.5);
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-dim: rgba(255, 255, 255, 0.15);
+
+    // === ACCENT - Warm cream/beige, NOT gold ===
+    --accent: #e8dcc4;
+    --accent-light: #f5efe5;
+    --accent-muted: rgba(232, 220, 196, 0.6);
+    --accent-dim: rgba(232, 220, 196, 0.3);
+    --accent-subtle: rgba(232, 220, 196, 0.1);
+    --accent-glow: rgba(232, 220, 196, 0.08);
+
+    // === BORDERS ===
+    --border: rgba(255, 255, 255, 0.06);
+    --border-light: rgba(255, 255, 255, 0.1);
+
+    // === TYPOGRAPHY ===
+    --font-serif: 'EB Garamond', Georgia, serif;
+    --font-sans: 'DM Sans', -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+
+    // === LAYOUT ===
+    --section-gap: 120px;
+    --container-width: 1100px;
+    --container-pad: 40px;
+
+    // === ANIMATION ===
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+    background: var(--bg-black);
+    color: var(--text-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--accent);
+    color: #000;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+}
+
+// Typography
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-pad);
+}
+
+// === KEYFRAMES ===
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textReveal {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes colorShift {
+    from {
+        color: var(--text-muted);
+    }
+
+    to {
+        color: var(--text-white);
+    }
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes floatSlow {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+
+    50% {
+        transform: translateY(-10px) translateX(-5px);
+    }
+
+    75% {
+        transform: translateY(-25px) translateX(5px);
+    }
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes scrollIndicator {
+    0% {
+        transform: scaleY(0);
+        opacity: 0;
+        transform-origin: top;
+    }
+
+    30% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scaleY(1);
+        opacity: 0;
+        transform-origin: top;
+    }
+}
+
+// === RESPONSIVE ===
+@media (max-width: 1024px) {
+    :root {
+        --section-gap: 80px;
+        --container-pad: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-gap: 60px;
+        --container-pad: 20px;
+    }
+}
