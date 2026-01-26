@@ -104,6 +104,7 @@ finance, and end-to-end transaction support`.split('');
 
   // Video Sound Toggle
   isVideoMuted = true;
+  is8VideoMuted = true;
 
   toggleVideoMute() {
     this.isVideoMuted = !this.isVideoMuted;
@@ -307,11 +308,14 @@ finance, and end-to-end transaction support`.split('');
             randomIndex,
           ];
         }
-        setTimeout(() => {
-          this.statusFlickerIndices[textIndex] = this.statusFlickerIndices[textIndex].filter(
-            (i) => i !== randomIndex
-          );
-        }, 60 + Math.random() * 100);
+        setTimeout(
+          () => {
+            this.statusFlickerIndices[textIndex] = this.statusFlickerIndices[textIndex].filter(
+              (i) => i !== randomIndex,
+            );
+          },
+          60 + Math.random() * 100,
+        );
 
         setTimeout(flickerChar, 80 + Math.random() * 200);
       };
@@ -323,7 +327,7 @@ finance, and end-to-end transaction support`.split('');
   private createFlickerLoop(
     validIndices: number[],
     delay: number,
-    target: 'vision' | 'title' | 'handle' | 'micro'
+    target: 'vision' | 'title' | 'handle' | 'micro',
   ) {
     setTimeout(() => {
       const flickerChar = () => {
@@ -333,32 +337,50 @@ finance, and end-to-end transaction support`.split('');
           if (!this.visionFlickerIndices.includes(randomIndex)) {
             this.visionFlickerIndices = [...this.visionFlickerIndices, randomIndex];
           }
-          setTimeout(() => {
-            this.visionFlickerIndices = this.visionFlickerIndices.filter((i) => i !== randomIndex);
-          }, 80 + Math.random() * 150);
+          setTimeout(
+            () => {
+              this.visionFlickerIndices = this.visionFlickerIndices.filter(
+                (i) => i !== randomIndex,
+              );
+            },
+            80 + Math.random() * 150,
+          );
         } else if (target === 'title') {
           if (!this.flickerActiveIndices.includes(randomIndex)) {
             this.flickerActiveIndices = [...this.flickerActiveIndices, randomIndex];
           }
-          setTimeout(() => {
-            this.flickerActiveIndices = this.flickerActiveIndices.filter((i) => i !== randomIndex);
-          }, 80 + Math.random() * 150);
+          setTimeout(
+            () => {
+              this.flickerActiveIndices = this.flickerActiveIndices.filter(
+                (i) => i !== randomIndex,
+              );
+            },
+            80 + Math.random() * 150,
+          );
         } else if (target === 'handle') {
           if (!this.handleFlickerIndices.includes(randomIndex)) {
             this.handleFlickerIndices = [...this.handleFlickerIndices, randomIndex];
           }
-          setTimeout(() => {
-            this.handleFlickerIndices = this.handleFlickerIndices.filter((i) => i !== randomIndex);
-          }, 80 + Math.random() * 150);
+          setTimeout(
+            () => {
+              this.handleFlickerIndices = this.handleFlickerIndices.filter(
+                (i) => i !== randomIndex,
+              );
+            },
+            80 + Math.random() * 150,
+          );
         } else {
           if (!this.microTextFlickerIndices.includes(randomIndex)) {
             this.microTextFlickerIndices = [...this.microTextFlickerIndices, randomIndex];
           }
-          setTimeout(() => {
-            this.microTextFlickerIndices = this.microTextFlickerIndices.filter(
-              (i) => i !== randomIndex
-            );
-          }, 80 + Math.random() * 150);
+          setTimeout(
+            () => {
+              this.microTextFlickerIndices = this.microTextFlickerIndices.filter(
+                (i) => i !== randomIndex,
+              );
+            },
+            80 + Math.random() * 150,
+          );
         }
 
         setTimeout(flickerChar, 50 + Math.random() * 120);
@@ -380,44 +402,50 @@ finance, and end-to-end transaction support`.split('');
 
       // Create multiple flicker loops for each SVG
       for (let loop = 0; loop < 8; loop++) {
-        const intervalId = window.setInterval(() => {
-          const randomPath = paths[Math.floor(Math.random() * paths.length)] as SVGPathElement;
-          if (!randomPath) return;
+        const intervalId = window.setInterval(
+          () => {
+            const randomPath = paths[Math.floor(Math.random() * paths.length)] as SVGPathElement;
+            if (!randomPath) return;
 
-          // Store original style
-          const originalColor = randomPath.style.color;
-          const originalOpacity = randomPath.style.opacity;
-          const originalFilter = randomPath.style.filter || '';
+            // Store original style
+            const originalColor = randomPath.style.color;
+            const originalOpacity = randomPath.style.opacity;
+            const originalFilter = randomPath.style.filter || '';
 
-          // Random flicker type
-          const flickerType = Math.random();
+            // Random flicker type
+            const flickerType = Math.random();
 
-          if (flickerType < 0.4) {
-            // White/bright flicker with glow
-            randomPath.style.color = '#ffffff';
-            randomPath.style.opacity = (0.6 + Math.random() * 0.4).toString();
-            randomPath.style.filter = 'drop-shadow(0 0 3px rgba(255,255,255,0.5))';
-          } else if (flickerType < 0.7) {
-            // Accent blue/purple flicker with glow
-            const hue = 220 + Math.random() * 40; // Blue to purple range
-            randomPath.style.color = `hsl(${hue}, 70%, 75%)`;
-            randomPath.style.opacity = (0.5 + Math.random() * 0.5).toString();
-            randomPath.style.filter = `drop-shadow(0 0 2px hsl(${hue}, 70%, 60%))`;
-          } else {
-            // Subtle light gray flicker
-            const gray = 150 + Math.floor(Math.random() * 100);
-            randomPath.style.color = `rgb(${gray}, ${gray}, ${gray})`;
-            randomPath.style.opacity = (0.4 + Math.random() * 0.4).toString();
-            randomPath.style.filter = '';
-          }
+            if (flickerType < 0.4) {
+              // White/bright flicker with glow
+              randomPath.style.color = '#ffffff';
+              randomPath.style.opacity = (0.6 + Math.random() * 0.4).toString();
+              randomPath.style.filter = 'drop-shadow(0 0 3px rgba(255,255,255,0.5))';
+            } else if (flickerType < 0.7) {
+              // Accent blue/purple flicker with glow
+              const hue = 220 + Math.random() * 40; // Blue to purple range
+              randomPath.style.color = `hsl(${hue}, 70%, 75%)`;
+              randomPath.style.opacity = (0.5 + Math.random() * 0.5).toString();
+              randomPath.style.filter = `drop-shadow(0 0 2px hsl(${hue}, 70%, 60%))`;
+            } else {
+              // Subtle light gray flicker
+              const gray = 150 + Math.floor(Math.random() * 100);
+              randomPath.style.color = `rgb(${gray}, ${gray}, ${gray})`;
+              randomPath.style.opacity = (0.4 + Math.random() * 0.4).toString();
+              randomPath.style.filter = '';
+            }
 
-          // Restore after random duration
-          setTimeout(() => {
-            randomPath.style.color = originalColor;
-            randomPath.style.opacity = originalOpacity;
-            randomPath.style.filter = originalFilter;
-          }, 50 + Math.random() * 150);
-        }, 80 + loop * 30 + Math.random() * 100);
+            // Restore after random duration
+            setTimeout(
+              () => {
+                randomPath.style.color = originalColor;
+                randomPath.style.opacity = originalOpacity;
+                randomPath.style.filter = originalFilter;
+              },
+              50 + Math.random() * 150,
+            );
+          },
+          80 + loop * 30 + Math.random() * 100,
+        );
 
         this.svgFlickerIntervals.push(intervalId);
       }
@@ -456,10 +484,13 @@ finance, and end-to-end transaction support`.split('');
         }
 
         // Restore after random duration
-        setTimeout(() => {
-          wordEl.style.color = originalColor;
-          wordEl.style.opacity = originalOpacity;
-        }, 100 + Math.random() * 200);
+        setTimeout(
+          () => {
+            wordEl.style.color = originalColor;
+            wordEl.style.opacity = originalOpacity;
+          },
+          100 + Math.random() * 200,
+        );
 
         // Schedule next flicker
         setTimeout(flickerWord, 500 + Math.random() * 2000);
@@ -488,7 +519,7 @@ finance, and end-to-end transaction support`.split('');
           stagger: 0.1,
           ease: 'power3.out',
         },
-        '-=0.5'
+        '-=0.5',
       )
       .from(
         '.hero-subtitle',
@@ -498,7 +529,7 @@ finance, and end-to-end transaction support`.split('');
           duration: 0.8,
           ease: 'power3.out',
         },
-        '-=0.6'
+        '-=0.6',
       )
       .from(
         '.hero-nav',
@@ -507,7 +538,7 @@ finance, and end-to-end transaction support`.split('');
           duration: 0.6,
           ease: 'power2.out',
         },
-        '-=0.4'
+        '-=0.4',
       )
       .from(
         '.hero-scroll-indicator',
@@ -516,7 +547,7 @@ finance, and end-to-end transaction support`.split('');
           duration: 0.6,
           ease: 'power2.out',
         },
-        '-=0.2'
+        '-=0.2',
       );
   }
 
@@ -541,7 +572,7 @@ finance, and end-to-end transaction support`.split('');
           y: 0,
           color: 'rgba(255, 255, 255, 1)',
           ease: 'power2.out',
-        }
+        },
       );
     });
 
@@ -560,7 +591,7 @@ finance, and end-to-end transaction support`.split('');
           y: 0,
           duration: 0.8,
           ease: 'power3.out',
-        }
+        },
       );
     });
 
@@ -781,5 +812,9 @@ finance, and end-to-end transaction support`.split('');
   @HostListener('window:scroll')
   onScroll() {
     // Scroll events handled by GSAP ScrollTrigger
+  }
+
+  toggle8VideoMute() {
+    this.is8VideoMuted = !this.is8VideoMuted;
   }
 }
