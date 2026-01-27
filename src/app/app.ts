@@ -105,9 +105,24 @@ finance, and end-to-end transaction support`.split('');
   // Video Sound Toggle
   isVideoMuted = true;
   is8VideoMuted = true;
+  isUmbrellaVideoMuted = true;
+  isWelcome8VideoMuted = true;
+  isSectorVideoMuted = true;
 
   toggleVideoMute() {
     this.isVideoMuted = !this.isVideoMuted;
+  }
+
+  toggleUmbrellaVideoMute() {
+    this.isUmbrellaVideoMuted = !this.isUmbrellaVideoMuted;
+  }
+
+  toggleWelcome8VideoMute() {
+    this.isWelcome8VideoMuted = !this.isWelcome8VideoMuted;
+  }
+
+  toggleSectorVideoMute() {
+    this.isSectorVideoMuted = !this.isSectorVideoMuted;
   }
 
   // Navigation
