@@ -126,7 +126,7 @@ finance, and end-to-end transaction support`.split('');
   }
 
   // Navigation
-  navKeywords = ['Vision', 'Opportunities', 'Pioneers', 'Manifesto'];
+  navKeywords = ['Gov Finance', 'LNG', 'Gold & Mining', 'Space Minerals'];
 
   // Split text into characters for animation
   splitToChars(text: string): string[] {
