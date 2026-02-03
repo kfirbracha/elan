@@ -1596,7 +1596,22 @@
   </section>
 
   <section id="lng" class="factors-detail-section">
-    <div class="w-layout-grid global-grid">
+    <!-- River energy video background (hero-background style) -->
+    <div class="hero-bg factors-detail-bg">
+      <video
+        class="hero-video"
+        [muted]="true"
+        autoplay
+        loop
+        playsinline
+        disablePictureInPicture
+        preload="auto"
+      >
+        <source src="/river-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <div class="w-layout-grid global-grid factors-detail-content">
       <div class="factors-intro">
         <div class="factors-badge">
           <span class="subheading">7 FACTORS LLC FZ</span>
@@ -3321,25 +3336,6 @@
   <!-- PAGE 5: 7 FACTORS UMBRELLA GROWTH STRATEGY -->
   <!-- ============================================ -->
   <section class="umbrella-strategy-section">
-    <div class="umbrella-video-container">
-      <video
-        class="umbrella-video"
-        [muted]="isUmbrellaVideoMuted"
-        autoplay
-        loop
-        playsinline
-        disablePictureInPicture
-        controls
-        preload="auto"
-      >
-        <source src="/CLIP2-with-image.mp4" type="video/mp4" />
-      </video>
-      <button class="sound-toggle" (click)="toggleUmbrellaVideoMute()">
-        <span class="sound-icon">{{ isUmbrellaVideoMuted ? '🔇' : '🔊' }}</span>
-        <span class="sound-text">{{ isUmbrellaVideoMuted ? 'Enable Sound' : 'Mute' }}</span>
-      </button>
-    </div>
-
     <div class="w-layout-grid global-grid">
       <div class="umbrella-intro">
         <h2 class="heading-3 reveal-text">7 FACTORS LLC</h2>
@@ -3543,6 +3539,22 @@
   <!-- PAGE 9: SECTOR EXAMPLES & GROWTH TARGET -->
   <!-- ============================================ -->
   <section id="space-minerals" class="sector-growth-section">
+    <!-- Energy factory video background (light footage – overlay for text contrast) -->
+    <div class="energy-section-bg">
+      <video
+        class="energy-section-video"
+        [muted]="true"
+        autoplay
+        loop
+        playsinline
+        disablePictureInPicture
+        preload="auto"
+      >
+        <source src="/energy-video.mp4" type="video/mp4" />
+      </video>
+      <div class="energy-section-overlay"></div>
+    </div>
+
     <div class="sector-video-container">
       <video
         class="sector-video"
@@ -3554,7 +3566,7 @@
         controls
         preload="auto"
       >
-        <source src="/sector-scaling.mp4" type="video/mp4" />
+        <source src="/CLIP4-with-image.mp4" type="video/mp4" />
       </video>
       <button class="sound-toggle" (click)="toggleSectorVideoMute()">
         <span class="sound-icon">{{ isSectorVideoMuted ? '🔇' : '🔊' }}</span>
