@@ -60,7 +60,16 @@
   --grid-column-width: calc(((var(--vw, 1vw) * 100) - (2 * var(--grid-margin))) / var(--grid-columns) - (var(--grid-gutter) * (var(--grid-columns) - 1) / var(--grid-columns)));
   --grid: repeat(var(--grid-columns), minmax(0, 1fr));
   --font--sans-typography: Fellix, Arial, sans-serif;
+  --font--body-family: var(--font--sans-typography);
+  --font--mono-typography: var(--font-mono, 'IBM Plex Mono', monospace);
   --colour--light: white;
+  --unified-container-width: var(--container-width, 1100px);
+  --unified-container-pad: var(--container-pad, 40px);
+  --unified-heading-primary: clamp(2rem, 5vw, 3.8rem);
+  --unified-heading-secondary: clamp(1.25rem, 3vw, 2.5rem);
+  --unified-body-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  --unified-label-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  --unified-label-spacing: 0.12em;
   --_responsive-sizes---spacing--m: 8rem;
   --_responsive-sizes---spacing--s: 3rem;
   --_responsive-sizes---spacing--xs: .8rem;
@@ -175,6 +184,14 @@
     display: flex;
     position: relative;
     overflow: clip;
+
+    &.unified-section .section-intro {
+      max-width: var(--unified-container-width, 1100px);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--unified-container-pad, 40px);
+      padding-right: var(--unified-container-pad, 40px);
+    }
 
     .section-intro {
       z-index: 10;
@@ -961,6 +978,48 @@ blink animation {
   background-clip: text;
 }
 
+// --- Accent hover & animated elements (unified sections) ---
+.accent-hover {
+  transition: color 0.35s ease-out, opacity 0.35s ease-out;
+  cursor: default;
+
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+.accent-border-on-hover {
+  transition: border-color 0.35s ease-out, box-shadow 0.35s ease-out;
+
+  &:hover {
+    border-color: var(--accent-dim);
+    box-shadow: 0 0 0 1px var(--accent-subtle);
+  }
+}
+
+@keyframes accentGlow {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 20px var(--accent-dim), 0 0 40px var(--accent-glow);
+  }
+}
+
+@keyframes accentUnderline {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
 .loading-text {
   font-family: var(--_typography-styles---font-family);
   font-size: clamp(11px, 2vw, 20px);
@@ -982,6 +1041,490 @@ blink animation {
   min-height: 100vh;
   position: relative;
 
+}
+
+// ==========================================
+// UNIFIED SECTION (pages 3+) - same look as hero/intro
+// ==========================================
+.unified-section {
+  position: relative;
+  padding: var(--section-gap, 120px) 0;
+  background: var(--bg-dark, #030303);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 0%, var(--accent-glow, rgba(232, 220, 196, 0.08)) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 100% 100%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+    animation: glowPulse 8s ease-in-out infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 5%, transparent 70%);
+    opacity: 0.6;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--unified-container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--unified-container-pad);
+    padding-right: var(--unified-container-pad);
+  }
+
+  .w-layout-grid.global-grid {
+    max-width: var(--unified-container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--unified-container-pad);
+    padding-right: var(--unified-container-pad);
+  }
+
+  // Keep content above section-bg-elements (blobs)
+  & > *:not(.section-bg-elements) {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Shared section background blobs (umbrella, vision, industry, stats, process, contact)
+.unified-section .section-bg-elements {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.section-bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+    opacity: 0.2;
+  }
+}
+
+@keyframes sectionBlobFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translate(4%, -6%) scale(1.04);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-3%, 4%) scale(0.98);
+    opacity: 0.35;
+  }
+  75% {
+    transform: translate(5%, 2%) scale(1.02);
+    opacity: 0.4;
+  }
+}
+
+@keyframes sectionBlobFloat2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.22;
+  }
+  33% {
+    transform: translate(-6%, 5%) scale(1.06);
+    opacity: 0.38;
+  }
+  66% {
+    transform: translate(3%, -3%) scale(0.96);
+    opacity: 0.28;
+  }
+}
+
+@keyframes sectionGradientMove {
+  0% {
+    background-position: 0% 50%;
+    opacity: 1;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.92;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 1;
+  }
+}
+
+// Video showcase stays visually full; minimal vertical padding
+.video-showcase-section.unified-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+// Limits/hero sections (e.g. "Capital. Energy. Execution.") use unified container
+.hero-section.unified-section .hero-container {
+  max-width: var(--unified-container-width, 1100px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--unified-container-pad, 40px);
+  padding-right: var(--unified-container-pad, 40px);
+}
+
+// Unified typography (pages 3+) - same font stack and scale as hero/intro
+.unified-section {
+  .heading-4,
+  .heading-3 {
+    font-family: var(--font--sans-typography);
+    font-size: var(--unified-heading-primary);
+    line-height: 1.1;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-white, #fff);
+  }
+
+  .heading-5,
+  h4.heading-5 {
+    font-family: var(--font--sans-typography);
+    font-size: var(--unified-heading-secondary);
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text-white, #fff);
+  }
+
+  .body-large {
+    font-family: var(--font--body-family);
+    font-size: var(--unified-body-size);
+    line-height: 1.65;
+    color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+    letter-spacing: 0.01em;
+  }
+
+  .section-label,
+  .subheading {
+    font-family: var(--font--mono-typography);
+    font-size: var(--unified-label-size);
+    letter-spacing: var(--unified-label-spacing);
+    text-transform: uppercase;
+    color: var(--text-muted, rgba(255, 255, 255, 0.3));
+  }
+}
+
+// ==========================================
+// MOBILE – טקסטים, מיקום, ריווח
+// ==========================================
+@media (max-width: 768px) {
+  .hero-section {
+    .hero-container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .hero-title .hero-title-line {
+      font-size: clamp(22px, 6vw, 32px);
+      line-height: 1.1;
+    }
+
+    .invitation-content .invitation-subtitle {
+      font-size: clamp(14px, 4vw, 20px);
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .logo-container-hero {
+    top: 16px;
+    left: 16px;
+    width: 120px;
+    max-width: 40vw;
+  }
+
+  .nav-bar {
+    margin: 2rem auto;
+    padding: 0.6rem 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+
+    .nav-button.is-btn {
+      font-size: 0.7rem;
+      padding: 0.4rem 0.5rem;
+    }
+
+    .nav-button.is-non {
+      font-size: 0.65rem;
+    }
+  }
+
+  .unified-section {
+    padding: var(--section-gap, 48px) 0;
+
+    .container,
+    .w-layout-grid.global-grid {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .heading-4,
+    .heading-3 {
+      font-size: clamp(1.35rem, 5vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .heading-5,
+    h4.heading-5 {
+      font-size: clamp(1rem, 4vw, 1.35rem);
+    }
+
+    .body-large {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .section-label,
+    .subheading {
+      font-size: 0.7rem;
+    }
+  }
+
+  .intro-section {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 2rem;
+  }
+
+  .vision-section {
+    .vision-header {
+      flex-direction: column;
+      margin-bottom: 2rem;
+    }
+
+    .vision-header-left {
+      width: 100%;
+      height: auto;
+      padding-right: 0;
+    }
+
+    .vision-feature-title {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+    }
+
+    .vision-feature-text p {
+      font-size: 0.95rem !important;
+    }
+  }
+
+  .factors-hero-section {
+    .factors-content {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .factors-title {
+      font-size: clamp(28px, 8vw, 40px);
+    }
+
+    .factors-tagline,
+    .factors-slogan {
+      font-size: clamp(14px, 3.5vw, 18px);
+    }
+
+    .factors-video-container {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  .hero-section.unified-section .hero-container,
+  .hero-section .hero-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .limits.hero-section .hero-title,
+  .offlimits-text,
+  .gradient-text {
+    font-size: clamp(18px, 5vw, 26px) !important;
+    line-height: 1.3;
+    margin: 0 0.5rem;
+  }
+
+  .process-section .steps-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .process-section .heading-4.is-access {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+  }
+
+  .contact-section .contact-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .contact-section .heading-4.centre-align {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+  }
+
+  .benefits-left-inner {
+    padding-top: 20vh;
+    padding-bottom: 25vh;
+    padding-left: 20px;
+  }
+
+  .benefits-title-wrap .heading-4 {
+    font-size: clamp(1rem, 4vw, 1.35rem);
+    line-height: 1.25;
+  }
+
+  .benefits-box-text {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .industry-section.unified-section .section-intro {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .industry-section .small-flex.is-industry .heading-5.is-industry {
+    font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+  }
+
+  .industry-section .team-intro {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+
+  .industry-section .team-expertise-list {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  .stats-section .stats-title {
+    font-size: clamp(1.25rem, 5vw, 1.75rem);
+  }
+
+  .umbrella-strategy-section,
+  .sector-growth-section,
+  .minra-section {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .umbrella-strategy-section .heading-3,
+  .sector-growth-section .heading-3,
+  .minra-section .heading-3 {
+    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+  }
+
+  .minra-section .minra-slogan.heading-4 {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+
+  .divider {
+    margin: 1rem 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section .hero-title .hero-title-line {
+    font-size: clamp(18px, 5.5vw, 24px);
+  }
+
+  .hero-section .invitation-content .invitation-subtitle {
+    font-size: 13px;
+  }
+
+  .logo-container-hero {
+    width: 100px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .nav-bar {
+    margin: 1.5rem auto;
+    padding: 0.5rem 0.75rem;
+
+    .nav-button.is-btn {
+      font-size: 0.65rem;
+    }
+  }
+
+  .unified-section {
+    padding: var(--section-gap, 32px) 0;
+
+    .container,
+    .w-layout-grid.global-grid {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .heading-4,
+    .heading-3 {
+      font-size: 1.25rem;
+    }
+
+    .heading-5 {
+      font-size: 1rem;
+    }
+
+    .body-large {
+      font-size: 0.9rem;
+    }
+  }
+
+  .factors-hero-section .factors-title {
+    font-size: clamp(22px, 7vw, 28px);
+  }
+
+  .benefits-left-inner {
+    padding-top: 15vh;
+    padding-bottom: 18vh;
+    padding-left: 16px;
+  }
+
+  .vision-section .vision-feature-text p {
+    font-size: 0.9rem !important;
+  }
+
+  .process-section .step-number {
+    font-size: 28vw;
+  }
+
+  .contact-section .heading-4.centre-align {
+    font-size: 1.1rem;
+  }
+
+  .industry-section .team-intro {
+    font-size: 0.9rem;
+  }
+
+  .umbrella-strategy-section,
+  .sector-growth-section,
+  .minra-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }
 
 .global-grid {
@@ -1743,8 +2286,8 @@ blink animation {
 // TEXT REVEAL ANIMATION CLASSES
 // ==========================================
 .reveal-text {
-  transform: translateY(40px);
-  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out), color 0.8s var(--ease-out);
+  transform: translateY(32px);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out), color 1s var(--ease-out);
   color: var(--text-muted);
 
   &.revealed {
@@ -1756,7 +2299,7 @@ blink animation {
 
 .reveal-fade {
   opacity: 0;
-  transition: opacity 1s var(--ease-out);
+  transition: opacity 1.2s var(--ease-out);
 
   &.revealed {
     opacity: 1;
@@ -1886,8 +2429,89 @@ blink animation {
 // ==========================================
 .vision-section {
   padding: var(--section-gap) 0;
-  background: var(--bg-dark);
+  background: transparent;
   position: relative;
+  overflow: hidden;
+  background:
+    #07080a,
+    radial-gradient(ellipse 80% 50% at 15% 20%, rgba(200, 210, 225, 0.12) 0%, transparent 50%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      85deg,
+      rgba(200, 210, 225, 0.08) 0%,
+      transparent 40%,
+      rgba(180, 195, 210, 0.05) 70%,
+      transparent 100%
+    );
+    background-size: 280% 280%;
+    animation: sectionGradientMove 20s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .section-bg-blob {
+    animation: sectionBlobFloat 21s ease-in-out infinite;
+
+    &--1 {
+      width: min(48vw, 360px);
+      height: min(48vw, 360px);
+      top: 10%;
+      left: 5%;
+      background: rgba(200, 210, 225, 0.28);
+      animation-duration: 23s;
+      animation-delay: 0s;
+    }
+    &--2 {
+      width: min(40vw, 300px);
+      height: min(40vw, 300px);
+      bottom: 15%;
+      right: 0;
+      background: rgba(180, 195, 215, 0.24);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 25s;
+      animation-delay: -6s;
+    }
+    &--3 {
+      width: min(36vw, 260px);
+      height: min(36vw, 260px);
+      top: 45%;
+      left: 20%;
+      background: rgba(190, 205, 220, 0.22);
+      animation-duration: 19s;
+      animation-delay: -12s;
+    }
+    &--4 {
+      width: min(44vw, 320px);
+      height: min(44vw, 320px);
+      bottom: 25%;
+      right: 20%;
+      background: rgba(185, 198, 212, 0.2);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 22s;
+      animation-delay: -3s;
+    }
+    &--5 {
+      width: min(30vw, 220px);
+      height: min(30vw, 220px);
+      top: 30%;
+      right: 10%;
+      background: rgba(200, 212, 228, 0.26);
+      animation-duration: 18s;
+      animation-delay: -8s;
+    }
+  }
+
+  &.unified-section .container {
+    max-width: var(--unified-container-width, 1100px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--unified-container-pad, 40px);
+    padding-right: var(--unified-container-pad, 40px);
+  }
 
   &::before {
     content: '';
@@ -2767,9 +3391,157 @@ blink animation {
 // ==========================================
 // STATS SECTION - Clock/Dial Design
 // ==========================================
+// Industry section – background (no standalone block elsewhere)
+.industry-section.unified-section {
+  overflow: hidden;
+  background:
+    #070a09,
+    radial-gradient(ellipse 70% 70% at 80% 50%, rgba(180, 200, 190, 0.12) 0%, transparent 55%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      140deg,
+      transparent 0%,
+      rgba(180, 200, 190, 0.06) 35%,
+      rgba(170, 195, 182, 0.08) 65%,
+      transparent 100%
+    );
+    background-size: 270% 270%;
+    animation: sectionGradientMove 23s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .section-bg-blob {
+    animation: sectionBlobFloat 20s ease-in-out infinite;
+
+    &--1 {
+      width: min(48vw, 350px);
+      height: min(48vw, 350px);
+      top: 5%;
+      right: 10%;
+      background: rgba(180, 200, 190, 0.28);
+      animation-duration: 22s;
+      animation-delay: 0s;
+    }
+    &--2 {
+      width: min(40vw, 290px);
+      height: min(40vw, 290px);
+      bottom: 15%;
+      left: 0;
+      background: rgba(170, 192, 180, 0.24);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 24s;
+      animation-delay: -5s;
+    }
+    &--3 {
+      width: min(36vw, 260px);
+      height: min(36vw, 260px);
+      top: 45%;
+      left: 25%;
+      background: rgba(175, 198, 188, 0.22);
+      animation-duration: 19s;
+      animation-delay: -11s;
+    }
+    &--4 {
+      width: min(42vw, 300px);
+      height: min(42vw, 300px);
+      bottom: 30%;
+      right: 5%;
+      background: rgba(178, 200, 192, 0.2);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 21s;
+      animation-delay: -3s;
+    }
+    &--5 {
+      width: min(30vw, 220px);
+      height: min(30vw, 220px);
+      top: 20%;
+      right: 30%;
+      background: rgba(185, 205, 195, 0.26);
+      animation-duration: 17s;
+      animation-delay: -7s;
+    }
+  }
+}
+
 .stats-section {
   padding: var(--section-gap) 0;
-  background: var(--bg-dark);
+  overflow: hidden;
+  background:
+    #0a080c,
+    radial-gradient(ellipse 70% 60% at 50% 30%, rgba(200, 190, 220, 0.12) 0%, transparent 55%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      220deg,
+      rgba(200, 190, 220, 0.07) 0%,
+      transparent 50%,
+      rgba(190, 180, 210, 0.06) 100%
+    );
+    background-size: 260% 260%;
+    animation: sectionGradientMove 22s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .section-bg-blob {
+    animation: sectionBlobFloat 19s ease-in-out infinite;
+
+    &--1 {
+      width: min(52vw, 400px);
+      height: min(52vw, 400px);
+      top: 0;
+      left: 25%;
+      background: rgba(200, 190, 220, 0.3);
+      animation-duration: 24s;
+      animation-delay: 0s;
+    }
+    &--2 {
+      width: min(38vw, 280px);
+      height: min(38vw, 280px);
+      bottom: 20%;
+      left: 5%;
+      background: rgba(190, 178, 210, 0.25);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 26s;
+      animation-delay: -7s;
+    }
+    &--3 {
+      width: min(42vw, 300px);
+      height: min(42vw, 300px);
+      bottom: 10%;
+      right: 5%;
+      background: rgba(210, 198, 230, 0.22);
+      animation-duration: 20s;
+      animation-delay: -4s;
+    }
+    &--4 {
+      width: min(35vw, 260px);
+      height: min(35vw, 260px);
+      top: 35%;
+      right: 15%;
+      background: rgba(195, 185, 215, 0.24);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 23s;
+      animation-delay: -11s;
+    }
+    &--5 {
+      width: min(32vw, 240px);
+      height: min(32vw, 240px);
+      top: 25%;
+      left: 10%;
+      background: rgba(205, 192, 225, 0.26);
+      animation-duration: 17s;
+      animation-delay: -2s;
+    }
+  }
 
   .stats-header-wrapper {
     display: flex;
@@ -2980,6 +3752,79 @@ blink animation {
 // ==========================================
 .process-section {
   padding: var(--section-gap) 0;
+  overflow: hidden;
+  background:
+    #08090a,
+    radial-gradient(ellipse 60% 80% at 50% 80%, rgba(210, 218, 230, 0.1) 0%, transparent 55%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      270deg,
+      rgba(220, 225, 235, 0.06) 0%,
+      transparent 45%,
+      rgba(200, 210, 222, 0.05) 80%,
+      transparent 100%
+    );
+    background-size: 240% 240%;
+    animation: sectionGradientMove 19s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .section-bg-blob {
+    animation: sectionBlobFloat 20s ease-in-out infinite;
+
+    &--1 {
+      width: min(45vw, 340px);
+      height: min(45vw, 340px);
+      bottom: 5%;
+      left: 0;
+      background: rgba(210, 218, 230, 0.26);
+      animation-duration: 22s;
+      animation-delay: 0s;
+    }
+    &--2 {
+      width: min(40vw, 300px);
+      height: min(40vw, 300px);
+      top: 15%;
+      right: 0;
+      background: rgba(200, 210, 225, 0.22);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 24s;
+      animation-delay: -5s;
+    }
+    &--3 {
+      width: min(38vw, 280px);
+      height: min(38vw, 280px);
+      top: 50%;
+      left: 15%;
+      background: rgba(215, 222, 232, 0.2);
+      animation-duration: 18s;
+      animation-delay: -9s;
+    }
+    &--4 {
+      width: min(42vw, 310px);
+      height: min(42vw, 310px);
+      bottom: 30%;
+      right: 10%;
+      background: rgba(205, 212, 224, 0.24);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 21s;
+      animation-delay: -3s;
+    }
+    &--5 {
+      width: min(28vw, 200px);
+      height: min(28vw, 200px);
+      top: 25%;
+      right: 25%;
+      background: rgba(218, 225, 238, 0.22);
+      animation-duration: 16s;
+      animation-delay: -7s;
+    }
+  }
 
   .process-title {
     font-family: var(--font-serif);
@@ -3417,7 +4262,7 @@ blink animation {
 }
 
 .vision-feature-container {
-  // display: flex;
+  position: relative;
 }
 
 .vision-feature-text {
@@ -3764,6 +4609,14 @@ blink animation {
   padding-right: var(--_responsive-sizes---spacing--s);
   padding-bottom: var(--_responsive-sizes---spacing--xl);
   padding-left: var(--_responsive-sizes---spacing--s);
+
+  .unified-section & {
+    max-width: var(--unified-container-width, 1100px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--unified-container-pad, 40px);
+    padding-right: var(--unified-container-pad, 40px);
+  }
   grid-column-gap: var(--_responsive-sizes---spacing--m);
   grid-row-gap: var(--_responsive-sizes---spacing--m);
   flex-flow: column;
@@ -3966,20 +4819,37 @@ blink animation {
   padding-bottom: var(--_responsive-sizes---spacing--l);
   padding-left: var(--_responsive-sizes---spacing--s);
 
+  &.unified-section {
+    padding: var(--section-gap, 120px) var(--unified-container-pad, 40px);
+  }
+
   @media screen and (max-width: 991px) {
-    display: none;
+    display: block;
   }
 }
 
 .benefits-inner {
   display: flex;
   position: relative;
+  min-height: 100vh;
+  max-height: 100vh;
+
+  @media screen and (max-width: 991px) {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    max-height: none;
+  }
 }
 
 .benefits-left {
   z-index: 2;
   width: 50%;
   position: relative;
+
+  @media screen and (max-width: 991px) {
+    width: 100%;
+  }
 }
 
 .benefits-nav {
@@ -3998,8 +4868,8 @@ blink animation {
   padding-right: 1.5rem;
   display: inline-flex;
   position: sticky;
-  opacity: 0;
-  transition: opacity .1s ease-out;
+  opacity: 1;
+  transition: opacity .25s ease-out;
 }
 
 .benefits-nav-number {
@@ -4029,15 +4899,14 @@ blink animation {
 }
 
 .benefits-left-inner {
-  padding-top: 45vh;
-  padding-bottom: 65vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   padding-left: var(--_responsive-sizes---spacing--base);
-  grid-column-gap: 65vh;
-  grid-row-gap: 65vh;
   flex-flow: column;
   justify-content: flex-start;
   align-items: flex-start;
   display: flex;
+  gap: 1.5rem;
 }
 
 .benefits-right {
@@ -4050,11 +4919,18 @@ blink animation {
   flex-flow: column;
   justify-content: space-between;
   width: 50%;
-  height: 100lvh;
-  min-height: 40rem;
+  height: 100vh;
+  min-height: 400px;
   display: flex;
   position: sticky;
   top: 0;
+
+  @media screen and (max-width: 991px) {
+    width: 100%;
+    height: auto;
+    min-height: 20rem;
+    position: relative;
+  }
 }
 
 .benefits-top {
@@ -4072,6 +4948,7 @@ blink animation {
   padding: .625rem;
   display: flex;
   position: relative;
+  overflow: visible;
 }
 
 .benefits-box-inner {
@@ -4110,6 +4987,7 @@ blink animation {
   padding: .625rem;
   display: flex;
   position: relative;
+  overflow: visible;
 }
 
 .benefits-box-inner {
@@ -4124,6 +5002,8 @@ blink animation {
   align-self: stretch;
   display: flex;
   width: 100%;
+  overflow: visible;
+  min-height: 0;
 }
 
 .benefits-box:after {
@@ -4150,6 +5030,8 @@ heading-5 {
 .benefits-box-content {
   align-items: flex-end;
   display: grid;
+  overflow: visible;
+  min-height: 6em;
 }
 
 .benefits-bg-wrap {
@@ -4187,13 +5069,16 @@ heading-5 {
 
 .benefits-box-text {
   grid-area: 1 / 1;
-  max-width: 30ch;
+  max-width: 52ch;
+  width: 100%;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.4s ease-out, transform 0.4s ease-out;
   position: absolute;
   display: flex;
   flex-wrap: wrap;
+  overflow: visible;
+  min-height: 4em;
 
   &.is-active {
     opacity: 1;
@@ -4214,7 +5099,9 @@ heading-5 {
   }
 }
 
-.split-word {}
+.split-word {
+  display: inline-block;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   [data-benefits-text-top].is-active .split-word {
@@ -4223,8 +5110,24 @@ heading-5 {
   }
 }
 
+.benefits-box-text.is-active .split-word {
+  opacity: 1;
+  color: var(--text-white);
+}
+
+.benefits-box-text.is-active.body-large {
+  opacity: 1;
+  color: var(--text-white);
+}
+
 .benefits-title-wrap {
-  transition: opacity 0.4s ease-out;
+  transition: opacity 0.35s ease-out, color 0.35s ease-out;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.benefits-title-wrap.is-active-benefit-title {
+  opacity: 1;
 }
 
 @keyframes color-blink-in {
@@ -4450,14 +5353,18 @@ heading-5 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: var(--bg-dark);
+  background: transparent;
+
+  &.unified-section {
+    padding: var(--section-gap, 120px) 0;
+  }
 
   .factors-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 0 40px;
-    max-width: 900px;
+    padding: 0 var(--unified-container-pad, 40px);
+    max-width: var(--unified-container-width, 1100px);
     margin-bottom: var(--_responsive-sizes---spacing--m);
 
     @media (max-width: 768px) {
@@ -4514,12 +5421,12 @@ heading-5 {
 
   .factors-video-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: var(--unified-container-width, 1100px);
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 var(--unified-container-pad, 40px);
 
     @media (max-width: 768px) {
-      padding: 0 20px;
+      padding: 0 var(--unified-container-pad, 20px);
     }
   }
 
@@ -4563,6 +5470,10 @@ heading-5 {
   background: transparent;
   position: relative;
   overflow: hidden;
+
+  &.unified-section {
+    padding: var(--section-gap, 120px) 0;
+  }
 
   // River energy video background (hero-background style)
   .factors-detail-bg {
@@ -4754,10 +5665,12 @@ heading-5 {
   padding-bottom: var(--_responsive-sizes---spacing--l);
   padding-left: var(--_responsive-sizes---spacing--s);
 
+  &.unified-section {
+    padding: var(--section-gap, 120px) var(--unified-container-pad, 40px);
+  }
+
   @media screen and (max-width: 991px) {
-
-
-    display: none;
+    display: block;
   }
 }
 
@@ -4842,7 +5755,7 @@ heading-5 {
 }
 
 .centered-slider-row:has(.centered-slider-slide.active) .centered-slider-slide:not(.active) {
-  // opacity: 0.45;
+  opacity: 0.45;
 }
 
 @media screen and (max-width: 991px) {
@@ -5065,7 +5978,7 @@ heading-5 {
 }
 
 .centered-slider-row:has(.centered-slider-slide.active) .centered-slider-slide:not(.active) {
-  // opacity: 0.45;
+  opacity: 0.45;
 }
 
 @media screen and (max-width: 991px) {
@@ -5229,10 +6142,82 @@ heading-5 {
 .umbrella-strategy-section {
   position: relative;
   padding: var(--_responsive-sizes---spacing--l) var(--_responsive-sizes---spacing--s);
-  background: linear-gradient(to bottom, var(--bg-dark) 0%, var(--bg-black) 100%);
+  overflow: hidden;
+  background:
+    #080806,
+    radial-gradient(ellipse 100% 60% at 90% 10%, rgba(220, 190, 140, 0.14) 0%, transparent 50%);
 
   @media (max-width: 768px) {
     padding: var(--_responsive-sizes---spacing--m) var(--_responsive-sizes---spacing--base);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(220, 190, 140, 0.08) 0%,
+      transparent 45%,
+      rgba(180, 150, 100, 0.06) 70%,
+      transparent 100%
+    );
+    background-size: 250% 250%;
+    animation: sectionGradientMove 18s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .section-bg-blob {
+    animation: sectionBlobFloat 20s ease-in-out infinite;
+
+    &--1 {
+      width: min(50vw, 380px);
+      height: min(50vw, 380px);
+      top: 5%;
+      right: 5%;
+      background: rgba(220, 190, 140, 0.32);
+      animation-duration: 22s;
+      animation-delay: 0s;
+    }
+    &--2 {
+      width: min(42vw, 320px);
+      height: min(42vw, 320px);
+      bottom: 20%;
+      left: 0;
+      background: rgba(200, 170, 120, 0.28);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 24s;
+      animation-delay: -5s;
+    }
+    &--3 {
+      width: min(38vw, 280px);
+      height: min(38vw, 280px);
+      top: 50%;
+      right: 15%;
+      background: rgba(210, 180, 130, 0.25);
+      animation-duration: 19s;
+      animation-delay: -10s;
+    }
+    &--4 {
+      width: min(45vw, 340px);
+      height: min(45vw, 340px);
+      bottom: 5%;
+      right: 25%;
+      background: rgba(190, 160, 110, 0.22);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 21s;
+      animation-delay: -3s;
+    }
+    &--5 {
+      width: min(32vw, 240px);
+      height: min(32vw, 240px);
+      top: 25%;
+      left: 10%;
+      background: rgba(220, 195, 150, 0.28);
+      animation-duration: 17s;
+      animation-delay: -7s;
+    }
   }
 
   .umbrella-video-container {
@@ -5407,6 +6392,23 @@ heading-5 {
 
     .heading-5 {
       margin-bottom: var(--_responsive-sizes---spacing--base);
+
+      &.accent-hover {
+        display: inline-block;
+      }
+    }
+
+    .phase-list li {
+      transition: color 0.25s ease;
+
+      &:hover {
+        color: var(--text-white);
+
+        &::before {
+          color: var(--accent);
+          opacity: 1;
+        }
+      }
     }
   }
 
@@ -5598,6 +6600,11 @@ heading-5 {
   .welcome-8-quote {
     display: flex;
     flex-wrap: wrap;
+    transition: color 0.35s ease-out;
+
+    &.accent-hover:hover {
+      color: var(--accent);
+    }
     justify-content: center;
     gap: 0.4em;
     max-width: 900px;
@@ -5910,7 +6917,7 @@ heading-5 {
       border-radius: 12px;
       padding: var(--_responsive-sizes---spacing--base);
       text-align: center;
-      transition: all 0.3s ease;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 
       @media (max-width: 768px) {
         padding: 1.25rem;
@@ -5919,10 +6926,15 @@ heading-5 {
 
       &:hover {
         border-color: var(--accent-dim);
+        box-shadow: 0 4px 24px rgba(232, 220, 196, 0.08);
         transform: translateY(-4px);
 
         @media (max-width: 768px) {
           transform: none;
+        }
+
+        .sector-title {
+          color: var(--accent-light);
         }
       }
 
@@ -5931,6 +6943,7 @@ heading-5 {
         font-size: clamp(16px, 2vw, 18px);
         color: var(--accent);
         margin-bottom: 0.75rem;
+        transition: color 0.3s ease;
       }
 
       .sector-desc {
@@ -5975,6 +6988,10 @@ heading-5 {
         font-weight: 400;
         color: var(--accent);
         line-height: 1;
+
+        @media (prefers-reduced-motion: no-preference) {
+          animation: accentGlow 3s ease-in-out infinite;
+        }
       }
 
       .growth-text {
@@ -6043,47 +7060,196 @@ heading-5 {
 // ============================================
 // MINRA SECTION
 // ============================================
-.minra-section {
+// MINRA background: animated gradient + floating blobs (clearly visible)
+@keyframes minraGradientShift {
+  0% {
+    background-position: 0% 50%;
+    opacity: 1;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.9;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 1;
+  }
+}
+
+@keyframes minraBlobFloat {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.35;
+  }
+  25% {
+    transform: translate(5%, -8%) scale(1.05);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-4%, 5%) scale(0.98);
+    opacity: 0.4;
+  }
+  75% {
+    transform: translate(6%, 3%) scale(1.02);
+    opacity: 0.45;
+  }
+}
+
+@keyframes minraBlobFloat2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.25;
+  }
+  33% {
+    transform: translate(-8%, 6%) scale(1.08);
+    opacity: 0.4;
+  }
+  66% {
+    transform: translate(4%, -4%) scale(0.95);
+    opacity: 0.3;
+  }
+}
+
+.minra-section.unified-section {
   position: relative;
   padding: var(--_responsive-sizes---spacing--l) var(--_responsive-sizes---spacing--s);
-  background: linear-gradient(to bottom, var(--bg-black) 0%, var(--bg-dark) 100%);
+  overflow: hidden;
+  background:
+    #0a0a0a,
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232, 220, 196, 0.15) 0%, transparent 55%);
+  isolation: isolate;
 
   @media (max-width: 768px) {
     padding: var(--_responsive-sizes---spacing--m) var(--_responsive-sizes---spacing--base);
   }
 
+  // Override unified-section ::before – single animated gradient layer (visible)
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 400px;
-    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(232, 220, 196, 0.05) 0%, transparent 60%);
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(232, 220, 196, 0.12) 0%,
+      transparent 35%,
+      rgba(180, 160, 120, 0.08) 50%,
+      transparent 70%,
+      rgba(220, 200, 160, 0.1) 100%
+    );
+    background-size: 300% 300%;
+    animation: minraGradientShift 15s ease-in-out infinite;
     pointer-events: none;
+  }
 
-    @media (max-width: 768px) {
-      height: 250px;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(232, 220, 196, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 80% at 90% 90%, rgba(200, 180, 140, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse 60% 70% at 10% 70%, rgba(220, 200, 160, 0.1) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .minra-bg-elements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .minra-bg-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: minraBlobFloat 18s ease-in-out infinite;
+    z-index: 0;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+      opacity: 0.2;
+    }
+
+    &--1 {
+      width: min(55vw, 420px);
+      height: min(55vw, 420px);
+      top: 0;
+      left: 0;
+      background: rgba(232, 220, 196, 0.35);
+      animation-duration: 20s;
+      animation-delay: 0s;
+    }
+
+    &--2 {
+      width: min(45vw, 360px);
+      height: min(45vw, 360px);
+      top: 35%;
+      right: 0;
+      background: rgba(200, 185, 150, 0.3);
+      animation-name: minraBlobFloat2;
+      animation-duration: 22s;
+      animation-delay: -4s;
+    }
+
+    &--3 {
+      width: min(40vw, 320px);
+      height: min(40vw, 320px);
+      bottom: 10%;
+      left: 5%;
+      background: rgba(220, 200, 170, 0.28);
+      animation-duration: 16s;
+      animation-delay: -8s;
+    }
+
+    &--4 {
+      width: min(50vw, 380px);
+      height: min(50vw, 380px);
+      top: 55%;
+      right: 10%;
+      background: rgba(190, 170, 130, 0.22);
+      animation-name: minraBlobFloat2;
+      animation-duration: 24s;
+      animation-delay: -2s;
+    }
+
+    &--5 {
+      width: min(35vw, 280px);
+      height: min(35vw, 280px);
+      top: 20%;
+      right: 20%;
+      background: rgba(232, 220, 196, 0.3);
+      animation-duration: 19s;
+      animation-delay: -6s;
     }
   }
 
-  .global-grid {
-    max-width: 1200px;
+  .minra-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
     margin: 0 auto;
+    padding-left: var(--unified-container-pad, 40px);
+    padding-right: var(--unified-container-pad, 40px);
   }
 
-  .minra-intro {
-    grid-column: span 4;
-    padding-right: var(--_responsive-sizes---spacing--base);
+  .minra-header {
+    text-align: center;
+    margin-bottom: var(--_responsive-sizes---spacing--l);
 
-    @media (max-width: 991px) {
-      grid-column: span 6;
-      padding-right: 0;
+    @media (max-width: 768px) {
       margin-bottom: var(--_responsive-sizes---spacing--m);
     }
 
-    @media (max-width: 576px) {
-      grid-column: span 1;
+    .heading-3,
+    .minra-subtitle,
+    .minra-tagline,
+    .minra-slogan {
+      text-align: center;
     }
 
     .heading-3 {
@@ -6101,27 +7267,45 @@ heading-5 {
         font-size: clamp(0.9rem, 2vw, 1rem);
       }
     }
+
+    .minra-subtitle {
+      color: var(--text-secondary);
+    }
+
+    .minra-tagline {
+      color: var(--text-light);
+    }
+
+    .minra-slogan {
+      margin-top: 1rem;
+      display: block;
+      justify-content: center;
+    }
   }
 
   .minra-content {
-    grid-column: span 8;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 
-    @media (max-width: 991px) {
-      grid-column: span 6;
-    }
-
-    @media (max-width: 576px) {
-      grid-column: span 1;
+    .heading-5,
+    .body-large,
+    .minra-model,
+    .minra-steps {
+      text-align: left;
     }
   }
 
   .minra-slogan {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.4em;
     margin-bottom: var(--_responsive-sizes---spacing--m);
     font-size: clamp(1.3rem, 2.5vw, 2rem);
     line-height: 1.4;
+    text-align: center;
 
     @media (max-width: 768px) {
       gap: 0.3em;
@@ -6231,6 +7415,7 @@ heading-5 {
         color: var(--text-white);
         margin-bottom: 0.5rem;
         line-height: 1.3;
+        transition: color 0.3s ease;
       }
 
       .step-desc {
@@ -6238,6 +7423,10 @@ heading-5 {
         color: var(--text-secondary);
         line-height: 1.6;
       }
+    }
+
+    &:hover .step-title {
+      color: var(--accent);
     }
   }
 
@@ -6311,67 +7500,129 @@ heading-5 {
   width: 100vw;
 }
 
+// Contact section — closing headline + contact block
 .contact-section {
-  padding: var(--_responsive-sizes---spacing--l) var(--_responsive-sizes---spacing--base);
-  border-top: 1px solid var(--border);
+  overflow: hidden;
+  background:
+    #090807,
+    radial-gradient(ellipse 80% 50% at 20% 80%, rgba(232, 218, 200, 0.14) 0%, transparent 50%);
 
-  .contact-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--_responsive-sizes---spacing--l);
-    align-items: center;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(
+      10deg,
+      transparent 0%,
+      rgba(232, 218, 200, 0.06) 30%,
+      rgba(220, 205, 185, 0.08) 60%,
+      transparent 100%
+    );
+    background-size: 220% 220%;
+    animation: sectionGradientMove 21s ease-in-out infinite;
+    pointer-events: none;
+  }
 
-    @media (max-width: 900px) {
-      grid-template-columns: 1fr;
+  .section-bg-blob {
+    animation: sectionBlobFloat 23s ease-in-out infinite;
+
+    &--1 {
+      width: min(50vw, 360px);
+      height: min(50vw, 360px);
+      bottom: 0;
+      right: 0;
+      background: rgba(232, 218, 200, 0.3);
+      animation-duration: 25s;
+      animation-delay: 0s;
+    }
+    &--2 {
+      width: min(42vw, 300px);
+      height: min(42vw, 300px);
+      top: 10%;
+      left: 0;
+      background: rgba(220, 205, 185, 0.26);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 27s;
+      animation-delay: -6s;
+    }
+    &--3 {
+      width: min(36vw, 260px);
+      height: min(36vw, 260px);
+      top: 40%;
+      right: 20%;
+      background: rgba(228, 215, 195, 0.24);
+      animation-duration: 20s;
+      animation-delay: -12s;
+    }
+    &--4 {
+      width: min(40vw, 290px);
+      height: min(40vw, 290px);
+      bottom: 25%;
+      left: 15%;
+      background: rgba(225, 210, 190, 0.22);
+      animation-name: sectionBlobFloat2;
+      animation-duration: 22s;
+      animation-delay: -4s;
+    }
+    &--5 {
+      width: min(32vw, 230px);
+      height: min(32vw, 230px);
+      top: 20%;
+      right: 5%;
+      background: rgba(235, 222, 205, 0.28);
+      animation-duration: 18s;
+      animation-delay: -8s;
     }
   }
 
-  .contact-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 16px;
+  &.unified-section .contact-content {
+    max-width: var(--unified-container-width, 1100px);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--unified-container-pad, 40px);
+    padding-right: var(--unified-container-pad, 40px);
   }
 
   .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    align-items: center;
+    text-align: center;
   }
 
-  .contact-meta {
-    color: var(--text-secondary);
+  .heading-4.centre-align {
+    margin-bottom: var(--_responsive-sizes---spacing--l, 2rem);
+    max-width: 720px;
+  }
+
+  .contact-block {
+    margin-top: 0;
+    padding-top: var(--_responsive-sizes---spacing--m, 1.5rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    width: 100%;
+    max-width: 400px;
   }
 
   .contact-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
     margin-top: 0.5rem;
   }
 
   .contact-row {
     display: flex;
-    align-items: baseline;
+    justify-content: center;
+    align-items: center;
     gap: 0.5rem;
-    flex-wrap: wrap;
   }
+}
 
-  .contact-label {
-    font-size: 14px;
-    color: var(--text-secondary);
-  }
-
-  .contact-link {
-    font-size: clamp(14px, 2vw, 18px);
-    color: var(--accent);
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-    word-break: break-all;
-
-    &:hover {
-      opacity: 0.8;
-      text-decoration: underline;
-    }
-  }
+// Global: all gradient/blue accent text → white, same font as rest of site
+.gradient-text {
+  color: var(--text-white) !important;
+  -webkit-text-fill-color: unset !important;
+  background: none !important;
+  background-image: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  font-family: var(--font--sans-typography) !important;
 }

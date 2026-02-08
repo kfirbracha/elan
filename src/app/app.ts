@@ -567,21 +567,21 @@ finance, and end-to-end transaction support`.split('');
   }
 
   initScrollAnimations() {
-    // Text reveal animations - color shift from muted to white
+    // Text reveal animations - smoother, more fluid scroll-linked transition
     gsap.utils.toArray('.reveal-text').forEach((el: any) => {
       gsap.fromTo(
         el,
         {
           opacity: 0,
-          y: 40,
-          color: 'rgba(255, 255, 255, 0.3)',
+          y: 32,
+          color: 'rgba(255, 255, 255, 0.25)',
         },
         {
           scrollTrigger: {
             trigger: el,
-            start: 'top 85%',
-            end: 'top 60%',
-            scrub: 0.5,
+            start: 'top 90%',
+            end: 'top 35%',
+            scrub: 1.4,
           },
           opacity: 1,
           y: 0,
@@ -591,21 +591,21 @@ finance, and end-to-end transaction support`.split('');
       );
     });
 
-    // Fade animations
+    // Fade animations - smoother entrance
     gsap.utils.toArray('.reveal-fade').forEach((el: any) => {
       gsap.fromTo(
         el,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 24 },
         {
           scrollTrigger: {
             trigger: el,
-            start: 'top 85%',
+            start: 'top 88%',
             toggleActions: 'play none none none',
           },
           opacity: 1,
           y: 0,
-          duration: 0.8,
-          ease: 'power3.out',
+          duration: 1,
+          ease: 'power2.out',
         },
       );
     });
@@ -716,34 +716,35 @@ finance, and end-to-end transaction support`.split('');
   }
 
   initBenefitsScrollSync() {
-    const benefitsLeft = document.querySelector('.benefits-left-inner');
-    if (!benefitsLeft) return;
+    const benefitsSection = document.querySelector('.benefits-section');
+    if (!benefitsSection) return;
 
-    // Create a single ScrollTrigger that tracks progress through the section
+    // Set first benefit as active on load so text and titles are visible
+    this.setActiveBenefit(1);
+
+    // Pin section while scrolling through it (גלילה נעצרת) and sync left + right
     ScrollTrigger.create({
-      trigger: benefitsLeft,
-      start: 'top center',
-      end: 'bottom center',
+      trigger: benefitsSection,
+      start: 'top top',
+      end: 'bottom top',
+      pin: true,
       onUpdate: (self) => {
-        // Calculate which benefit should be active based on scroll progress
         const progress = self.progress;
         let activeNum = 1;
-
-        if (progress < 0.25) {
-          activeNum = 1;
-        } else if (progress < 0.5) {
-          activeNum = 2;
-        } else if (progress < 0.75) {
-          activeNum = 3;
-        } else {
-          activeNum = 4;
-        }
+        if (progress < 0.25) activeNum = 1;
+        else if (progress < 0.5) activeNum = 2;
+        else if (progress < 0.75) activeNum = 3;
+        else activeNum = 4;
 
         if (this.activeBenefitNumber !== activeNum) {
           this.setActiveBenefit(activeNum);
         }
       },
     });
+
+    // Refresh ScrollTrigger after layout has settled so scroll progress updates correctly
+    requestAnimationFrame(() => ScrollTrigger.refresh());
+    setTimeout(() => ScrollTrigger.refresh(), 300);
 
     // Show benefits nav when in section
     const benefitsNav = document.querySelector('.benefits-nav') as HTMLElement;
@@ -790,10 +791,12 @@ finance, and end-to-end transaction support`.split('');
       navNumber.textContent = `0${number}`;
     }
 
-    // Update titles opacity
+    // Update left titles – use class so CSS reliably shows active
     document.querySelectorAll('[data-benefits-title]').forEach((el) => {
       const num = el.getAttribute('data-benefits-title');
-      (el as HTMLElement).style.opacity = num === String(number) ? '1' : '0.3';
+      const isActive = num === String(number);
+      el.classList.remove('is-active-benefit-title');
+      if (isActive) el.classList.add('is-active-benefit-title');
     });
   }
 
