@@ -214,7 +214,7 @@ finance, and end-to-end transaction support`.split('');
         this.startSvgLinesAnimation();
         this.startMicroTextWordAnimation();
       }, 100);
-    }, 6000);
+    }, 4000);
   }
 
   ngOnDestroy() {
