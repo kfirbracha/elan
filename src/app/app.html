@@ -3514,7 +3514,7 @@
         disablePictureInPicture
         preload="auto"
       >
-        <source src="/energy-video.mp4" type="video/mp4" />
+        <source src="/nuclear-video.mp4" type="video/mp4" />
       </video>
       <div class="energy-section-overlay"></div>
     </div>
@@ -3597,7 +3597,7 @@
     </div>
 
     <!-- Video #3 placeholder -->
-    <div class="sector-video-secondary">
+    <!-- <div class="sector-video-secondary">
       <video
         class="growth-video"
         [muted]="true"
@@ -3610,7 +3610,7 @@
         <source src="/growth-video.mp4" type="video/mp4" />
       </video>
       <div class="video-overlay"></div>
-    </div>
+    </div> -->
   </section>
 
   <!-- ============================================ -->
@@ -3710,6 +3710,28 @@
         />
       </video>
       <div class="video-overlay dark"></div>
+    </div>
+  </section>
+
+  <!-- Elan Video Section (same layout as video-showcase) -->
+  <section class="video-showcase-section unified-section elan-video-section">
+    <div class="video-showcase-container">
+      <video
+        class="showcase-video"
+        [muted]="isElanVideoMuted"
+        autoplay
+        loop
+        playsinline
+        disablePictureInPicture
+        controls
+        preload="auto"
+      >
+        <source src="/elan.mp4" type="video/mp4" />
+      </video>
+      <button class="sound-toggle" (click)="toggleElanVideoMute()">
+        <span class="sound-icon">{{ isElanVideoMuted ? '🔇' : '🔊' }}</span>
+        <span class="sound-text">{{ isElanVideoMuted ? 'Enable Sound' : 'Mute' }}</span>
+      </button>
     </div>
   </section>
 

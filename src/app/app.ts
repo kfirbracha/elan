@@ -108,9 +108,14 @@ finance, and end-to-end transaction support`.split('');
   isUmbrellaVideoMuted = true;
   isWelcome8VideoMuted = true;
   isSectorVideoMuted = true;
+  isElanVideoMuted = true;
 
   toggleVideoMute() {
     this.isVideoMuted = !this.isVideoMuted;
+  }
+
+  toggleElanVideoMute() {
+    this.isElanVideoMuted = !this.isElanVideoMuted;
   }
 
   toggleUmbrellaVideoMute() {
@@ -567,7 +572,11 @@ finance, and end-to-end transaction support`.split('');
   }
 
   initScrollAnimations() {
-    // Text reveal animations - smoother, more fluid scroll-linked transition
+    const isMobile = window.matchMedia('(max-width: 991px)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const useScrubReveal = !isMobile && !prefersReducedMotion;
+
+    // Text reveal: on mobile/reduced-motion use one-shot (no scrub) to avoid jank
     gsap.utils.toArray('.reveal-text').forEach((el: any) => {
       gsap.fromTo(
         el,
@@ -580,18 +589,20 @@ finance, and end-to-end transaction support`.split('');
           scrollTrigger: {
             trigger: el,
             start: 'top 90%',
-            end: 'top 35%',
-            scrub: 1.4,
+            ...(useScrubReveal
+              ? { end: 'top 35%', scrub: 1.4 }
+              : { toggleActions: 'play none none none' }),
           },
           opacity: 1,
           y: 0,
           color: 'rgba(255, 255, 255, 1)',
+          duration: useScrubReveal ? undefined : 0.7,
           ease: 'power2.out',
         },
       );
     });
 
-    // Fade animations - smoother entrance
+    // Fade animations - one-shot on all devices (already smooth)
     gsap.utils.toArray('.reveal-fade').forEach((el: any) => {
       gsap.fromTo(
         el,
@@ -604,7 +615,7 @@ finance, and end-to-end transaction support`.split('');
           },
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: prefersReducedMotion ? 0.3 : 1,
           ease: 'power2.out',
         },
       );
@@ -622,78 +633,78 @@ finance, and end-to-end transaction support`.split('');
       },
     });
 
-    // Background parallax on orbs
-    gsap.to('.orb-1', {
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1,
-      },
-      y: -200,
-      x: 50,
-      ease: 'none',
-    });
+    // Parallax only on desktop and when motion is allowed (avoids mobile jank)
+    if (!isMobile && !prefersReducedMotion) {
+      gsap.to('.orb-1', {
+        scrollTrigger: {
+          trigger: 'body',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1,
+        },
+        y: -200,
+        x: 50,
+        ease: 'none',
+      });
 
-    gsap.to('.orb-2', {
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 1.5,
-      },
-      y: -150,
-      x: -30,
-      ease: 'none',
-    });
+      gsap.to('.orb-2', {
+        scrollTrigger: {
+          trigger: 'body',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1.5,
+        },
+        y: -150,
+        x: -30,
+        ease: 'none',
+      });
 
-    gsap.to('.orb-3', {
-      scrollTrigger: {
-        trigger: 'body',
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 2,
-      },
-      y: -100,
-      ease: 'none',
-    });
+      gsap.to('.orb-3', {
+        scrollTrigger: {
+          trigger: 'body',
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 2,
+        },
+        y: -100,
+        ease: 'none',
+      });
 
-    // Admission parallax
-    gsap.to('.admission-bg', {
-      scrollTrigger: {
-        trigger: '.admission-section',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1,
-      },
-      y: -80,
-      ease: 'none',
-    });
+      gsap.to('.admission-bg', {
+        scrollTrigger: {
+          trigger: '.admission-section',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+        y: -80,
+        ease: 'none',
+      });
 
-    // Video parallax effects
-    gsap.to('.showcase-video', {
-      scrollTrigger: {
-        trigger: '.video-showcase-section',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1,
-      },
-      y: 100,
-      scale: 1.1,
-      ease: 'none',
-    });
+      gsap.to('.showcase-video', {
+        scrollTrigger: {
+          trigger: '.video-showcase-section',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+        y: 100,
+        scale: 1.1,
+        ease: 'none',
+      });
 
-    gsap.to('.break-video', {
-      scrollTrigger: {
-        trigger: '.video-break-section',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1,
-      },
-      y: 80,
-      scale: 1.15,
-      ease: 'none',
-    });
+      gsap.to('.break-video', {
+        scrollTrigger: {
+          trigger: '.video-break-section',
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1,
+        },
+        y: 80,
+        scale: 1.15,
+        ease: 'none',
+      });
+    }
 
     // Hero video parallax
     // gsap.to('.hero-video', {

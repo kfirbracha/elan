@@ -999,11 +999,13 @@ blink animation {
 }
 
 @keyframes accentGlow {
+
   0%,
   100% {
     opacity: 1;
     text-shadow: 0 0 0 transparent;
   }
+
   50% {
     opacity: 1;
     text-shadow: 0 0 20px var(--accent-dim), 0 0 40px var(--accent-glow);
@@ -1015,6 +1017,7 @@ blink animation {
     transform: scaleX(0);
     opacity: 0.6;
   }
+
   100% {
     transform: scaleX(1);
     opacity: 1;
@@ -1097,7 +1100,7 @@ blink animation {
   }
 
   // Keep content above section-bg-elements (blobs)
-  & > *:not(.section-bg-elements) {
+  &>*:not(.section-bg-elements) {
     position: relative;
     z-index: 1;
   }
@@ -1124,19 +1127,23 @@ blink animation {
 }
 
 @keyframes sectionBlobFloat {
+
   0%,
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.3;
   }
+
   25% {
     transform: translate(4%, -6%) scale(1.04);
     opacity: 0.45;
   }
+
   50% {
     transform: translate(-3%, 4%) scale(0.98);
     opacity: 0.35;
   }
+
   75% {
     transform: translate(5%, 2%) scale(1.02);
     opacity: 0.4;
@@ -1144,15 +1151,18 @@ blink animation {
 }
 
 @keyframes sectionBlobFloat2 {
+
   0%,
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.22;
   }
+
   33% {
     transform: translate(-6%, 5%) scale(1.06);
     opacity: 0.38;
   }
+
   66% {
     transform: translate(3%, -3%) scale(0.96);
     opacity: 0.28;
@@ -1164,10 +1174,12 @@ blink animation {
     background-position: 0% 50%;
     opacity: 1;
   }
+
   50% {
     background-position: 100% 50%;
     opacity: 0.92;
   }
+
   100% {
     background-position: 0% 50%;
     opacity: 1;
@@ -1469,6 +1481,10 @@ blink animation {
     margin: 1.5rem auto;
     padding: 0.5rem 0.75rem;
 
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+
     .nav-button.is-btn {
       font-size: 0.65rem;
     }
@@ -1553,6 +1569,13 @@ blink animation {
   }
 }
 
+.loading-login {
+  @media (max-width: 576px) {
+    height: 50%;
+    justify-content: space-between;
+  }
+}
+
 // Loading Screen Container with blue light effect
 .loading-screen-container {
   position: fixed;
@@ -1619,6 +1642,7 @@ blink animation {
   align-items: center;
   justify-content: center;
   transition: opacity 0.8s var(--ease-out), visibility 0.8s;
+
 
   &.hidden {
     opacity: 0;
@@ -2310,7 +2334,48 @@ blink animation {
   }
 }
 
-// Stagger delays
+// Mobile: shorter transitions to reduce jank and feel snappier
+@media (max-width: 991px) {
+  .reveal-text {
+    transition-duration: 0.5s;
+  }
+
+  .reveal-fade {
+    transition-duration: 0.6s;
+  }
+
+  .reveal-delay-1 {
+    transition-delay: 0.05s;
+  }
+
+  .reveal-delay-2 {
+    transition-delay: 0.1s;
+  }
+
+  .reveal-delay-3 {
+    transition-delay: 0.15s;
+  }
+
+  .reveal-delay-4 {
+    transition-delay: 0.2s;
+  }
+
+  .reveal-delay-5 {
+    transition-delay: 0.25s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-text {
+    transition-duration: 0.3s;
+  }
+
+  .reveal-fade {
+    transition-duration: 0.35s;
+  }
+}
+
+// Stagger delays (desktop)
 .reveal-delay-1 {
   transition-delay: 0.1s;
 }
@@ -2445,13 +2510,11 @@ blink animation {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(
-      85deg,
-      rgba(200, 210, 225, 0.08) 0%,
-      transparent 40%,
-      rgba(180, 195, 210, 0.05) 70%,
-      transparent 100%
-    );
+    background: linear-gradient(85deg,
+        rgba(200, 210, 225, 0.08) 0%,
+        transparent 40%,
+        rgba(180, 195, 210, 0.05) 70%,
+        transparent 100%);
     background-size: 280% 280%;
     animation: sectionGradientMove 20s ease-in-out infinite;
     pointer-events: none;
@@ -2469,6 +2532,7 @@ blink animation {
       animation-duration: 23s;
       animation-delay: 0s;
     }
+
     &--2 {
       width: min(40vw, 300px);
       height: min(40vw, 300px);
@@ -2479,6 +2543,7 @@ blink animation {
       animation-duration: 25s;
       animation-delay: -6s;
     }
+
     &--3 {
       width: min(36vw, 260px);
       height: min(36vw, 260px);
@@ -2488,6 +2553,7 @@ blink animation {
       animation-duration: 19s;
       animation-delay: -12s;
     }
+
     &--4 {
       width: min(44vw, 320px);
       height: min(44vw, 320px);
@@ -2498,6 +2564,7 @@ blink animation {
       animation-duration: 22s;
       animation-delay: -3s;
     }
+
     &--5 {
       width: min(30vw, 220px);
       height: min(30vw, 220px);
@@ -2536,7 +2603,8 @@ blink animation {
     margin-bottom: 56px;
 
     @media (max-width: 768px) {
-      flex-direction: column;
+      flex-direction: row;
+      flex-wrap: wrap;
       gap: 24px;
     }
 
@@ -2550,6 +2618,7 @@ blink animation {
 
       @media (max-width: 768px) {
         padding-right: 0;
+        overflow-y: clip;
       }
     }
 
@@ -3410,13 +3479,11 @@ blink animation {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(
-      140deg,
-      transparent 0%,
-      rgba(180, 200, 190, 0.06) 35%,
-      rgba(170, 195, 182, 0.08) 65%,
-      transparent 100%
-    );
+    background: linear-gradient(140deg,
+        transparent 0%,
+        rgba(180, 200, 190, 0.06) 35%,
+        rgba(170, 195, 182, 0.08) 65%,
+        transparent 100%);
     background-size: 270% 270%;
     animation: sectionGradientMove 23s ease-in-out infinite;
     pointer-events: none;
@@ -3434,6 +3501,7 @@ blink animation {
       animation-duration: 22s;
       animation-delay: 0s;
     }
+
     &--2 {
       width: min(40vw, 290px);
       height: min(40vw, 290px);
@@ -3444,6 +3512,7 @@ blink animation {
       animation-duration: 24s;
       animation-delay: -5s;
     }
+
     &--3 {
       width: min(36vw, 260px);
       height: min(36vw, 260px);
@@ -3453,6 +3522,7 @@ blink animation {
       animation-duration: 19s;
       animation-delay: -11s;
     }
+
     &--4 {
       width: min(42vw, 300px);
       height: min(42vw, 300px);
@@ -3463,6 +3533,7 @@ blink animation {
       animation-duration: 21s;
       animation-delay: -3s;
     }
+
     &--5 {
       width: min(30vw, 220px);
       height: min(30vw, 220px);
@@ -3487,12 +3558,10 @@ blink animation {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(
-      220deg,
-      rgba(200, 190, 220, 0.07) 0%,
-      transparent 50%,
-      rgba(190, 180, 210, 0.06) 100%
-    );
+    background: linear-gradient(220deg,
+        rgba(200, 190, 220, 0.07) 0%,
+        transparent 50%,
+        rgba(190, 180, 210, 0.06) 100%);
     background-size: 260% 260%;
     animation: sectionGradientMove 22s ease-in-out infinite;
     pointer-events: none;
@@ -3510,6 +3579,7 @@ blink animation {
       animation-duration: 24s;
       animation-delay: 0s;
     }
+
     &--2 {
       width: min(38vw, 280px);
       height: min(38vw, 280px);
@@ -3520,6 +3590,7 @@ blink animation {
       animation-duration: 26s;
       animation-delay: -7s;
     }
+
     &--3 {
       width: min(42vw, 300px);
       height: min(42vw, 300px);
@@ -3529,6 +3600,7 @@ blink animation {
       animation-duration: 20s;
       animation-delay: -4s;
     }
+
     &--4 {
       width: min(35vw, 260px);
       height: min(35vw, 260px);
@@ -3539,6 +3611,7 @@ blink animation {
       animation-duration: 23s;
       animation-delay: -11s;
     }
+
     &--5 {
       width: min(32vw, 240px);
       height: min(32vw, 240px);
@@ -3772,13 +3845,11 @@ blink animation {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(
-      270deg,
-      rgba(220, 225, 235, 0.06) 0%,
-      transparent 45%,
-      rgba(200, 210, 222, 0.05) 80%,
-      transparent 100%
-    );
+    background: linear-gradient(270deg,
+        rgba(220, 225, 235, 0.06) 0%,
+        transparent 45%,
+        rgba(200, 210, 222, 0.05) 80%,
+        transparent 100%);
     background-size: 240% 240%;
     animation: sectionGradientMove 19s ease-in-out infinite;
     pointer-events: none;
@@ -3796,6 +3867,7 @@ blink animation {
       animation-duration: 22s;
       animation-delay: 0s;
     }
+
     &--2 {
       width: min(40vw, 300px);
       height: min(40vw, 300px);
@@ -3806,6 +3878,7 @@ blink animation {
       animation-duration: 24s;
       animation-delay: -5s;
     }
+
     &--3 {
       width: min(38vw, 280px);
       height: min(38vw, 280px);
@@ -3815,6 +3888,7 @@ blink animation {
       animation-duration: 18s;
       animation-delay: -9s;
     }
+
     &--4 {
       width: min(42vw, 310px);
       height: min(42vw, 310px);
@@ -3825,6 +3899,7 @@ blink animation {
       animation-duration: 21s;
       animation-delay: -3s;
     }
+
     &--5 {
       width: min(28vw, 200px);
       height: min(28vw, 200px);
@@ -4317,7 +4392,9 @@ blink animation {
 
   @media (max-width: 768px) {
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    padding: 0 var(--unified-container-pad, 1rem);
   }
 
   .stat-left,
@@ -4343,6 +4420,13 @@ blink animation {
     max-width: 400px;
     display: grid;
     position: relative;
+
+    @media (max-width: 768px) {
+      max-width: 200px;
+    }
+    @media (max-width: 480px) {
+      max-width: 160px;
+    }
   }
 
   // SVG Circles
@@ -4398,6 +4482,13 @@ blink animation {
     align-items: baseline;
     z-index: 2;
 
+    @media (max-width: 768px) {
+      font-size: 6em;
+    }
+    @media (max-width: 480px) {
+      font-size: 4.5em;
+    }
+
     [data-stats-left-number-percentage],
     [data-stats-right-number-percentage] {
       font-size: 0.4em;
@@ -4430,6 +4521,15 @@ blink animation {
       text-align: center;
       padding: 20%;
 
+      @media (max-width: 768px) {
+        font-size: 6px;
+        padding: 22%;
+      }
+      @media (max-width: 480px) {
+        font-size: 5px;
+        padding: 24%;
+      }
+
       .split-word {
         display: inline;
         margin: 0 2px;
@@ -4448,8 +4548,25 @@ blink animation {
     color: var(--text-muted);
     line-height: 1.6;
 
+    @media (max-width: 768px) {
+      padding-top: 1rem;
+      max-width: 16rem;
+      font-size: 12px;
+    }
+    @media (max-width: 480px) {
+      max-width: 14rem;
+      font-size: 11px;
+    }
+
     &.is-right {
       max-width: 22rem;
+
+      @media (max-width: 768px) {
+        max-width: 16rem;
+      }
+      @media (max-width: 480px) {
+        max-width: 14rem;
+      }
     }
   }
 
@@ -4511,6 +4628,7 @@ blink animation {
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  min-width: 0; // prevent flex content (2× 100vw lines) from forcing horizontal scroll
   display: flex;
   position: relative;
   overflow: clip;
@@ -4628,6 +4746,7 @@ blink animation {
     padding-left: var(--unified-container-pad, 40px);
     padding-right: var(--unified-container-pad, 40px);
   }
+
   grid-column-gap: var(--_responsive-sizes---spacing--m);
   grid-row-gap: var(--_responsive-sizes---spacing--m);
   flex-flow: column;
@@ -6169,13 +6288,11 @@ heading-5 {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(
-      160deg,
-      rgba(220, 190, 140, 0.08) 0%,
-      transparent 45%,
-      rgba(180, 150, 100, 0.06) 70%,
-      transparent 100%
-    );
+    background: linear-gradient(160deg,
+        rgba(220, 190, 140, 0.08) 0%,
+        transparent 45%,
+        rgba(180, 150, 100, 0.06) 70%,
+        transparent 100%);
     background-size: 250% 250%;
     animation: sectionGradientMove 18s ease-in-out infinite;
     pointer-events: none;
@@ -6193,6 +6310,7 @@ heading-5 {
       animation-duration: 22s;
       animation-delay: 0s;
     }
+
     &--2 {
       width: min(42vw, 320px);
       height: min(42vw, 320px);
@@ -6203,6 +6321,7 @@ heading-5 {
       animation-duration: 24s;
       animation-delay: -5s;
     }
+
     &--3 {
       width: min(38vw, 280px);
       height: min(38vw, 280px);
@@ -6212,6 +6331,7 @@ heading-5 {
       animation-duration: 19s;
       animation-delay: -10s;
     }
+
     &--4 {
       width: min(45vw, 340px);
       height: min(45vw, 340px);
@@ -6222,6 +6342,7 @@ heading-5 {
       animation-duration: 21s;
       animation-delay: -3s;
     }
+
     &--5 {
       width: min(32vw, 240px);
       height: min(32vw, 240px);
@@ -6618,6 +6739,7 @@ heading-5 {
     &.accent-hover:hover {
       color: var(--accent);
     }
+
     justify-content: center;
     gap: 0.4em;
     max-width: 900px;
@@ -7080,10 +7202,12 @@ heading-5 {
     background-position: 0% 50%;
     opacity: 1;
   }
+
   50% {
     background-position: 100% 50%;
     opacity: 0.9;
   }
+
   100% {
     background-position: 0% 50%;
     opacity: 1;
@@ -7091,19 +7215,23 @@ heading-5 {
 }
 
 @keyframes minraBlobFloat {
+
   0%,
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.35;
   }
+
   25% {
     transform: translate(5%, -8%) scale(1.05);
     opacity: 0.5;
   }
+
   50% {
     transform: translate(-4%, 5%) scale(0.98);
     opacity: 0.4;
   }
+
   75% {
     transform: translate(6%, 3%) scale(1.02);
     opacity: 0.45;
@@ -7111,15 +7239,18 @@ heading-5 {
 }
 
 @keyframes minraBlobFloat2 {
+
   0%,
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 0.25;
   }
+
   33% {
     transform: translate(-8%, 6%) scale(1.08);
     opacity: 0.4;
   }
+
   66% {
     transform: translate(4%, -4%) scale(0.95);
     opacity: 0.3;
@@ -7145,14 +7276,12 @@ heading-5 {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(232, 220, 196, 0.12) 0%,
-      transparent 35%,
-      rgba(180, 160, 120, 0.08) 50%,
-      transparent 70%,
-      rgba(220, 200, 160, 0.1) 100%
-    );
+    background: linear-gradient(135deg,
+        rgba(232, 220, 196, 0.12) 0%,
+        transparent 35%,
+        rgba(180, 160, 120, 0.08) 50%,
+        transparent 70%,
+        rgba(220, 200, 160, 0.1) 100%);
     background-size: 300% 300%;
     animation: minraGradientShift 15s ease-in-out infinite;
     pointer-events: none;
@@ -7662,7 +7791,7 @@ heading-5 {
   inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   text-align: center;
   padding: clamp(32px, 6vw, 64px) clamp(24px, 5vw, 48px);
