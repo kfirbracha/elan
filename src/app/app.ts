@@ -202,6 +202,30 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     localStorage.setItem(STORAGE_LANG_KEY, code);
   }
 
+  /** Contact form: open mailto with subject and body (no backend). */
+  onContactSubmit(event: Event) {
+    event.preventDefault();
+    const form = event.target as HTMLFormElement;
+    const data = new FormData(form);
+    const subject = (data.get('subject') as string) || '7 Factors – Contact';
+    const fullName = (data.get('fullName') as string) || '';
+    const company = (data.get('company') as string) || '';
+    const email = (data.get('email') as string) || '';
+    const phone = (data.get('phone') as string) || '';
+    const message = (data.get('message') as string) || '';
+    const body = [
+      fullName && `Name: ${fullName}`,
+      company && `Company: ${company}`,
+      email && `Email: ${email}`,
+      phone && `Phone: ${phone}`,
+      message && `Message:\n${message}`,
+    ]
+      .filter(Boolean)
+      .join('\n\n');
+    const mailto = `mailto:info@7factors.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  }
+
   ngOnInit() {
     this.startLoadingAnimation();
   }
