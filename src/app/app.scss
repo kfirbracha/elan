@@ -4,6 +4,53 @@
 // ============================================
 
 // ==========================================
+// LANGUAGE SWITCHER (flags at top)
+// ==========================================
+.lang-switcher {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  border-bottom-left-radius: 8px;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.lang-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--lightning-color, #8898e7);
+  box-shadow: 0 0 0 1px var(--lightning-color, #8898e7);
+}
+
+.lang-flag {
+  font-size: 1rem;
+}
+
+// ==========================================
 // LOADING SCREEN
 // ==========================================
 @font-face {

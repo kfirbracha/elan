@@ -1,3 +1,19 @@
+<!-- Language switcher: fixed at top -->
+<nav class="lang-switcher" aria-label="Language selection">
+  @for (lang of supportedLanguages; track lang.code) {
+    <button
+      type="button"
+      class="lang-btn"
+      [class.active]="currentLang === lang.code"
+      [attr.aria-label]="lang.label"
+      [attr.title]="lang.label"
+      (click)="setLanguage(lang.code)"
+    >
+      <span class="lang-flag" aria-hidden="true">{{ lang.flag }}</span>
+    </button>
+  }
+</nav>
+
 <!-- Loading Screen -->
 <!-- <div class="loading-screen" [class.hidden]="!isLoading">
   <div class="loading-content">
@@ -39,12 +55,12 @@
       "
     >
       <!-- <div class="login-title" style="">7 GROUPS OF 8</div> -->
-      <div class="loading-subtitle">A Global Wall Street Umbrella Network</div>
+      <div class="loading-subtitle">{{ 'loading.subtitle' | translate }}</div>
     </div>
   </div>
 
   <div class="loading-text" style="text-align: center">
-    {{ loadingText }}
+    {{ 'loading.loadingText' | translate }}
     <span style="color: transparent">
       {{ loadingDots }}
     </span>
@@ -86,9 +102,9 @@
     <div class="container hero-container">
       <h1 class="hero-title">
         <span class="hero-title-line">
-          7 FACTORS LLC<br />
-          Umbrella Growth Strategy<br />
-          Building Billion-Dollar Giants
+          {{ 'hero.titleLine1' | translate }}<br />
+          {{ 'hero.titleLine2' | translate }}<br />
+          {{ 'hero.titleLine3' | translate }}
         </span>
       </h1>
 
@@ -110,25 +126,24 @@
 
       <div class="invitation-content">
         <h3 class="invitation-subtitle reveal-text reveal-delay-1">
-          Strategic M&amp;A and IPO engine for building multi-billion-dollar enterprises across
-          energy, mining, commodities, infrastructure, and frontier technologies.
+          {{ 'hero.invitation' | translate }}
         </h3>
       </div>
       <div class="nav-bar">
         <a data-button="" href="#7factors" class="nav-button is-btn w-inline-block"
-          ><div data-button-text="" data-load-nav-link="">Gov Finance</div></a
+          ><div data-button-text="" data-load-nav-link="">{{ 'nav.govFinance' | translate }}</div></a
         >
         <div class="nav-button is-non">|</div>
         <a data-button="" href="#lng" class="nav-button is-btn w-inline-block"
-          ><div data-button-text="" data-load-nav-link="">LNG</div></a
+          ><div data-button-text="" data-load-nav-link="">{{ 'nav.lng' | translate }}</div></a
         >
         <div class="nav-button is-non">|</div>
         <a data-button="" href="#mining" class="nav-button is-btn w-inline-block"
-          ><div data-button-text="" data-load-nav-link="">Gold &amp; Mining</div></a
+          ><div data-button-text="" data-load-nav-link="">{{ 'nav.goldMining' | translate }}</div></a
         >
         <div class="nav-button is-non">|</div>
         <a data-button="" href="#space-minerals" class="nav-button is-btn w-inline-block"
-          ><div data-button-text="" data-load-nav-link="">Space Minerals</div></a
+          ><div data-button-text="" data-load-nav-link="">{{ 'nav.spaceMinerals' | translate }}</div></a
         >
       </div>
     </div>
@@ -1281,37 +1296,35 @@
         <ul class="factors-list">
           <li>
             7 LNG <br />
-            <span class="factors-list-item-subtext"
-              >Seismic Surveys — 3D/4D Offshore Oil &amp; Gas Exploration</span
-            >
+            <span class="factors-list-item-subtext">{{ 'sectors.seismicSurveys' | translate }}</span>
           </li>
           <li>
             7Factors LNG<br />
-            <span class="factors-list-item-subtext">End-to-End LNG Distribution</span>
+            <span class="factors-list-item-subtext">{{ 'sectors.lngDistribution' | translate }}</span>
           </li>
           <li>
             MINRA 7 <br />
-            <span class="factors-list-item-subtext">Mining &amp; Minerals Division</span>
+            <span class="factors-list-item-subtext">{{ 'sectors.miningMinerals' | translate }}</span>
           </li>
           <li>
             8 Gold <br />
-            <span class="factors-list-item-subtext">Investment &amp; Trade</span>
+            <span class="factors-list-item-subtext">{{ 'sectors.investmentTrade' | translate }}</span>
           </li>
           <li>
             Advanced Intelligence (8 AI) <br />
-            <span class="factors-list-item-subtext">Strategic AI, Data & Intelligence Systems</span>
+            <span class="factors-list-item-subtext">{{ 'sectors.strategicAI' | translate }}</span>
           </li>
           <li>
             Nissim Trust (2027)<br />
-            <span class="factors-list-item-subtext">Upcoming Banking & Financial Group</span>
+            <span class="factors-list-item-subtext">{{ 'sectors.bankingGroup' | translate }}</span>
           </li>
           <li>
             MineraX <br />
-            <span class="factors-list-item-subtext">The Future of Energy, From Space to Earth</span>
+            <span class="factors-list-item-subtext">{{ 'sectors.futureEnergy' | translate }}</span>
           </li>
           <li>
             WAIKE <br />
-            <span class="factors-list-item-subtext">Agriculture &amp; Commodities</span>
+            <span class="factors-list-item-subtext">{{ 'sectors.agricultureCommodities' | translate }}</span>
           </li>
         </ul>
       </div>
@@ -1368,7 +1381,7 @@
       </video>
       <button class="sound-toggle" (click)="toggleVideoMute()">
         <span class="sound-icon">{{ isVideoMuted ? '🔇' : '🔊' }}</span>
-        <span class="sound-text">{{ isVideoMuted ? 'Enable Sound' : 'Mute' }}</span>
+        <span class="sound-text">{{ isVideoMuted ? ('sound.enableSound' | translate) : ('sound.mute' | translate) }}</span>
       </button>
     </div>
   </section>
@@ -1455,7 +1468,7 @@
 
       <div class="vision-features">
         <div class="vision-feature-container">
-          <h3 class="vision-feature-title reveal-text">8 Turning Vision Into Global Milestones</h3>
+          <h3 class="vision-feature-title reveal-text">{{ 'vision.turningVisionTitle' | translate }}</h3>
           <div class="vision-feature vision-feature-video-container">
             <div class="vision-feature-video">
               <video
@@ -1477,18 +1490,18 @@
         </div>
         <div class="vision-feature vision-feature-text">
           <h3 class="vision-feature-title reveal-text">
-            Empowering Growth. Unlocking Potential. Delivering Impact.
+            {{ 'vision.empoweringTitle' | translate }}
           </h3>
           <p class="reveal-text reveal-delay-1">
-            Transform industries and economies through mega-project development
+            {{ 'vision.visionP1' | translate }}
           </p>
           <p class="reveal-text reveal-delay-2">
-            Unlock Africa's and global resource potential responsibly and profitably
+            {{ 'vision.visionP2' | translate }}
           </p>
           <p class="reveal-text reveal-delay-3">
-            Deliver end-to-end solutions from capital deployment to global commercialization
+            {{ 'vision.visionP3' | translate }}
           </p>
-          <p class="slogan reveal-text reveal-delay-4">We Lead Where Others Follow</p>
+          <p class="slogan reveal-text reveal-delay-4">{{ 'vision.slogan' | translate }}</p>
         </div>
       </div>
     </div>
@@ -1527,27 +1540,15 @@
       </div>
       <div class="small-flex is-industry">
         <h2 class="heading-5 is-industry reveal-text">
-          Our Team: Visionaries Leading Transformation
+          {{ 'team.heading' | translate }}
         </h2>
         <p class="team-intro reveal-text reveal-delay-1">
-          7Factors is guided by a team of financial strategists, legal experts, and project managers
-          who bring elite-level expertise across sectors. From sovereign lending and credit risk to
-          multi-jurisdictional legal compliance and large-scale project execution, our team excels
-          in delivering complex, high-impact initiatives.
+          {{ 'team.intro' | translate }}
         </p>
         <ul class="team-expertise-list reveal-fade">
-          <li>
-            <strong>Financial Strategists:</strong> Experts in sovereign lending, credit risk
-            management, and macroeconomic impact.
-          </li>
-          <li>
-            <strong>Legal Advisors:</strong> Internationally recognized law firms handling
-            multi-jurisdictional compliance.
-          </li>
-          <li>
-            <strong>Project Managers:</strong> Operators with extensive experience delivering major
-            infrastructure projects at scale.
-          </li>
+          <li>{{ 'team.financialStrategists' | translate }}</li>
+          <li>{{ 'team.legalAdvisors' | translate }}</li>
+          <li>{{ 'team.projectManagers' | translate }}</li>
         </ul>
       </div>
       <div class="svg-guideline_outer">
@@ -1575,20 +1576,16 @@
   <section id="7factors" class="factors-hero-section unified-section">
     <div class="factors-content">
       <div class="factors-header">
-        <h2 class="factors-title reveal-text">Who We Are</h2>
+        <h2 class="factors-title reveal-text">{{ 'factors.whoWeAre' | translate }}</h2>
       </div>
       <p class="factors-tagline reveal-text reveal-delay-1">
-        7 Factors LLC is a global investment and operating platform focused on the creation,
-        scaling, and public listing of large-scale enterprises.
+        {{ 'factors.tagline' | translate }}
       </p>
       <p class="factors-slogan reveal-text reveal-delay-2">
-        <span class="gradient-text"
-          >We do not advise external clients. We build, acquire, integrate, and scale companies
-          within our own group, ensuring alignment, control, and long-term value creation.</span
-        >
+        <span class="gradient-text">{{ 'factors.slogan' | translate }}</span>
       </p>
       <p class="factors-tagline reveal-text reveal-delay-3">
-        Our mandate is simple: Transform strategic assets into global market leaders.
+        {{ 'factors.mandate' | translate }}
       </p>
     </div>
 
@@ -1607,7 +1604,7 @@
         </video>
         <button class="sound-toggle" (click)="toggle8VideoMute()">
           <span class="sound-icon">{{ is8VideoMuted ? '🔇' : '🔊' }}</span>
-          <span class="sound-text">{{ is8VideoMuted ? 'Enable Sound' : 'Mute' }}</span>
+          <span class="sound-text">{{ is8VideoMuted ? ('sound.enableSound' | translate) : ('sound.mute' | translate) }}</span>
         </button>
       </div>
     </div>
@@ -1632,52 +1629,39 @@
     <div class="w-layout-grid global-grid factors-detail-content">
       <div class="factors-intro">
         <div class="factors-badge">
-          <span class="subheading">7 FACTORS LLC FZ</span>
+          <span class="subheading">{{ 'gov.badge' | translate }}</span>
           <span class="subheading is-dark">—</span>
-          <span class="subheading">GOVERNMENT MEGA PROJECT FINANCE</span>
+          <span class="subheading">{{ 'gov.badgeGov' | translate }}</span>
         </div>
         <h3 class="heading-4 is-letter">
-          <span class="gradient-text"
-            >Your Global Source for Sovereign Funding &amp; National Development Capital</span
-          >
+          <span class="gradient-text">{{ 'gov.heading' | translate }}</span>
         </h3>
         <p class="factors-vision-slogan">
-          <span class="highlight">WHERE VISION MEETS SCALE</span>
+          <span class="highlight">{{ 'gov.visionMeetsScale' | translate }}</span>
         </p>
       </div>
       <div class="factors-details-container">
         <h4 class="factors-section-title">
-          Government Mega Project Financing and Development<br />
-          <span class="gradient-text">Through Joint Ventures and Loans</span>
+          {{ 'gov.sectionTitle' | translate }}<br />
+          <span class="gradient-text">{{ 'gov.sectionTitleLine2' | translate }}</span>
         </h4>
         <p class="body-large gradient-text">
-          7 Factors LLC FZ is a sovereign–finance institution specializing in large-scale government
-          funding, including national infrastructure, strategic development, and economic
-          transformation projects.
+          {{ 'gov.body1' | translate }}
         </p>
 
         <div class="factors-services">
-          <h5 class="factors-services-title">We Arrange:</h5>
+          <h5 class="factors-services-title">{{ 'gov.weArrange' | translate }}</h5>
           <ul class="factors-list">
             <li class="factors-list-item">
-              <span class="highlight">Government-to-government financing</span>
+              <span class="highlight">{{ 'gov.list1' | translate }}</span>
             </li>
-            <li class="factors-list-item">
-              <span class="highlight">Sovereign loans</span> based on mega-project financing and
-              development led by 7 Factors
-            </li>
-            <li class="factors-list-item">
-              <span class="highlight">Mega-project capital</span> starting from USD 1 billion and
-              upward
-            </li>
+            <li class="factors-list-item">{{ 'gov.list2' | translate }}</li>
+            <li class="factors-list-item">{{ 'gov.list3' | translate }}</li>
           </ul>
         </div>
 
         <p class="body-large gradient-text centre-align">
-          Our financing supports national programs that
-          <span class="highlight">stimulate economic growth</span>,
-          <span class="highlight">modernize infrastructure</span>, and strengthen
-          <span class="highlight">long-term national stability.</span>
+          {{ 'gov.supportLine' | translate }}
         </p>
       </div>
     </div>
@@ -1689,108 +1673,60 @@
       <div class="marquee-track">
         <!-- First set of logos -->
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Offshore Energy <br />
-            Gas • Oil • LNG
-          </span>
+          <span class="brand-logo">{{ 'marquee.offshoreEnergy' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Government Mega Projects <br />
-            Finance • Development • Structured Loans
-          </span>
+          <span class="brand-logo">{{ 'marquee.govMega' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Strategic Minerals <br />
-            Gold • Minerals • Minrex
-          </span>
+          <span class="brand-logo">{{ 'marquee.strategicMinerals' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Advanced Intelligence <br />
-            8 AI • Data • Systems
-          </span>
+          <span class="brand-logo">{{ 'marquee.advancedIntel' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Nissim Trust Banking Group <br />
-            Capital Management • Banking Solutions • Investment Oversight
-          </span>
+          <span class="brand-logo">{{ 'marqueeExtra.nissimTrust' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Gold Trading <br />
-            Global Market Access • Secure Logistics • Risk-Managed Investments
-          </span>
+          <span class="brand-logo">{{ 'marqueeExtra.goldTrading' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >WAIKE — Agriculture & Commodities <br />
-            Organic Sugar • Coffee • Cacao • Tea • Vanilla • Avocado
-          </span>
+          <span class="brand-logo">{{ 'marqueeExtra.waike' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >7 Factors AI <br />
-            Custom AI Development • Data Engineering • Generative AI
-          </span>
+          <span class="brand-logo">{{ 'marqueeExtra.sevenFactorsAi' | translate }}</span>
         </div>
 
         <!-- Duplicate set for infinite scroll -->
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Offshore Energy <br />
-            Gas • Oil • LNG
-          </span>
+          <span class="brand-logo">{{ 'marquee.offshoreEnergy' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Government Mega Projects <br />
-            Finance • Development • Structured Loans
-          </span>
+          <span class="brand-logo">{{ 'marquee.govMega' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Strategic Minerals <br />
-            Gold • Minerals • Minrex
-          </span>
+          <span class="brand-logo">{{ 'marquee.strategicMinerals' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Advanced Intelligence <br />
-            8 AI • Data • Systems
-          </span>
+          <span class="brand-logo">{{ 'marquee.advancedIntel' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Nissim Trust Banking Group <br />
-            Capital Management • Banking Solutions • Investment Oversight
-          </span>
+          <span class="brand-logo">{{ 'marqueeExtra.nissimTrust' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >Gold Trading <br />
-            Global Market Access • Secure Logistics • Risk-Managed Investments
-          </span>
+          <span class="brand-logo">{{ 'marqueeExtra.goldTrading' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >WAIKE — Agriculture & Commodities <br />
-            Organic Sugar • Coffee • Cacao • Tea • Vanilla • Avocado
-          </span>
+          <span class="brand-logo">{{ 'marqueeExtra.waike' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo"
-            >7 Factors AI <br />
-            Custom AI Development • Data Engineering • Generative AI
-          </span>
+          <span class="brand-logo">{{ 'marqueeExtra.sevenFactorsAi' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo">Neuralink</span>
+          <span class="brand-logo">{{ 'marqueeExtra.neuralink' | translate }}</span>
         </div>
         <div class="logo-cover">
-          <span class="brand-logo">Discord</span>
+          <span class="brand-logo">{{ 'marqueeExtra.discord' | translate }}</span>
         </div>
       </div>
     </div>
@@ -1799,7 +1735,7 @@
     <div class="logo-status-bar">
       <span class="status-text">
         <span
-          *ngFor="let char of 'INITIALIZING...'.split(''); let i = index"
+          *ngFor="let char of getStatusChars(0); let i = index"
           class="flicker-char"
           [class.flicker-active]="statusFlickerIndices[0]?.includes(i)"
           >{{ char }}</span
@@ -1807,7 +1743,7 @@
       </span>
       <span class="status-text error">
         <span
-          *ngFor="let char of 'ACCESS DENIED'.split(''); let i = index"
+          *ngFor="let char of getStatusChars(1); let i = index"
           class="flicker-char"
           [class.flicker-active]="statusFlickerIndices[1]?.includes(i)"
           >{{ char }}</span
@@ -1815,7 +1751,7 @@
       </span>
       <span class="status-text highlight">
         <span
-          *ngFor="let char of '8 | 7 FACTORS'.split(''); let i = index"
+          *ngFor="let char of getStatusChars(2); let i = index"
           class="flicker-char"
           [class.flicker-active]="statusFlickerIndices[2]?.includes(i)"
           >{{ char }}</span
@@ -1823,7 +1759,7 @@
         <br />
         <small>
           <span
-            *ngFor="let char of '001 ▓▓▓ A NEW CLASS'.split(''); let i = index"
+            *ngFor="let char of getStatusChars(3); let i = index"
             class="flicker-char"
             [class.flicker-active]="statusFlickerIndices[3]?.includes(i)"
             >{{ char }}</span
@@ -1832,7 +1768,7 @@
       </span>
       <span class="status-text">
         <span
-          *ngFor="let char of 'INITIALIZING...'.split(''); let i = index"
+          *ngFor="let char of getStatusChars(4); let i = index"
           class="flicker-char"
           [class.flicker-active]="statusFlickerIndices[4]?.includes(i)"
           >{{ char }}</span
@@ -1857,7 +1793,7 @@
             <div class="guideline-glow"></div>
           </div>
         </div>
-        <h2 class="stats-title reveal-text">Global Scale. Measurable Impact.</h2>
+        <h2 class="stats-title reveal-text">{{ 'stats.title' | translate }}</h2>
         <div class="stats-divider">
           <div class="guideline-container">
             <div class="guideline-bg"></div>
@@ -1943,138 +1879,13 @@
             <div
               data-micro-text=""
               class="micro-text micro is-width"
-              aria-label="There are paths in the world that can’t be seen — only sensed. Where others invest in the obvious, we explore what lies behind closed doors. This is a gateway to the extraordinary. Not everyone is meant to step through it."
+              [attr.aria-label]="'micro.pathsInWorld' | translate"
             >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >There</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >are</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >paths</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >in</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >the</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >world</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >that</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >can’t</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >be</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >seen</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >—</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >only</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >sensed.</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >Where</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >others</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >invest</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >in</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >the</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >obvious,</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >we</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >explore</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >what</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >lies</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >behind</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >closed</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >doors.</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >This</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >is</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >a</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >gateway</span
-              >
-              <span
-                class="split-word"
-                aria-hidden="true"
-                style="color: rgb(32, 32, 32); opacity: 0.9999"
-                >to</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >the</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >extraordinary.</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >Not</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >everyone</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >is</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >meant</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >to</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >step</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >through</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >it.</span
-              >
+              {{ 'micro.pathsInWorld' | translate }}
             </div>
           </div>
         </div>
-        <p class="stat-descriptor">Transactions Completed</p>
+        <p class="stat-descriptor">{{ 'stats.transactionsCompleted' | translate }}</p>
       </div>
       <div data-stats-right="" class="stat-right is-inview">
         <div class="stat-number-wrap">
@@ -2086,7 +1897,7 @@
             ><span data-stats-right-number-percentage="">$</span>
           </div>
         </div>
-        <p class="stat-descriptor is-right">Capital Deployed</p>
+        <p class="stat-descriptor is-right">{{ 'stats.capitalDeployed' | translate }}</p>
       </div>
     </div>
 
@@ -2101,7 +1912,7 @@
             ><span data-stats-right-number-percentage="">$</span>
           </div>
         </div>
-        <p class="stat-descriptor is-right">Countries Operated</p>
+        <p class="stat-descriptor is-right">{{ 'stats.countriesOperated' | translate }}</p>
       </div>
       <div data-stats-left="" class="stat-left is-inview">
         <div class="stat-number-wrap">
@@ -2179,138 +1990,13 @@
             <div
               data-micro-text=""
               class="micro-text micro is-width"
-              aria-label="There are paths in the world that can’t be seen — only sensed. Where others invest in the obvious, we explore what lies behind closed doors. This is a gateway to the extraordinary. Not everyone is meant to step through it."
+              [attr.aria-label]="'micro.pathsInWorld' | translate"
             >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >There</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >are</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >paths</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >in</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >the</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >world</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >that</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >can’t</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >be</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >seen</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >—</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >only</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >sensed.</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >Where</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >others</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >invest</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >in</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >the</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >obvious,</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >we</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >explore</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >what</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >lies</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >behind</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >closed</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >doors.</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >This</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >is</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >a</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >gateway</span
-              >
-              <span
-                class="split-word"
-                aria-hidden="true"
-                style="color: rgb(32, 32, 32); opacity: 0.9999"
-                >to</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >the</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >extraordinary.</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >Not</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >everyone</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >is</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >meant</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >to</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >step</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >through</span
-              >
-              <span class="split-word" aria-hidden="true" style="color: rgb(32, 32, 32); opacity: 1"
-                >it.</span
-              >
+              {{ 'micro.pathsInWorld' | translate }}
             </div>
           </div>
         </div>
-        <p class="stat-descriptor">Mega Projects Delivered</p>
+        <p class="stat-descriptor">{{ 'stats.megaProjectsDelivered' | translate }}</p>
       </div>
     </div>
   </section>
@@ -2323,10 +2009,10 @@
   <section class="limits hero-section unified-section">
     <div class="hero-container">
       <h2 class="hero-title reveal-text" style="margin: 0 8%">
-        <span class="offlimits-text"> Capital. Energy. Execution. </span>
+        <span class="offlimits-text"> {{ 'limits.capitalEnergy' | translate }} </span>
         <span class="gradient-text">
-          Where sovereign finance meets offshore LNG mastery. <br />
-          Engineering Energy. Delivering Impact.
+          {{ 'limits.whereSovereign' | translate }} <br />
+          {{ 'limits.engineeringEnergy' | translate }}
         </span>
       </h2>
     </div>
@@ -2401,8 +2087,8 @@
               </defs>
             </svg>
             <div class="step-flex">
-              <h3 class="body-large">Selection</h3>
-              <p class="body-large gradient-text">We find you.</p>
+              <h3 class="body-large">{{ 'process.selection' | translate }}</h3>
+              <p class="body-large gradient-text">{{ 'process.selectionDesc' | translate }}</p>
             </div>
           </div>
         </div>
@@ -2451,9 +2137,9 @@
               </defs>
             </svg>
             <div class="step-flex">
-              <h3 class="body-large">Alignment</h3>
+              <h3 class="body-large">{{ 'process.alignment' | translate }}</h3>
               <p class="body-large gradient-text">
-                Onboarding process to align capital, vision, and opportunity.
+                {{ 'process.alignmentDesc' | translate }}
               </p>
             </div>
           </div>
@@ -2512,9 +2198,9 @@
               </defs>
             </svg>
             <div class="step-flex">
-              <h3 class="body-large">Access</h3>
+              <h3 class="body-large">{{ 'process.access' | translate }}</h3>
               <p class="body-large gradient-text">
-                Gain entry to elite opportunities, secured and tokenized.
+                {{ 'process.accessDesc' | translate }}
               </p>
             </div>
           </div>
@@ -2553,9 +2239,9 @@
               </defs>
             </svg>
             <div class="step-flex">
-              <h3 class="body-large">Compounding</h3>
+              <h3 class="body-large">{{ 'process.compounding' | translate }}</h3>
               <p class="body-large gradient-text">
-                Your wealth compounds seamlessly while we carry the weight.
+                {{ 'process.compoundingDesc' | translate }}
               </p>
             </div>
           </div>
@@ -2591,22 +2277,22 @@
         <div class="benefits-left-inner">
           <div data-benefits-title="1" class="benefits-title-wrap">
             <h2 class="heading-4">
-              Enforcement<br /><span class="gradient-text">vs Empty Promises</span>
+              {{ 'benefits.enforcement' | translate }}<br /><span class="gradient-text">{{ 'benefits.vsEmptyPromises' | translate }}</span>
             </h2>
           </div>
           <div data-benefits-title="2" class="benefits-title-wrap">
             <h2 class="heading-4">
-              Stewardship<br /><span class="gradient-text">vs Neglect</span>
+              {{ 'benefits.stewardship' | translate }}<br /><span class="gradient-text">{{ 'benefits.vsNeglect' | translate }}</span>
             </h2>
           </div>
           <div data-benefits-title="3" class="benefits-title-wrap">
             <h2 class="heading-4">
-              Flexibility<br /><span class="gradient-text">vs One-Size-Fits-All</span>
+              {{ 'benefits.flexibility' | translate }}<br /><span class="gradient-text">{{ 'benefits.vsOneSize' | translate }}</span>
             </h2>
           </div>
           <div data-benefits-title="4" class="benefits-title-wrap">
             <h2 class="heading-4">
-              Liquidity<br /><span class="gradient-text">vs Captivity</span>
+              {{ 'benefits.liquidity' | translate }}<br /><span class="gradient-text">{{ 'benefits.vsCaptivity' | translate }}</span>
             </h2>
           </div>
         </div>
@@ -2826,22 +2512,22 @@
         <div class="benefits-left-inner">
           <div data-benefits-title="1" class="benefits-title-wrap">
             <h2 class="heading-4">
-              Enforcement<br /><span class="gradient-text">vs Empty Promises</span>
+              {{ 'benefits.enforcement' | translate }}<br /><span class="gradient-text">{{ 'benefits.vsEmptyPromises' | translate }}</span>
             </h2>
           </div>
           <div data-benefits-title="2" class="benefits-title-wrap">
             <h2 class="heading-4">
-              Stewardship<br /><span class="gradient-text">vs Neglect</span>
+              {{ 'benefits.stewardship' | translate }}<br /><span class="gradient-text">{{ 'benefits.vsNeglect' | translate }}</span>
             </h2>
           </div>
           <div data-benefits-title="3" class="benefits-title-wrap">
             <h2 class="heading-4">
-              Flexibility<br /><span class="gradient-text">vs One-Size-Fits-All</span>
+              {{ 'benefits.flexibility' | translate }}<br /><span class="gradient-text">{{ 'benefits.vsOneSize' | translate }}</span>
             </h2>
           </div>
           <div data-benefits-title="4" class="benefits-title-wrap">
             <h2 class="heading-4">
-              Liquidity<br /><span class="gradient-text">vs Captivity</span>
+              {{ 'benefits.liquidity' | translate }}<br /><span class="gradient-text">{{ 'benefits.vsCaptivity' | translate }}</span>
             </h2>
           </div>
         </div>
@@ -3062,8 +2748,8 @@
             style="translate: none; rotate: none; scale: none"
           >
             <div class="carousel-heading">
-              <div class="slider-title">Enforcement</div>
-              <div class="slider-title gradient-text">vs Empty Promises</div>
+              <div class="slider-title">{{ 'benefits.enforcement' | translate }}</div>
+              <div class="slider-title gradient-text">{{ 'benefits.vsEmptyPromises' | translate }}</div>
             </div>
             <div class="centered-slider-slide__inner">
               <div class="slider-inner">
@@ -3100,7 +2786,7 @@
             </div>
             <div class="centered-slider-slide__inner">
               <div class="slider-inner">
-                <p class="body-large">The Old World</p>
+                <p class="body-large">{{ 'benefits.theOldWorld' | translate }}</p>
                 <p class="body-large gradient-text is-card">
                   Deals vanish, buyers drop out, funds sit idle for weeks.
                 </p>
@@ -3120,8 +2806,8 @@
             style="translate: none; rotate: none; scale: none"
           >
             <div class="carousel-heading">
-              <div class="slider-title">Stewardship</div>
-              <div class="slider-title gradient-text is-2">vs Neglect</div>
+              <div class="slider-title">{{ 'benefits.stewardship' | translate }}</div>
+              <div class="slider-title gradient-text is-2">{{ 'benefits.vsNeglect' | translate }}</div>
             </div>
             <div class="centered-slider-slide__inner">
               <div class="slider-inner">
@@ -3159,7 +2845,7 @@
             </div>
             <div class="centered-slider-slide__inner">
               <div class="slider-inner">
-                <p class="body-large">The Old World</p>
+                <p class="body-large">{{ 'benefits.theOldWorld' | translate }}</p>
                 <p class="body-large gradient-text is-card">
                   Ghosted by “support,” brokers ignore you, capital disposable.
                 </p>
@@ -3179,8 +2865,8 @@
             style="translate: none; rotate: none; scale: none"
           >
             <div class="carousel-heading">
-              <div class="slider-title">Flexibility</div>
-              <div class="slider-title gradient-text">vs One-Size-Fits-All</div>
+              <div class="slider-title">{{ 'benefits.flexibility' | translate }}</div>
+              <div class="slider-title gradient-text">{{ 'benefits.vsOneSize' | translate }}</div>
             </div>
             <div class="centered-slider-slide__inner">
               <div class="slider-inner">
@@ -3218,7 +2904,7 @@
             </div>
             <div class="centered-slider-slide__inner">
               <div class="slider-inner">
-                <p class="body-large">The Old World</p>
+                <p class="body-large">{{ 'benefits.theOldWorld' | translate }}</p>
                 <p class="body-large gradient-text is-card">
                   You take what’s given. No customization, no choice, no strategy.
                 </p>
@@ -3238,8 +2924,8 @@
             style="translate: none; rotate: none; scale: none"
           >
             <div class="carousel-heading">
-              <div class="slider-title">Liquidity</div>
-              <div class="slider-title gradient-text">vs Captivity</div>
+              <div class="slider-title">{{ 'benefits.liquidity' | translate }}</div>
+              <div class="slider-title gradient-text">{{ 'benefits.vsCaptivity' | translate }}</div>
             </div>
             <div class="centered-slider-slide__inner">
               <div class="slider-inner">
@@ -3277,7 +2963,7 @@
             </div>
             <div class="centered-slider-slide__inner">
               <div class="slider-inner">
-                <p class="body-large">The Old World</p>
+                <p class="body-large">{{ 'benefits.theOldWorld' | translate }}</p>
                 <p class="body-large gradient-text is-card">
                   No updates, no timelines, no exits. Years locked waiting for IPOs that may never
                   come.
@@ -3432,7 +3118,7 @@
       </video>
       <button class="sound-toggle" (click)="toggleWelcome8VideoMute()">
         <span class="sound-icon">{{ isWelcome8VideoMuted ? '🔇' : '🔊' }}</span>
-        <span class="sound-text">{{ isWelcome8VideoMuted ? 'Enable Sound' : 'Mute' }}</span>
+        <span class="sound-text">{{ isWelcome8VideoMuted ? ('sound.enableSound' | translate) : ('sound.mute' | translate) }}</span>
       </button>
     </div>
 
@@ -3448,36 +3134,30 @@
 
       <div class="welcome-8-content">
         <p class="body-large reveal-text reveal-delay-1">
-          8 is not a traditional holding company. It is a strategic global ecosystem connecting
-          commodities, mining, agriculture, energy, technology, and capital across continents.
+          {{ 'welcome8.p1' | translate }}
         </p>
         <p class="body-large reveal-text reveal-delay-2">
-          Through the 7-to-8 framework, operating companies within 7 Factors are integrated into the
-          8 umbrella, creating a clear pathway to IPOs and global market access.
+          {{ 'welcome8.p2' | translate }}
         </p>
         <p class="body-large reveal-text reveal-delay-2">
-          By combining 7 Factors' operational execution with AI8 frontier technologies, we drive
-          large-scale impact across energy, finance, mining, space, and advanced AI.
+          {{ 'welcome8.p3' | translate }}
         </p>
 
         <div class="welcome-8-strategy">
-          <h4 class="heading-5 reveal-text">8 M&amp;A &amp; IPO Strategy</h4>
+          <h4 class="heading-5 reveal-text">{{ 'welcome8.strategyTitle' | translate }}</h4>
 
           <div class="strategy-grid">
             <div class="strategy-item">
-              <h5 class="strategy-title">Mergers &amp; Acquisitions</h5>
+              <h5 class="strategy-title">{{ 'welcome8.maTitle' | translate }}</h5>
               <p class="body-large">
-                Our 2026 M&amp;A pipeline is projected at USD 5–7 billion, targeting high-impact
-                assets in energy, mining, and technology to expand global reach and enterprise
-                value.
+                {{ 'welcome8.maBody' | translate }}
               </p>
             </div>
 
             <div class="strategy-item">
-              <h5 class="strategy-title">Initial Public Offerings (IPO)</h5>
+              <h5 class="strategy-title">{{ 'welcome8.ipoTitle' | translate }}</h5>
               <p class="body-large">
-                Selected subsidiaries are prepared for public listings, with full structuring,
-                governance, and execution under the 8 Wall Street umbrella.
+                {{ 'welcome8.ipoBody' | translate }}
               </p>
             </div>
           </div>
@@ -3485,15 +3165,10 @@
 
         <div
           class="welcome-8-tagline heading-4 gradient-text centre-align"
-          aria-label="Transforming National Vision Into Global Reality."
+          [attr.aria-label]="'welcome8.transformingTagline' | translate"
           style="--words: 6; max-width: 100%"
         >
-          <span class="split-word" aria-hidden="true" style="--word: 1">Transforming</span>
-          <span class="split-word" aria-hidden="true" style="--word: 2">National</span>
-          <span class="split-word" aria-hidden="true" style="--word: 3">Vision</span>
-          <span class="split-word" aria-hidden="true" style="--word: 4">Into</span>
-          <span class="split-word" aria-hidden="true" style="--word: 5">Global</span>
-          <span class="split-word" aria-hidden="true" style="--word: 6">Reality.</span>
+          {{ 'welcome8.transformingTagline' | translate }}
         </div>
       </div>
     </div>
@@ -3534,64 +3209,57 @@
       </video>
       <button class="sound-toggle" (click)="toggleSectorVideoMute()">
         <span class="sound-icon">{{ isSectorVideoMuted ? '🔇' : '🔊' }}</span>
-        <span class="sound-text">{{ isSectorVideoMuted ? 'Enable Sound' : 'Mute' }}</span>
+        <span class="sound-text">{{ isSectorVideoMuted ? ('sound.enableSound' | translate) : ('sound.mute' | translate) }}</span>
       </button>
     </div>
 
     <div
       class="sector-tagline heading-4 centre-align"
-      aria-label="Scaling Vision into Billion-Dollar Reality"
+      [attr.aria-label]="'sector.scalingVision' | translate"
       style="--words: 5; max-width: 100%; width: 100%"
     >
-      <span class="split-word" aria-hidden="true" style="--word: 1">Scaling</span>
-      <span class="split-word" aria-hidden="true" style="--word: 2">Vision</span>
-      <span class="split-word" aria-hidden="true" style="--word: 3">into</span>
-      <span class="split-word" aria-hidden="true" style="--word: 4">Billion-Dollar</span>
-      <span class="split-word" aria-hidden="true" style="--word: 5">Reality</span>
+      {{ 'sector.scalingVision' | translate }}
     </div>
 
     <div class="w-layout-grid global-grid">
       <div class="sector-content">
-        <h4 class="heading-5 reveal-text">Sector Focus</h4>
+        <h4 class="heading-5 reveal-text">{{ 'sector.sectorFocus' | translate }}</h4>
         <p class="body-large reveal-text reveal-delay-1">
-          7 Factors scales aggressively across core industries:
+          {{ 'sector.scalesAggressively' | translate }}
         </p>
 
         <div class="sector-grid reveal-text reveal-delay-2">
           <div class="sector-item">
-            <h5 class="sector-title">Agriculture</h5>
-            <p class="sector-desc">Sugar, coffee, agro-industrial operations</p>
+            <h5 class="sector-title">{{ 'sector.agriculture' | translate }}</h5>
+            <p class="sector-desc">{{ 'sector.agricultureDesc' | translate }}</p>
           </div>
           <div class="sector-item">
-            <h5 class="sector-title">Mining</h5>
-            <p class="sector-desc">Copper, lithium, gold, advanced extraction systems</p>
+            <h5 class="sector-title">{{ 'sector.mining' | translate }}</h5>
+            <p class="sector-desc">{{ 'sector.miningDesc' | translate }}</p>
           </div>
           <div class="sector-item">
-            <h5 class="sector-title">Energy</h5>
-            <p class="sector-desc">Offshore gas, LNG, refining, power generation</p>
+            <h5 class="sector-title">{{ 'sector.energy' | translate }}</h5>
+            <p class="sector-desc">{{ 'sector.energyDesc' | translate }}</p>
           </div>
           <div class="sector-item">
-            <h5 class="sector-title">Industrial</h5>
-            <p class="sector-desc">Manufacturing, logistics, processing facilities</p>
+            <h5 class="sector-title">{{ 'sector.industrial' | translate }}</h5>
+            <p class="sector-desc">{{ 'sector.industrialDesc' | translate }}</p>
           </div>
         </div>
 
         <div class="growth-target reveal-text reveal-delay-3">
-          <h4 class="heading-5 reveal-text">Guaranteed Growth Target</h4>
+          <h4 class="heading-5 reveal-text">{{ 'sector.growthTarget' | translate }}</h4>
           <p class="body-large">
-            Within 24 months of joining the 7 Factors umbrella: 150% growth for joint-venture
-            companies. Driven by capital infusion, acquisitions, expanded operations, and
-            international contracts. This performance milestone is mandatory before any IPO process
-            begins.
+            {{ 'sector.growthBody' | translate }}
           </p>
           <div class="growth-highlight">
             <span class="growth-number">150%</span>
-            <span class="growth-text">growth for joint-venture companies before IPO</span>
+            <span class="growth-text">{{ 'sector.growthHighlight' | translate }}</span>
           </div>
         </div>
 
         <p class="sector-closing body-large accent-hover reveal-text reveal-delay-3">
-          The M&amp;A Engine Behind Tomorrow's Market Leaders.
+          {{ 'sector.maEngine' | translate }}
         </p>
       </div>
     </div>
@@ -3626,24 +3294,24 @@
     </div>
     <div class="minra-inner">
       <header class="minra-header">
-        <h2 class="heading-3 reveal-text">MINRA</h2>
+        <h2 class="heading-3 reveal-text">{{ 'minra.title' | translate }}</h2>
         <p class="minra-subtitle body-large reveal-text reveal-delay-1">
-          The Mining Division of 7 Factors Corporation LLC
+          {{ 'minra.subtitle' | translate }}
         </p>
         <p class="minra-tagline body-large reveal-text reveal-delay-1">
-          A Premier Production Mining Company Driving Africa's Resource Development
+          {{ 'minra.tagline' | translate }}
         </p>
         <p
           class="minra-slogan heading-4 reveal-text reveal-delay-1"
           style="max-width: 100%"
-          aria-label="Mining Africa's Future, Delivering Global Impact."
+          [attr.aria-label]="'minra.miningSlogan' | translate"
         >
-          Mining Africa's Future, Delivering Global Impact.
+          {{ 'minra.miningSlogan' | translate }}
         </p>
       </header>
 
       <div class="minra-content">
-        <h4 class="heading-5 reveal-text">Our Mission</h4>
+        <h4 class="heading-5 reveal-text">{{ 'minra.ourMission' | translate }}</h4>
         <p
           class="body-large reveal-text reveal-delay-1"
           aria-label="Sustainably Powering Africa's Mineral Economy."
@@ -3651,47 +3319,45 @@
           “Sustainably Powering Africa's Mineral Economy.”
         </p>
         <p class="body-large reveal-text reveal-delay-2">
-          MINRA leads large-scale, sustainable mineral production across Africa — from exploration
-          and extraction to global export. We unlock long-term value while setting new standards in
-          operational excellence.
+          {{ 'minra.missionBody' | translate }}
         </p>
 
         <div class="minra-model">
-          <h4 class="heading-5 reveal-text">Our Operational Model</h4>
+          <h4 class="heading-5 reveal-text">{{ 'minra.ourModel' | translate }}</h4>
           <p
             class="body-large reveal-text reveal-delay-1"
-            aria-label="From Discovery to Global Delivery."
+            [attr.aria-label]="'minra.modelQuote' | translate"
           >
-            From Discovery to Global Delivery.
+            {{ 'minra.modelQuote' | translate }}
           </p>
 
           <div class="minra-steps reveal-text reveal-delay-1">
             <div class="minra-step">
               <span class="step-number">01</span>
               <div class="step-content">
-                <h5 class="step-title">Exploration &amp; Assessment</h5>
-                <p class="step-desc">Advanced geological surveys and mapping</p>
+                <h5 class="step-title">{{ 'minra.step1Title' | translate }}</h5>
+                <p class="step-desc">{{ 'minra.step1Desc' | translate }}</p>
               </div>
             </div>
             <div class="minra-step">
               <span class="step-number">02</span>
               <div class="step-content">
-                <h5 class="step-title">Production Scaling</h5>
-                <p class="step-desc">Investment in machinery, plants, and infrastructure</p>
+                <h5 class="step-title">{{ 'minra.step2Title' | translate }}</h5>
+                <p class="step-desc">{{ 'minra.step2Desc' | translate }}</p>
               </div>
             </div>
             <div class="minra-step">
               <span class="step-number">03</span>
               <div class="step-content">
-                <h5 class="step-title">Consolidation &amp; M&amp;A</h5>
-                <p class="step-desc">Strategic cross-border acquisitions</p>
+                <h5 class="step-title">{{ 'minra.step3Title' | translate }}</h5>
+                <p class="step-desc">{{ 'minra.step3Desc' | translate }}</p>
               </div>
             </div>
             <div class="minra-step">
               <span class="step-number">04</span>
               <div class="step-content">
-                <h5 class="step-title">Public Markets</h5>
-                <p class="step-desc">Targeted NYSE/NASDAQ listings to fuel expansion</p>
+                <h5 class="step-title">{{ 'minra.step4Title' | translate }}</h5>
+                <p class="step-desc">{{ 'minra.step4Desc' | translate }}</p>
               </div>
             </div>
           </div>
@@ -3730,7 +3396,7 @@
       </video>
       <button class="sound-toggle" (click)="toggleElanVideoMute()">
         <span class="sound-icon">{{ isElanVideoMuted ? '🔇' : '🔊' }}</span>
-        <span class="sound-text">{{ isElanVideoMuted ? 'Enable Sound' : 'Mute' }}</span>
+        <span class="sound-text">{{ isElanVideoMuted ? ('sound.enableSound' | translate) : ('sound.mute' | translate) }}</span>
       </button>
     </div>
   </section>
@@ -3744,27 +3410,19 @@
         fetchpriority="high"
       />
       <div class="a7factors-overlay" aria-hidden="false">
-        <p class="a7factors-headline">— Nuclear &amp; Government Power Plants</p>
-        <p class="a7factors-subline">Mega-Project Finance</p>
+        <p class="a7factors-headline">{{ 'nuclear.headline' | translate }}</p>
+        <p class="a7factors-subline">{{ 'nuclear.subline' | translate }}</p>
 
         <div class="a7factors-body">
-          <p class="a7factors-line">
-            We finance, develop, and deliver government nuclear power plants worldwide.
-          </p>
-          <p class="a7factors-line">
-            7 Factors funds <strong>70%</strong> of each project and structures financing for the
-            government's <strong>30%</strong> contribution.
-          </p>
-          <p class="a7factors-punch">No limits. No borders.</p>
-          <p class="a7factors-line">
-            From capital raising to execution and delivery, we provide end-to-end energy solutions
-            with no project size limits.
-          </p>
-          <p class="a7factors-line">Africa powered <strong>24/7</strong> — by 7 Factors.</p>
+          <p class="a7factors-line">{{ 'nuclear.line1' | translate }}</p>
+          <p class="a7factors-line">{{ 'nuclear.line2' | translate }}</p>
+          <p class="a7factors-punch">{{ 'nuclear.line3' | translate }}</p>
+          <p class="a7factors-line">{{ 'nuclear.line4' | translate }}</p>
+          <p class="a7factors-line">{{ 'nuclear.line5' | translate }}</p>
         </div>
 
-        <a class="a7factors-email" href="mailto:info@7factors.co"
-          ><span aria-hidden="true">📧</span> info&#64;7factors.co</a
+        <a class="a7factors-email" [href]="'mailto:' + ('nuclear.email' | translate)"
+          ><span aria-hidden="true">📧</span> {{ 'nuclear.email' | translate }}</a
         >
       </div>
     </div>

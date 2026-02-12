@@ -1,9 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const STORAGE_LANG_KEY = 'titangate-lang';
+export const SUPPORTED_LANGUAGES = [
+  { code: 'en', label: 'English', flag: '🇺🇸' },
+  { code: 'fr', label: 'Français', flag: '🇫🇷' },
+  { code: 'pt-BR', label: 'Português (Brasil)', flag: '🇧🇷' },
+  { code: 'pt-MZ', label: 'Português (Moçambique)', flag: '🇲🇿' },
+] as const;
 
 interface Industry {
   name: string;
@@ -25,72 +34,56 @@ interface Comparison {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App implements OnInit, AfterViewInit, OnDestroy {
+  readonly supportedLanguages = SUPPORTED_LANGUAGES;
+  currentLang: string = 'en';
   // Typewriter
-  typewriterWords = ['redefine', 'reconstruct', 'reconfigure'];
   currentWordIndex = 0;
   currentWord = '';
   isDeleting = false;
+  get typewriterWords(): string[] {
+    return [
+      this.translate.instant('typewriter.word1'),
+      this.translate.instant('typewriter.word2'),
+      this.translate.instant('typewriter.word3'),
+    ];
+  }
 
   // Flicker animation for "our vision"
-  visionTitleChars = `Strategic Minerals • Gold • Diamonds • Rare Earths •
-Extraction • Export • Investment
-Cobalt | Copper | Gold | Diamonds | Coltan (Tantalum) | Tin |
-Tungsten | Lithium | Zinc | Manganese | Nickel | Uranium |
-Iron Ore | Bauxite | Phosphate | Coal | Limestone | Crude Oil
-| Natural Gas | Hydropower`.split('');
   visionFlickerIndices: number[] = [];
+  get visionTitleChars(): string[] {
+    return this.translate.instant('visionFlicker.block1').split('');
+  }
 
   // Flicker animation for Titangate Equity
-  titangateTitleChars = `Nissim Trust Banking Group Launching 2027
-Bold Capital Meets Real Impact
-Provision of early-stage and growth capital financing across
-Africa
-• Trade finance, structured finance, invoices, and bespoke
-financial solutions
-• Heavy machinery financing and large-scale infrastructure
-and industrial project funding
-• Factoring, letters of credit, invoices, commodity trade
-finance, and end-to-end transaction support`.split('');
   flickerActiveIndices: number[] = [];
+  get titangateTitleChars(): string[] {
+    return this.translate.instant('visionFlicker.block2').split('');
+  }
 
   // Flicker animation for @titangate_Equity
-  handleTitleChars = '8 AI — Advanced Intelligence, Data, Systems, Government Projects'.split('');
   handleFlickerIndices: number[] = [];
+  get handleTitleChars(): string[] {
+    return this.translate.instant('visionFlicker.block3').split('');
+  }
 
   // Flicker animation for status bar
   statusFlickerIndices: number[][] = [[], [], [], [], []];
-  statusTexts = [
-    'INITIALIZING...',
-    'ACCESS DENIED',
-    'TGE | TITANGATE EQUITY',
-    '001 ▓▓▓ A NEW CLASS',
-    'INITIALIZING...',
-  ];
+  getStatusChars(index: number): string[] {
+    const key = 'status.line' + (index + 1);
+    return (this.translate.instant(key) || '').split('');
+  }
 
   // Flicker animation for micro text (word-level)
-  microTextWords = [
-    'Commodities',
-    '&amp;',
-    'Global',
-    'Trade',
-
-    'Energy',
-    '&amp;',
-    'Agriculture',
-    '•',
-    'Structured',
-    'Finance',
-    '•',
-    'Global',
-    'Market',
-    'Reach',
-  ];
   microTextFlickerIndices: number[] = [];
+  get microTextWords(): string[] {
+    const s = this.translate.instant('microWords') || '';
+    return s.split('|');
+  }
 
   // Stats
   statsAnimated = false;
@@ -99,7 +92,6 @@ finance, and end-to-end transaction support`.split('');
 
   // Loading
   isLoading = true;
-  loadingText = 'Legacy • Momentum • Impact • Execution';
   loadingDots = '';
 
   // Video Sound Toggle
@@ -131,7 +123,14 @@ finance, and end-to-end transaction support`.split('');
   }
 
   // Navigation
-  navKeywords = ['Gov Finance', 'LNG', 'Gold & Mining', 'Space Minerals'];
+  get navKeywords(): string[] {
+    return [
+      this.translate.instant('nav.govFinance'),
+      this.translate.instant('nav.lng'),
+      this.translate.instant('nav.goldMining'),
+      this.translate.instant('nav.spaceMinerals'),
+    ];
+  }
 
   // Split text into characters for animation
   splitToChars(text: string): string[] {
@@ -139,70 +138,69 @@ finance, and end-to-end transaction support`.split('');
   }
 
   // Industries
-  industries: Industry[] = [
-    { name: 'Artificial Intelligence', icon: '◈' },
-    { name: 'Financial Technology', icon: '◇' },
-    { name: 'Space Exploration', icon: '✧' },
-    { name: 'Enterprise Infrastructure', icon: '▣' },
-    { name: 'Healthcare', icon: '✚' },
-    { name: 'Biotech', icon: '◉' },
-    { name: 'Next-Gen Defense', icon: '◆' },
-    { name: 'Cybersecurity', icon: '⬡' },
-  ];
+  get industries(): Industry[] {
+    const icons = ['◈', '◇', '✧', '▣', '✚', '◉', '◆', '⬡'];
+    return [1, 2, 3, 4, 5, 6, 7, 8].map((i) => ({
+      name: this.translate.instant('industries.name' + i),
+      icon: icons[i - 1],
+    }));
+  }
 
   // Process
-  processSteps: ProcessStep[] = [
-    { number: '01', title: 'Selection', description: 'We find you.' },
-    {
-      number: '02',
-      title: 'Alignment',
-      description: 'Onboarding process to align capital, vision, and opportunity.',
-    },
-    {
-      number: '03',
-      title: 'Access',
-      description: 'Gain entry to elite opportunities, secured and tokenized.',
-    },
-    {
-      number: '04',
-      title: 'Compounding',
-      description: 'Your wealth compounds seamlessly while we carry the weight.',
-    },
-  ];
+  get processSteps(): ProcessStep[] {
+    return [
+      { number: '01', title: this.translate.instant('process.selection'), description: this.translate.instant('process.selectionDesc') },
+      { number: '02', title: this.translate.instant('process.alignment'), description: this.translate.instant('process.alignmentDesc') },
+      { number: '03', title: this.translate.instant('process.access'), description: this.translate.instant('process.accessDesc') },
+      { number: '04', title: this.translate.instant('process.compounding'), description: this.translate.instant('process.compoundingDesc') },
+    ];
+  }
 
   // Comparisons
-  comparisons: Comparison[] = [
-    {
-      title: 'Enforcement vs Empty Promises',
-      newWorld: 'Smart contracts enforce execution. If a deal dies, funds return instantly.',
-      oldWorld: 'Deals vanish, buyers drop out, funds sit idle for weeks.',
-    },
-    {
-      title: 'Stewardship vs Neglect',
-      newWorld:
-        'Every member is sovereign. Direct response, personal care, white-glove stewardship.',
-      oldWorld: 'Ghosted by "support," brokers ignore you, capital disposable.',
-    },
-    {
-      title: 'Flexibility vs One-Size-Fits-All',
-      newWorld:
-        'We bend the market to your will. Bespoke allocations, liquidity pathways, access to "impossible" companies.',
-      oldWorld: "You take what's given. No customization, no choice, no strategy.",
-    },
-    {
-      title: 'Liquidity vs Captivity',
-      newWorld:
-        'Liquidity is engineered. Immediate exits, alternative pathways, seamless peer-to-peer trading.',
-      oldWorld:
-        'No updates, no timelines, no exits. Years locked waiting for IPOs that may never come.',
-    },
-  ];
+  get comparisons(): Comparison[] {
+    return [
+      {
+        title: this.translate.instant('benefits.enforcement') + ' ' + this.translate.instant('benefits.vsEmptyPromises'),
+        newWorld: this.translate.instant('comparisons.newWorld1'),
+        oldWorld: this.translate.instant('comparisons.oldWorld1'),
+      },
+      {
+        title: this.translate.instant('benefits.stewardship') + ' ' + this.translate.instant('benefits.vsNeglect'),
+        newWorld: this.translate.instant('comparisons.newWorld2'),
+        oldWorld: this.translate.instant('comparisons.oldWorld2'),
+      },
+      {
+        title: this.translate.instant('benefits.flexibility') + ' ' + this.translate.instant('benefits.vsOneSize'),
+        newWorld: this.translate.instant('comparisons.newWorld3'),
+        oldWorld: this.translate.instant('comparisons.oldWorld3'),
+      },
+      {
+        title: this.translate.instant('benefits.liquidity') + ' ' + this.translate.instant('benefits.vsCaptivity'),
+        newWorld: this.translate.instant('comparisons.newWorld4'),
+        oldWorld: this.translate.instant('comparisons.oldWorld4'),
+      },
+    ];
+  }
 
   activeComparisonIndex = 0;
   activeProcessStep = 0;
 
   // Benefits section - active item sync
   activeBenefitNumber = 1;
+
+  constructor(private translate: TranslateService) {
+    const saved = localStorage.getItem(STORAGE_LANG_KEY);
+    const code = saved && SUPPORTED_LANGUAGES.some((l) => l.code === saved) ? saved : 'en';
+    this.translate.use(code);
+    this.currentLang = code;
+  }
+
+  setLanguage(code: string) {
+    if (!SUPPORTED_LANGUAGES.some((l) => l.code === code)) return;
+    this.translate.use(code);
+    this.currentLang = code;
+    localStorage.setItem(STORAGE_LANG_KEY, code);
+  }
 
   ngOnInit() {
     this.startLoadingAnimation();
@@ -306,11 +304,11 @@ finance, and end-to-end transaction support`.split('');
     }
 
     // Status bar flicker
-    this.statusTexts.forEach((text, textIndex) => {
-      const statusIndices = text
-        .split('')
-        .map((char, i) => (char !== ' ' ? i : -1))
-        .filter((i) => i !== -1);
+    [0, 1, 2, 3, 4].forEach((textIndex: number) => {
+      const chars = this.getStatusChars(textIndex);
+      const statusIndices = chars
+        .map((char: string, i: number) => (char !== ' ' ? i : -1))
+        .filter((i: number) => i !== -1);
       for (let loop = 0; loop < 3; loop++) {
         this.createStatusFlickerLoop(statusIndices, loop * 100, textIndex);
       }
