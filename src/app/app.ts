@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -9,9 +10,15 @@ gsap.registerPlugin(ScrollTrigger);
 const STORAGE_LANG_KEY = 'titangate-lang';
 export const SUPPORTED_LANGUAGES = [
   { code: 'en', label: 'English', flag: '🇺🇸' },
+  { code: 'ru', label: 'Русский', flag: '🇷🇺' },
+  { code: 'ar', label: 'العربية', flag: '🇸🇦' },
   { code: 'fr', label: 'Français', flag: '🇫🇷' },
-  { code: 'pt-BR', label: 'Português (Brasil)', flag: '🇧🇷' },
   { code: 'pt-MZ', label: 'Português (Moçambique)', flag: '🇲🇿' },
+  { code: 'pt-BR', label: 'Português (Brasil)', flag: '🇧🇷' },
+  { code: 'es', label: 'Español', flag: '🇪🇸' },
+  { code: 'zh', label: '中文 (简体)', flag: '🇨🇳' },
+  { code: 'ja', label: '日本語', flag: '🇯🇵' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
 ] as const;
 
 interface Industry {
@@ -34,13 +41,28 @@ interface Comparison {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, TranslateModule],
+  imports: [CommonModule, TranslateModule, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App implements OnInit, AfterViewInit, OnDestroy {
   readonly supportedLanguages = SUPPORTED_LANGUAGES;
   currentLang: string = 'en';
+  langMenuOpen = false;
+
+  get currentLanguage() {
+    return this.supportedLanguages.find((l) => l.code === this.currentLang) ?? this.supportedLanguages[0];
+  }
+
+  toggleLangMenu() {
+    this.langMenuOpen = !this.langMenuOpen;
+  }
+
+  selectLanguage(code: string) {
+    this.setLanguage(code);
+    this.langMenuOpen = false;
+  }
+
   // Typewriter
   currentWordIndex = 0;
   currentWord = '';
@@ -149,10 +171,26 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   // Process
   get processSteps(): ProcessStep[] {
     return [
-      { number: '01', title: this.translate.instant('process.selection'), description: this.translate.instant('process.selectionDesc') },
-      { number: '02', title: this.translate.instant('process.alignment'), description: this.translate.instant('process.alignmentDesc') },
-      { number: '03', title: this.translate.instant('process.access'), description: this.translate.instant('process.accessDesc') },
-      { number: '04', title: this.translate.instant('process.compounding'), description: this.translate.instant('process.compoundingDesc') },
+      {
+        number: '01',
+        title: this.translate.instant('process.selection'),
+        description: this.translate.instant('process.selectionDesc'),
+      },
+      {
+        number: '02',
+        title: this.translate.instant('process.alignment'),
+        description: this.translate.instant('process.alignmentDesc'),
+      },
+      {
+        number: '03',
+        title: this.translate.instant('process.access'),
+        description: this.translate.instant('process.accessDesc'),
+      },
+      {
+        number: '04',
+        title: this.translate.instant('process.compounding'),
+        description: this.translate.instant('process.compoundingDesc'),
+      },
     ];
   }
 
@@ -160,22 +198,34 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   get comparisons(): Comparison[] {
     return [
       {
-        title: this.translate.instant('benefits.enforcement') + ' ' + this.translate.instant('benefits.vsEmptyPromises'),
+        title:
+          this.translate.instant('benefits.enforcement') +
+          ' ' +
+          this.translate.instant('benefits.vsEmptyPromises'),
         newWorld: this.translate.instant('comparisons.newWorld1'),
         oldWorld: this.translate.instant('comparisons.oldWorld1'),
       },
       {
-        title: this.translate.instant('benefits.stewardship') + ' ' + this.translate.instant('benefits.vsNeglect'),
+        title:
+          this.translate.instant('benefits.stewardship') +
+          ' ' +
+          this.translate.instant('benefits.vsNeglect'),
         newWorld: this.translate.instant('comparisons.newWorld2'),
         oldWorld: this.translate.instant('comparisons.oldWorld2'),
       },
       {
-        title: this.translate.instant('benefits.flexibility') + ' ' + this.translate.instant('benefits.vsOneSize'),
+        title:
+          this.translate.instant('benefits.flexibility') +
+          ' ' +
+          this.translate.instant('benefits.vsOneSize'),
         newWorld: this.translate.instant('comparisons.newWorld3'),
         oldWorld: this.translate.instant('comparisons.oldWorld3'),
       },
       {
-        title: this.translate.instant('benefits.liquidity') + ' ' + this.translate.instant('benefits.vsCaptivity'),
+        title:
+          this.translate.instant('benefits.liquidity') +
+          ' ' +
+          this.translate.instant('benefits.vsCaptivity'),
         newWorld: this.translate.instant('comparisons.newWorld4'),
         oldWorld: this.translate.instant('comparisons.oldWorld4'),
       },
@@ -202,28 +252,12 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
     localStorage.setItem(STORAGE_LANG_KEY, code);
   }
 
-  /** Contact form: open mailto with subject and body (no backend). */
-  onContactSubmit(event: Event) {
-    event.preventDefault();
-    const form = event.target as HTMLFormElement;
-    const data = new FormData(form);
-    const subject = (data.get('subject') as string) || '7 Factors – Contact';
-    const fullName = (data.get('fullName') as string) || '';
-    const company = (data.get('company') as string) || '';
-    const email = (data.get('email') as string) || '';
-    const phone = (data.get('phone') as string) || '';
-    const message = (data.get('message') as string) || '';
-    const body = [
-      fullName && `Name: ${fullName}`,
-      company && `Company: ${company}`,
-      email && `Email: ${email}`,
-      phone && `Phone: ${phone}`,
-      message && `Message:\n${message}`,
-    ]
-      .filter(Boolean)
-      .join('\n\n');
-    const mailto = `mailto:info@7factors.co?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+    if (this.langMenuOpen && target && !target.closest('.lang-switcher')) {
+      this.langMenuOpen = false;
+    }
   }
 
   ngOnInit() {

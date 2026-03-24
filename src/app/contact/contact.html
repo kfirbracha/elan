@@ -1,0 +1,133 @@
+<section id="contact-form" class="contact-page-section unified-section">
+  <div class="logo-container-hero">
+    <img src="page1-logo.png" width="100%" alt="7 Groups of 8 Logo" />
+  </div>
+  <div class="contact-content-wrap">
+    <div class="contact-container">
+      <h2 class="contact-title">{{ 'contact.title' | translate }}</h2>
+      <p class="contact-intro">{{ 'contact.intro' | translate }}</p>
+
+      <div class="contact-video-inline">
+        <video
+          class="contact-video"
+          autoplay
+          muted
+          loop
+          playsinline
+          disablePictureInPicture
+          preload="auto"
+        >
+          <source src="/map.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-form-block">
+          <h3 class="contact-heading">{{ 'contact.getInTouch' | translate }}</h3>
+          <form
+            class="contact-form"
+            id="contactForm"
+            (submit)="$event.preventDefault(); onContactSubmit($event)"
+            autocomplete="on"
+          >
+            <label class="contact-label" for="contactName">{{ 'contact.name' | translate }}</label>
+            <input id="contactName" class="contact-input" type="text" name="name" required />
+            <label class="contact-label" for="contactEmail">{{
+              'contact.email' | translate
+            }}</label>
+            <input id="contactEmail" class="contact-input" type="email" name="email" required />
+            <label class="contact-label" for="contactSubject">{{
+              'contact.subject' | translate
+            }}</label>
+            <input id="contactSubject" class="contact-input" type="text" name="subject" />
+            <label class="contact-label" for="contactMessage">{{
+              'contact.message' | translate
+            }}</label>
+            <textarea
+              id="contactMessage"
+              class="contact-textarea"
+              name="message"
+              rows="4"
+            ></textarea>
+            <p
+              *ngIf="contactSubmitResult === 'success'"
+              class="contact-form-message contact-form-success"
+            >
+              {{ 'contact.success' | translate }}
+            </p>
+            <p
+              *ngIf="contactSubmitResult === 'error'"
+              class="contact-form-message contact-form-error"
+            >
+              {{ 'contact.error' | translate }}
+            </p>
+            <button type="submit" class="contact-submit" [disabled]="contactSubmitLoading">
+              {{
+                contactSubmitLoading
+                  ? ('contact.sending' | translate)
+                  : ('contact.submit' | translate) + ' →'
+              }}
+            </button>
+          </form>
+        </div>
+
+        <div class="contact-details-block">
+          <h3 class="contact-heading">{{ 'contact.offices' | translate }}</h3>
+
+          <div class="contact-office">
+            <strong class="contact-office-region">{{ 'contact.uaeTitle' | translate }}</strong>
+            <p class="contact-office-name">{{ 'contact.uaeName' | translate }}</p>
+            <p class="contact-office-address" [innerText]="'contact.uaeAddress' | translate"></p>
+          </div>
+
+          <div class="contact-office">
+            <strong class="contact-office-region">{{ 'contact.usTitle' | translate }}</strong>
+            <p class="contact-office-name">{{ 'contact.usName' | translate }}</p>
+            <p class="contact-office-address" [innerText]="'contact.usAddress' | translate"></p>
+          </div>
+
+          <div class="contact-corporate">
+            <h3 class="contact-heading">{{ 'contact.corporatePresence' | translate }}</h3>
+            <p class="contact-presence-name">{{ 'contact.presenceText' | translate }}</p>
+            <p class="contact-presence-countries">{{ 'contact.presenceCountries' | translate }}</p>
+          </div>
+
+          <div class="contact-channels">
+            <a class="contact-channel-link" href="mailto:info@7factors.co"
+              >📧 info&#64;7factors.co</a
+            >
+            <a
+              class="contact-channel-link"
+              href="https://www.7factors.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              >🌐 https://www.7factors.co</a
+            >
+          </div>
+
+          <div class="contact-connect">
+            <h3 class="contact-heading">{{ 'contact.connect' | translate }}</h3>
+            <a
+              class="contact-social-link"
+              href="https://www.linkedin.com/company/80044135/admin/dashboard/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ 'contact.linkedin' | translate }}</a
+            >
+            <a
+              class="contact-social-link"
+              href="https://x.com/7_factors"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ 'contact.twitter' | translate }}</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="contact-back-wrap">
+  <a routerLink="/" class="contact-back-link">← {{ 'nav.backToHome' | translate }}</a>
+</p>

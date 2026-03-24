@@ -1,0 +1,11 @@
+# Angular / SPA routing on Hostinger (Apache)
+# Send all requests to index.html so the client router can handle them
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # Don't rewrite files or directories that exist
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  # Send everything else to index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
