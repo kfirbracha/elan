@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { LoadingScreen } from './components/loading-screen/loading-screen';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,7 +42,7 @@ interface Comparison {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterOutlet],
+  imports: [CommonModule, TranslateModule, RouterOutlet, LoadingScreen],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -49,6 +50,7 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   readonly supportedLanguages = SUPPORTED_LANGUAGES;
   currentLang: string = 'en';
   langMenuOpen = false;
+  isNavScrolled = false;
 
   get currentLanguage() {
     return this.supportedLanguages.find((l) => l.code === this.currentLang) ?? this.supportedLanguages[0];
@@ -265,6 +267,7 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
+    this.updateNavScrolledState();
     setTimeout(() => {
       this.isLoading = false;
       setTimeout(() => {
@@ -899,7 +902,11 @@ export class App implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener('window:scroll')
   onScroll() {
-    // Scroll events handled by GSAP ScrollTrigger
+    this.updateNavScrolledState();
+  }
+
+  private updateNavScrolledState() {
+    this.isNavScrolled = window.scrollY > 10;
   }
 
   toggle8VideoMute() {

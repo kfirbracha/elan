@@ -4,6 +4,8 @@ import { RouterLink } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { WipeRevealDirective } from '../directives/wipe-reveal.directive';
+import { NewClassRevealDirective } from '../directives/new-class-reveal.directive';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -41,7 +43,7 @@ interface Comparison {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TranslateModule, RouterLink],
+  imports: [CommonModule, TranslateModule, RouterLink, WipeRevealDirective, NewClassRevealDirective],
   templateUrl: './home.html',
   styleUrl: '../app.scss',
 })
@@ -567,13 +569,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   initHeroAnimations() {
     const tl = gsap.timeline({ delay: 0.2 });
 
-    tl.from('.hero-badge', {
-      opacity: 0,
-      y: -20,
-      duration: 0.8,
-      ease: 'power3.out',
-    })
-      .from(
+    const has = (selector: string) => document.querySelector(selector) !== null;
+
+    if (has('.hero-badge')) {
+      tl.from('.hero-badge', {
+        opacity: 0,
+        y: -20,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+    }
+
+    if (has('.hero-title-line')) {
+      tl.from(
         '.hero-title-line',
         {
           opacity: 0,
@@ -582,9 +590,12 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           stagger: 0.1,
           ease: 'power3.out',
         },
-        '-=0.5',
-      )
-      .from(
+        has('.hero-badge') ? '-=0.5' : undefined,
+      );
+    }
+
+    if (has('.hero-subtitle')) {
+      tl.from(
         '.hero-subtitle',
         {
           opacity: 0,
@@ -593,8 +604,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           ease: 'power3.out',
         },
         '-=0.6',
-      )
-      .from(
+      );
+    }
+
+    if (has('.hero-nav')) {
+      tl.from(
         '.hero-nav',
         {
           opacity: 0,
@@ -602,8 +616,11 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
           ease: 'power2.out',
         },
         '-=0.4',
-      )
-      .from(
+      );
+    }
+
+    if (has('.hero-scroll-indicator')) {
+      tl.from(
         '.hero-scroll-indicator',
         {
           opacity: 0,
@@ -612,6 +629,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         },
         '-=0.2',
       );
+    }
   }
 
   initScrollAnimations() {
@@ -713,16 +731,18 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
         ease: 'none',
       });
 
-      gsap.to('.admission-bg', {
-        scrollTrigger: {
-          trigger: '.admission-section',
-          start: 'top bottom',
-          end: 'bottom top',
-          scrub: 1,
-        },
-        y: -80,
-        ease: 'none',
-      });
+      if (document.querySelector('.admission-section') && document.querySelector('.admission-bg')) {
+        gsap.to('.admission-bg', {
+          scrollTrigger: {
+            trigger: '.admission-section',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1,
+          },
+          y: -80,
+          ease: 'none',
+        });
+      }
 
       gsap.to('.showcase-video', {
         scrollTrigger: {

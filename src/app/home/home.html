@@ -1,48 +1,50 @@
 <section class="hero-section">
+
   <div class="hero-bg">
     <!-- Background Video -->
     <video class="hero-video" [muted]="true" autoplay loop playsinline disablePictureInPicture>
-      <source src="hero-video.mp4" type="video/mp4" />
+      <source src="../assets/videoplayback.mp4" type="video/mp4" />
     </video>
     <div class="hero-video-overlay"></div>
     <div class="hero-gradient"></div>
     <div class="hero-grid"></div>
   </div>
 
-  <div class="logo-container-hero">
-    <img src="page1-logo.png" width="100%" alt="7 Groups of 8 Logo" />
-  </div>
+
+
   <div class="container hero-container">
-    <h1 class="hero-title">
+    <h1 class="hero-title" style="font-size: 100px" new-class-reveal [newClassRevealOnce]="true">Waik® Agriculture</h1>
+
+<h2 class="hero-title" style="font-size: 100px">Powered by Seven Factors</h2>
+<h2 class="hero-title">The Global Authority in Commodities</h2>
+
+<h3 class="hero-title">Beyond borders. Beyond limitation.
+We elevate agriculture into a realm of precision, influence, and uncompromising excellence.</h3>
+
+<p class="hero-title">We are not just part of the supply chain—
+we define it.</p>
+
+<p class="hero-title">We don’t simply deliver commodities.</p>
+<p class="hero-title">We deliver what the world chooses to trust.</p> 
+    <!-- <h1 class="hero-title">
       <span class="hero-title-line">
-        {{ 'hero.titleLine1' | translate }}<br />
-        {{ 'hero.titleLine2' | translate }}<br />
-        {{ 'hero.titleLine3' | translate }}
+        <span class="hero-line-main">Waik&reg; Agriculture</span>
+        <span class="hero-line-sub reveal-text reveal-delay-1">Powered by Seven Factors</span>
+        <span class="hero-line-sub reveal-text reveal-delay-2">The Global Authority in Commodities</span>
       </span>
     </h1>
 
-    <!-- <nav class="hero-nav">
-        <div class="nav-links">
-          <a *ngFor="let keyword of navKeywords" class="nav-link" href="#">
-            <span class="nav-link-text">
-              <span
-                *ngFor="let char of splitToChars(keyword); let i = index"
-                class="nav-char-wrapper"
-              >
-                <span class="char-white" [style.animation-delay.ms]="i * 12">{{ char }}</span>
-                <span class="char-blue" [style.animation-delay.ms]="i * 12">{{ char }}</span>
-              </span>
-            </span>
-          </a>
-        </div>
-      </nav> -->
 
     <div class="invitation-content">
-      <h3 class="invitation-subtitle reveal-text reveal-delay-1">
-        {{ 'hero.invitation' | translate }}
-      </h3>
-    </div>
-    <div class="nav-bar">
+      <h3 class="invitation-subtitle reveal-text reveal-delay-3">Beyond borders. Beyond limitation.</h3>
+      <p class="hero-body-copy reveal-text reveal-delay-4">
+        We elevate agriculture into a realm of precision, influence, and uncompromising excellence.
+      </p>
+      <p class="hero-body-copy reveal-text reveal-delay-5">
+        We are not just part of the supply chain&mdash;we define it.
+      </p>
+    </div> -->
+    <!-- <div class="nav-bar">
       <a data-button="" href="#7factors" class="nav-button is-btn w-inline-block"
         ><div data-button-text="" data-load-nav-link="">
           {{ 'nav.govFinance' | translate }}
@@ -64,7 +66,7 @@
           {{ 'nav.spaceMinerals' | translate }}
         </div></a
       >
-    </div>
+    </div> -->
   </div>
 
   <div class="hero-scroll-indicator">
@@ -607,7 +609,9 @@
         height="80"
       />
     </div>
-    <h2 class="banking-headline reveal-text">{{ 'banking.headline' | translate }}</h2>
+    <h2 class="banking-headline reveal-text" wipeReveal wipeRevealColor="#D99557">
+      {{ 'banking.headline' | translate }}
+    </h2>
     <p class="banking-subheadline reveal-text reveal-delay-1">
       {{ 'banking.subheadline' | translate }}
     </p>

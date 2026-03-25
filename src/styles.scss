@@ -241,6 +241,35 @@ a {
   }
 }
 
+// ==========================================
+// WIPE REVEAL (Tokenized-style highlight)
+// Use with the `WipeRevealDirective` ([wipeReveal])
+// ==========================================
+.wipe-reveal {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: baseline;
+}
+
+.wipe-reveal__text {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.wipe-reveal__wipe {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 6px;
+  opacity: 0.95;
+  transform: translate3d(-110%, 0, 0);
+  will-change: transform;
+  pointer-events: none;
+}
+
 // === RESPONSIVE ===
 @media (max-width: 1024px) {
   :root {

@@ -9,13 +9,57 @@
 // ==========================================
 // LANGUAGE SWITCHER (dropdown)
 // ==========================================
+
+.app-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 1rem;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -24px;
+    height: 30px;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0));
+    transition: opacity 0.25s ease;
+  }
+
+  &.is-scrolled {
+    background: rgba(0, 0, 0, 0.68);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+
+  &.is-scrolled::after {
+    opacity: 1;
+  }
+}
+
 .lang-switcher {
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
   z-index: 9999;
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-family: var(--font-family-inter, var(--font--sans-typography));
+}
+
+.lang-switcher-left {
+  position: relative;
 }
 
 .lang-trigger {
@@ -29,8 +73,10 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   color: #fff;
-  font-size: 0.9rem;
+  font-family: "PP Supply Sans", Arial, sans-serif;
+  font-size: 12px;
   font-weight: 500;
+  -webkit-font-smoothing: antialiased;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
@@ -73,7 +119,7 @@
 .lang-dropdown {
   position: absolute;
   top: calc(100% + 0.35rem);
-  right: 0;
+  left: 0;
   min-width: 11rem;
   margin: 0;
   padding: 0.35rem;
@@ -85,6 +131,11 @@
   border-radius: 10px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   animation: lang-dropdown-in 0.2s ease-out;
+}
+
+.app-main-logo {
+  width: min(8rem, 28vw);
+  margin: 0;
 }
 
 @keyframes lang-dropdown-in {
@@ -100,6 +151,7 @@
 }
 
 .lang-dropdown .lang-option {
+  font-family: "PP Supply Sans", Arial, sans-serif !important;
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -436,9 +488,27 @@
     // margin-top: 200px;
 
     .invitation-subtitle {
+      font-family: 'Fellix', Arial, sans-serif;
+      max-width: 35rem;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
       color: white !important;
-      font-size: 24px !important;
+      font-size: clamp(24px, 2.4vw, 38px) !important;
+      margin-bottom: 14px;
+    }
 
+    .hero-body-copy {
+      font-family: 'Fellix', Arial, sans-serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      max-width: 35rem;
+      margin: 10px auto 0;
+      font-size: clamp(14px, 1.05vw, 18px);
+      line-height: 1.35;
+      color: var(--text-light);
     }
   }
 
@@ -989,12 +1059,6 @@ nav-bar-move-in animation {
   }
 }
 
-.logo-container-hero {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  width: 200px;
-}
 
 .graphic-4 {
   path {
@@ -1743,97 +1807,6 @@ blink animation {
   }
 }
 
-// Loading Screen Container with blue light effect
-.loading-screen-container {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  // Dark navy background with subtle blue tint
-  background:
-    radial-gradient(ellipse 100% 100% at 50% 100%, rgba(20, 30, 80, 0.6) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(10, 15, 40, 0.3) 0%, transparent 50%),
-    linear-gradient(to bottom, #050510 0%, #0a0a20 100%);
-  overflow: hidden;
-
-  // Bright horizontal glow at loading text line - coming from below
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: 6%;
-    left: 0;
-    right: 0;
-    height: 280px;
-    background:
-      radial-gradient(ellipse 35% 20% at 50% 70%, rgba(200, 220, 255, 0.5) 0%, transparent 100%),
-      radial-gradient(ellipse 50% 35% at 50% 75%, rgba(100, 140, 220, 0.45) 0%, transparent 100%),
-      radial-gradient(ellipse 70% 50% at 50% 80%, rgba(50, 80, 180, 0.3) 0%, transparent 100%);
-    filter: blur(8px);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  // Extra wide ambient blue glow
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 70%;
-    background: radial-gradient(ellipse 100% 60% at 50% 100%,
-        rgba(30, 50, 120, 0.25) 0%,
-        rgba(20, 35, 90, 0.15) 40%,
-        transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  &.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.8s var(--ease-out), visibility 0.8s;
-  }
-
-  // Ensure content is above the light effect
-  >* {
-    z-index: 2;
-  }
-}
-
-.loading-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.8s var(--ease-out), visibility 0.8s;
-
-
-  &.hidden {
-    opacity: 0;
-    visibility: hidden;
-  }
-
-  .loading-logo {
-    font-family: var(--font-serif);
-    font-size: 16px;
-    letter-spacing: 0.2em;
-    color: var(--text-white);
-    // margin-bottom: 16px;
-    // height: 200px;
-    width: 200px;
-  }
-
-  .loading-text {
-    // font-family: var(--font-mono);
-    font-size: clamp(11px, 2vw, 40px);
-    color: var(--text-muted);
-    letter-spacing: 0.05em;
-  }
-}
-
 // ==========================================
 // MAIN CONTENT
 // ==========================================
@@ -2274,6 +2247,35 @@ blink animation {
     text-align: center;
   }
 
+  .language-demo-btn {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1rem;
+    padding: 0.65rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.35);
+    color: var(--text-white, #fff);
+    font-family: inherit;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.45);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .split {
+      display: inline-block;
+    }
+  }
+
   .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -2311,7 +2313,7 @@ blink animation {
 
     .hero-title-line {
       display: block;
-      // font-family: var(--font-serif);
+      font-family: 'Fellix', Arial, sans-serif;
       font-size: clamp(44px, 10vw, 40px);
       font-weight: 400;
       line-height: 0.95;
@@ -2321,6 +2323,31 @@ blink animation {
       em {
         font-style: italic;
         color: var(--accent);
+      }
+
+      .hero-line-main,
+      .hero-line-sub {
+        display: block;
+      }
+
+      .hero-line-main {
+        font-family: 'Fellix', Arial, sans-serif;
+        font-size: 5.68575rem; // 90.972px
+        line-height: 0.95;
+        font-weight: 400;
+        letter-spacing: -0.03em;
+      }
+
+      .hero-line-sub {
+        margin-top: 8px;
+        max-width: 35rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: clamp(18px, 2.1vw, 30px);
+        line-height: 1.08;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        color: var(--text-light);
       }
     }
   }
